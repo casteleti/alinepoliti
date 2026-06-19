@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" role="img" aria-label="Foto placeholder">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1FB6A8"/><stop offset="1" stop-color="#117B7F"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="600" fill="url(#g)"/>
+  <circle cx="300" cy="235" r="95" fill="#FCF9F5" opacity="0.92"/>
+  <path d="M150 520c0-95 70-160 150-160s150 65 150 160z" fill="#FCF9F5" opacity="0.92"/>
+  <text x="300" y="575" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="26" fill="#FCF9F5">Aline Politi</text>
+</svg>

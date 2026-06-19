@@ -1,0 +1,7 @@
+# Use este .htaccess APENAS se o docroot da hospedagem for a RAIZ do projeto
+# (e não a pasta /public). Ele encaminha tudo para /public.
+# O ideal é apontar o docroot diretamente para /public e remover este arquivo.
+RewriteEngine On
+RewriteRule ^$ public/ [L]
+RewriteCond %{REQUEST_URI} !^/public/
+RewriteRule (.*) public/$1 [L]

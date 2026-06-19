@@ -1,0 +1,18 @@
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Configuração local com segredos REAIS (não versionar) —
+# em produção, edite app/config.php no servidor ou use variáveis de ambiente.
+/app/config.local.php
+.env
+
+# Dependências (não há no momento; por garantia)
+/vendor/
+/node_modules/
+
+# Uploads de mídia gerados em produção (se houver no futuro)
+/public/uploads/

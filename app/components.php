@@ -18,10 +18,10 @@ function render_header(): void
 {
     $nav = get_nav();
     ?>
-    <header class="sticky top-0 z-50 bg-cream/85 backdrop-blur-md border-b border-teal-dark/5">
+    <header class="site-header sticky top-0 z-50">
       <div class="max-w-7xl mx-auto px-5 lg:px-8 h-20 flex items-center justify-between gap-6">
         <a href="<?= url('/') ?>" class="flex items-center gap-3 shrink-0" aria-label="Aline Politi — Início">
-          <img src="<?= asset('logo.svg') ?>" alt="Aline Politi" class="h-9 w-auto" width="240" height="72">
+          <img src="<?= asset('logo.png') ?>" alt="Aline Politi — Psicóloga" class="site-logo w-auto" width="160" height="40">
         </a>
 
         <nav class="hidden lg:flex items-center gap-7 text-sm font-medium text-teal-dark/80" aria-label="Principal">
@@ -31,13 +31,18 @@ function render_header(): void
                 <a href="<?= url($item['to']) ?>" aria-haspopup="true"<?= is_active($item['to']) ? ' aria-current="page"' : '' ?>
                    class="flex items-center gap-1 hover:text-magenta transition-colors py-2 <?= is_active($item['to']) ? 'text-magenta' : '' ?>">
                   <?= e($item['label']) ?>
-                  <?= icon('chevron-down', 'size-3 opacity-60') ?>
+                  <?= icon('chevron-down', 'size-3 opacity-60 transition-transform duration-300 group-hover:rotate-180') ?>
                 </a>
-                <div class="absolute top-full -left-4 pt-3 hidden group-hover:block group-focus-within:block">
-                  <div class="bg-white shadow-xl shadow-teal-dark/10 rounded-2xl p-3 w-64 border border-teal-dark/5 flex flex-col">
+                <div class="absolute top-full -left-4 pt-3 w-72 opacity-0 invisible translate-y-1 transition-all duration-200 ease-out group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 group-focus-within:opacity-100 group-focus-within:visible group-focus-within:translate-y-0">
+                  <div class="relative bg-white/95 backdrop-blur-md rounded-2xl p-2 border border-teal-dark/5 ring-1 ring-black/5 shadow-2xl shadow-teal-dark/15 flex flex-col">
+                    <span class="absolute -top-1.5 left-9 size-3 rotate-45 bg-white/95 border-l border-t border-teal-dark/5" aria-hidden="true"></span>
                     <?php foreach ($item['children'] as $c): ?>
-                      <a href="<?= url($c['to']) ?>" class="px-3 py-2 rounded-lg hover:bg-cream hover:text-magenta transition-colors">
-                        <?= e($c['label']) ?>
+                      <a href="<?= url($c['to']) ?>" class="group/it flex items-center justify-between gap-3 px-3 py-2.5 rounded-xl text-teal-dark/80 hover:bg-cream hover:text-magenta transition-colors">
+                        <span class="flex items-center gap-2.5">
+                          <span class="size-1.5 rounded-full bg-magenta/0 group-hover/it:bg-magenta transition-colors" aria-hidden="true"></span>
+                          <?= e($c['label']) ?>
+                        </span>
+                        <span class="opacity-0 -translate-x-1 group-hover/it:opacity-100 group-hover/it:translate-x-0 transition-all duration-200"><?= icon('arrow-right', 'size-3.5') ?></span>
                       </a>
                     <?php endforeach; ?>
                   </div>
@@ -96,10 +101,10 @@ function render_footer(): void
       <div class="max-w-7xl mx-auto px-6 lg:px-8 pt-20 pb-10">
         <div class="grid lg:grid-cols-3 gap-14">
           <div>
-            <img src="<?= asset('logo-negativo.svg') ?>" alt="Aline Politi" class="h-12 w-auto mb-6" width="240" height="96">
+            <img src="<?= asset('logo-neg.png') ?>" alt="Aline Politi — Psicóloga" class="h-12 w-auto mb-6" width="200" height="50">
             <p class="text-cream/70 text-sm leading-relaxed max-w-xs">
-              Psicologia ética, humana e baseada em evidências. Acolhimento e Terapia Cognitivo-Comportamental
-              para uma vida com mais clareza.
+              Um espaço de escuta onde ciência e acolhimento se encontram. Terapia Cognitivo-Comportamental
+              para você viver com mais leveza e clareza.
             </p>
             <p class="mt-6 text-xs uppercase tracking-[0.25em] text-amber"><?= e(SITE_CRP) ?></p>
           </div>
@@ -209,7 +214,7 @@ function faixa(string $texto, string $cta = 'Vamos conversar?', ?string $href = 
     };
     ?>
     <section class="px-6 lg:px-8 my-16">
-      <div class="relative overflow-hidden max-w-5xl mx-auto <?= $bg ?> <?= $fg ?> rounded-[2.5rem] p-10 md:p-16 text-center ring-1 ring-teal-dark/5">
+      <div class="relative overflow-hidden max-w-6xl mx-auto <?= $bg ?> <?= $fg ?> rounded-[2.5rem] p-10 md:p-16 text-center ring-1 ring-teal-dark/5">
         <div class="absolute -top-16 -left-16 size-64 bg-teal-mid/15 blob-1 blur-3xl" aria-hidden="true"></div>
         <div class="absolute -bottom-16 -right-16 size-64 bg-amber/15 blob-2 blur-3xl" aria-hidden="true"></div>
         <blockquote class="relative">
@@ -246,13 +251,16 @@ function page_label_map(): array
         '/a-psicologa/trajetoria' => 'Trajetória Acadêmica',
         '/a-psicologa/especializacoes' => 'Especializações',
         '/a-psicologa/pesquisas' => 'Pesquisas & Artigos',
+        '/a-psicologa/pesquisas/mestrado' => 'Mestrado (USP)',
+        '/a-psicologa/pesquisas/graduacao' => 'Graduação (UNAERP)',
         '/a-psicologa/valores' => 'Missão & Valores',
         '/abordagem-tcc' => 'Abordagem TCC',
         '/abordagem-tcc/o-que-e' => 'O que é a TCC?',
-        '/abordagem-tcc/presencial' => 'Atendimento Presencial',
-        '/abordagem-tcc/online' => 'Atendimento Online',
         '/abordagem-tcc/orientacao-de-pais' => 'Orientação de Pais',
         '/abordagem-tcc/supervisao' => 'Supervisão para Psicólogos',
+        '/atendimento' => 'Atendimento',
+        '/atendimento/presencial' => 'Atendimento Presencial',
+        '/atendimento/online' => 'Atendimento Online',
         '/blog' => 'Blog',
         '/perguntas-frequentes' => 'Perguntas Frequentes',
         '/contato' => 'Contato',
@@ -313,7 +321,7 @@ function mapa_clinica(string $titulo = 'Fácil de chegar'): void
     $embed = 'https://www.google.com/maps?q=' . rawurlencode($q) . '&z=16&hl=pt-BR&output=embed';
     $dir   = 'https://www.google.com/maps/dir/?api=1&destination=' . rawurlencode($q);
     ?>
-    <section class="max-w-6xl mx-auto px-6 lg:px-8 my-16">
+    <section class="max-w-7xl mx-auto px-6 lg:px-8 my-16">
       <div class="grid lg:grid-cols-[1fr_1.25fr] gap-8 items-stretch bg-white rounded-[2.5rem] border border-teal-dark/10 p-6 lg:p-8">
         <div class="flex flex-col justify-center">
           <span class="text-xs font-bold tracking-[0.25em] uppercase text-magenta">Onde fica</span>
@@ -345,6 +353,39 @@ function mapa_clinica(string $titulo = 'Fácil de chegar'): void
             width="100%" height="100%" style="border:0; min-height:320px;"
             loading="lazy" referrerpolicy="no-referrer-when-downgrade"
             allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
+    <?php
+}
+
+/**
+ * Bloco institucional "Psicóloga Aline Politi" (H2 + texto + frase reflexiva + CTA).
+ * Reutilizável em várias páginas. $quote permite variar a frase por página.
+ */
+function bloco_psicologa(string $quote = 'Acolher o que se sente é o primeiro passo para transformar.'): void
+{
+    ?>
+    <section class="px-6 lg:px-8 my-16">
+      <div class="relative overflow-hidden max-w-6xl mx-auto bg-white rounded-[2.5rem] p-10 md:p-16 ring-1 ring-teal-dark/5 text-center">
+        <div class="absolute -top-16 -left-16 size-64 bg-teal-mid/15 blob-1 blur-3xl" aria-hidden="true"></div>
+        <div class="absolute -bottom-16 -right-16 size-64 bg-amber/15 blob-2 blur-3xl" aria-hidden="true"></div>
+        <div class="relative">
+          <span class="text-xs font-bold tracking-[0.25em] uppercase text-magenta">Psicologia &amp; TCC</span>
+          <h2 class="font-heading text-3xl md:text-4xl text-teal-dark mt-3">Psicóloga Aline Politi</h2>
+          <p class="mt-5 max-w-2xl mx-auto text-ink/75 leading-relaxed">
+            A <strong>Psicóloga Aline Politi</strong> (CRP 06/113904) dedica-se, há quase duas décadas, a compreender as
+            relações entre pais e filhos e o desenvolvimento humano. Une ciência e acolhimento na Terapia
+            Cognitivo-Comportamental — um espaço seguro para adolescentes, adultos e casais, com orientação de pais,
+            presencial em Jaboticabal e online.
+          </p>
+          <p class="mt-8 font-display italic text-[clamp(1.5rem,3vw,2.4rem)] text-magenta leading-snug max-w-3xl mx-auto">
+            “<?= e($quote) ?>”
+          </p>
+          <a href="<?= e(whatsapp_url()) ?>" target="_blank" rel="noopener"
+             class="inline-flex items-center gap-2 mt-9 px-7 py-3.5 rounded-full bg-teal-dark text-cream font-semibold hover:bg-teal-mid transition-colors">
+            Vamos conversar? <?= icon('arrow-right', 'size-4') ?>
+          </a>
         </div>
       </div>
     </section>

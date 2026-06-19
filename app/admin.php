@@ -77,7 +77,7 @@ function admin_view_login(string $erro = ''): void
     ob_start(); ?>
     <div class="max-w-sm mx-auto mt-16 lg:mt-24">
       <div class="text-center mb-8">
-        <img src="<?= asset('logo.svg') ?>" alt="Aline Politi" class="h-10 mx-auto mb-4">
+        <img src="<?= asset('logo.png') ?>" alt="Aline Politi" class="h-10 mx-auto mb-4">
         <h1 class="font-heading text-2xl text-teal-dark">Área restrita</h1>
       </div>
       <form method="post" action="<?= url('/admin/login') ?>" class="bg-white rounded-2xl border border-teal-dark/10 p-7 grid gap-4 shadow-sm">

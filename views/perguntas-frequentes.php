@@ -16,4 +16,5 @@ page_hero('Perguntas', 'frequentes', 'FAQ', 'As dúvidas mais comuns sobre a psi
     <?php endforeach; ?>
   </div>
 </section>
+<?php bloco_psicologa('Falar sobre o que pesa já é começar a aliviar.'); ?>
 <?php cta_section(); ?>

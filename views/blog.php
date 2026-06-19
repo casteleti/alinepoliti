@@ -26,4 +26,5 @@ page_hero('Reflexões em', 'construção', 'Blog', 'Em breve, conteúdos sobre T
     </div>
   </section>
 <?php endif; ?>
+<?php bloco_psicologa('Cuidar da mente é cuidar da vida que você quer viver.'); ?>
 <?php cta_section(); ?>

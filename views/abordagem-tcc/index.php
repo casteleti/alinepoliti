@@ -3,8 +3,6 @@
 $items = [
     ['icon' => 'brain', 'title' => 'O que é a TCC?', 'to' => '/abordagem-tcc/o-que-e', 'desc' => 'Os fundamentos científicos da Terapia Cognitivo-Comportamental.'],
     ['icon' => 'sparkles', 'title' => 'Terapias Contextuais (3ª onda)', 'to' => '/abordagem-tcc/terapias-contextuais', 'desc' => 'ACT, DBT, Esquema e Compaixão — a evolução atual da TCC.'],
-    ['icon' => 'map-pin', 'title' => 'Atendimento Presencial', 'to' => '/abordagem-tcc/presencial', 'desc' => 'Um espaço acolhedor para sua escuta.'],
-    ['icon' => 'monitor', 'title' => 'Atendimento Online', 'to' => '/abordagem-tcc/online', 'desc' => 'Cuidado clínico no conforto da sua casa.'],
     ['icon' => 'users', 'title' => 'Orientação de Pais', 'to' => '/abordagem-tcc/orientacao-de-pais', 'desc' => 'Suporte para os desafios da parentalidade.'],
     ['icon' => 'graduation-cap', 'title' => 'Supervisão para Psicólogos', 'to' => '/abordagem-tcc/supervisao', 'desc' => 'Aprofundamento técnico em TCC.'],
 ];
@@ -21,4 +19,5 @@ page_hero('Terapia Cognitivo-', 'Comportamental', 'Abordagem', 'Uma abordagem ci
     </a>
   <?php endforeach; ?>
 </section>
+<?php bloco_psicologa('Entre o que acontece e o que você sente, existe um espaço — e nele mora a sua escolha.'); ?>
 <?php cta_section(); ?>

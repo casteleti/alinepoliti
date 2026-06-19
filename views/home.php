@@ -3,7 +3,7 @@
 $servicos = [
     ['icon' => 'heart-handshake', 'bg' => 'bg-teal-mid/10', 'text' => 'text-teal-mid', 'hover' => 'hover:border-teal-mid',
      'title' => 'Atendimento Clínico', 'desc' => 'Psicoterapia individual focada em ansiedade, depressão e autoconhecimento.',
-     'items' => ['Adolescentes e adultos', 'Abordagem TCC', 'Plano terapêutico personalizado'], 'to' => '/abordagem-tcc/presencial'],
+     'items' => ['Adolescentes e adultos', 'Abordagem TCC', 'Plano terapêutico personalizado'], 'to' => '/atendimento/presencial'],
     ['icon' => 'users', 'bg' => 'bg-magenta/10', 'text' => 'text-magenta', 'hover' => 'hover:border-magenta',
      'title' => 'Orientação de Pais', 'desc' => 'Suporte estratégico para os desafios do desenvolvimento infantil e da dinâmica familiar.',
      'items' => ['Manejo de comportamento', 'Comunicação assertiva', 'Fortalecimento de vínculos'], 'to' => '/abordagem-tcc/orientacao-de-pais'],
@@ -18,8 +18,8 @@ $etapas = [
     ['n' => '04', 't' => 'Manutenção e autonomia', 'd' => 'Construímos juntos um repertório que você leva para a vida — terapia que ensina a se cuidar.'],
 ];
 $modalidades = [
-    ['t' => 'Atendimento Presencial', 'd' => 'Um espaço acolhedor e reservado para sua escuta.', 'to' => '/abordagem-tcc/presencial', 'bg' => 'bg-teal-dark'],
-    ['t' => 'Atendimento Online', 'd' => 'A mesma qualidade clínica, no conforto da sua casa.', 'to' => '/abordagem-tcc/online', 'bg' => 'bg-magenta'],
+    ['t' => 'Atendimento Presencial', 'd' => 'Um espaço acolhedor e reservado para sua escuta.', 'to' => '/atendimento/presencial', 'bg' => 'bg-teal-dark'],
+    ['t' => 'Atendimento Online', 'd' => 'A mesma qualidade clínica, no conforto da sua casa.', 'to' => '/atendimento/online', 'bg' => 'bg-magenta'],
 ];
 ?>
 <!-- HERO -->
@@ -56,10 +56,11 @@ $modalidades = [
     <div class="relative">
       <div class="absolute -inset-6 bg-gradient-to-br from-teal-mid/25 via-cream to-amber/20 blob-1 blur-2xl" aria-hidden="true"></div>
       <div class="relative aspect-square w-full max-w-[520px] mx-auto blob-1 overflow-hidden ring-1 ring-teal-dark/10 bg-teal-dark/5">
-        <img src="<?= asset('portrait.svg') ?>" alt="Aline Politi, psicóloga clínica especialista em TCC" width="1200" height="1200" class="w-full h-full object-cover">
+        <span class="absolute top-5 left-6 z-10 text-[11px] font-bold uppercase tracking-[0.25em] text-[#FCEBC6] drop-shadow-[0_1px_4px_rgba(0,0,0,0.45)]">Psicóloga Aline Politi</span>
+        <img src="<?= asset('consultoria.jpg') ?>" alt="Aline Politi, psicóloga clínica especialista em TCC" width="764" height="820" fetchpriority="high" class="w-full h-full object-cover">
       </div>
-      <div class="absolute -bottom-4 -left-4 lg:-left-10 bg-white px-5 py-4 rounded-2xl shadow-xl shadow-teal-dark/10 ring-1 ring-teal-dark/5 max-w-[230px] rotate-[-3deg]">
-        <p class="font-display italic text-teal-dark leading-tight">“O cuidado que começa no acolhimento.”</p>
+      <div class="absolute -bottom-4 -left-4 lg:-left-10 bg-white px-6 py-5 rounded-2xl shadow-xl shadow-teal-dark/10 ring-1 ring-teal-dark/5 max-w-[270px] rotate-[-3deg]">
+        <p class="font-display italic text-teal-dark leading-snug text-xl text-center">“O cuidado que começa no acolhimento.”</p>
       </div>
     </div>
   </div>
@@ -95,7 +96,7 @@ $modalidades = [
   <div class="relative max-w-7xl mx-auto px-6 lg:px-8 grid lg:grid-cols-2 gap-16 items-center">
     <div class="relative order-2 lg:order-1">
       <div class="absolute -inset-4 bg-amber/15 blob-2" aria-hidden="true"></div>
-      <img src="<?= asset('banner.svg') ?>" alt="Aline Politi em seu consultório" width="1200" height="800" class="relative w-full h-auto blob-1 ring-1 ring-teal-dark/10" loading="lazy">
+      <img src="<?= asset('banner.jpg') ?>" alt="Consultório de Aline Politi em Jaboticabal" width="1600" height="800" class="relative w-full h-auto blob-1 ring-1 ring-teal-dark/10" loading="lazy">
     </div>
     <div class="order-1 lg:order-2">
       <span class="text-xs font-bold tracking-[0.25em] uppercase text-magenta">A psicóloga</span>
@@ -138,7 +139,7 @@ $modalidades = [
 
 <!-- MODALIDADES -->
 <section class="py-20">
-  <div class="max-w-6xl mx-auto px-6 lg:px-8 grid md:grid-cols-2 gap-6">
+  <div class="max-w-7xl mx-auto px-6 lg:px-8 grid md:grid-cols-2 gap-6">
     <?php foreach ($modalidades as $m): ?>
       <a href="<?= url($m['to']) ?>" class="<?= $m['bg'] ?> text-cream rounded-[2.5rem] p-10 group relative overflow-hidden">
         <span class="absolute top-6 right-6 opacity-30"><?= icon('sparkles', 'size-6') ?></span>
@@ -152,6 +153,6 @@ $modalidades = [
 
 <?php mapa_clinica('Atendimento presencial e online'); ?>
 
-<?php faixa('A ciência da TCC não parou nos anos 1960 — as terapias contextuais ampliam o cuidado com aceitação, mindfulness e compaixão.', 'Conheça as terapias contextuais', '/abordagem-tcc/terapias-contextuais', '', 'cream'); ?>
+<?php bloco_psicologa(); ?>
 
 <?php cta_section(); ?>

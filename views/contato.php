@@ -64,3 +64,5 @@ page_hero('Vamos', 'conversar?', 'Contato', 'O primeiro passo costuma ser o mais
 </section>
 
 <?php mapa_clinica('Atendimento presencial em Jaboticabal'); ?>
+
+<?php bloco_psicologa('Você não precisa dar conta de tudo sozinho. Pedir ajuda também é um ato de coragem.'); ?>

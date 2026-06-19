@@ -1,4 +1,5 @@
 <?php page_hero('Atendimento', 'online', 'Modalidade', 'Cuidado clínico no conforto da sua casa — onde você estiver.'); prose_open(); ?>
+<img src="<?= asset('consultoria.jpg') ?>" alt="Atendimento psicológico online em TCC com Aline Politi" width="764" height="820" loading="lazy" class="w-full rounded-[2rem] ring-1 ring-teal-dark/10">
 <h2>Como funciona</h2>
 <p>As sessões são realizadas por videochamada, em plataforma segura e com toda a confidencialidade prevista no Código de Ética do Psicólogo (Resolução CFP 11/2018).</p>
 <h2>Vantagens</h2>

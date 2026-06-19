@@ -11,7 +11,7 @@ $description = $meta['description']  ?? 'Psicóloga clínica especializada em Te
 $canonical   = isset($meta['canonical']) ? abs_url($meta['canonical']) : '';
 $ogTitle     = $meta['ogTitle']     ?? $title;
 $ogDesc      = $meta['ogDescription'] ?? $description;
-$ogImage     = $meta['ogImage']     ?? asset('portrait.svg');
+$ogImage     = $meta['ogImage']     ?? asset('og.jpg');
 $extraJsonLd = $meta['jsonld']      ?? '';
 
 $siteJsonLd = json_encode([
@@ -85,6 +85,9 @@ $siteJsonLd = json_encode([
   <meta property="og:title" content="<?= e($ogTitle) ?>">
   <meta property="og:description" content="<?= e($ogDesc) ?>">
   <meta property="og:image" content="<?= e($ogImage) ?>">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:type" content="image/jpeg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="<?= e($ogTitle) ?>">
   <meta name="twitter:description" content="<?= e($ogDesc) ?>">
@@ -123,8 +126,16 @@ $siteJsonLd = json_encode([
     header > div{min-height:80px;}
     /* Microinterações / efeitos */
     a,button{transition:color .2s ease, background-color .2s ease, transform .2s ease, box-shadow .2s ease;}
-    header{transition:box-shadow .3s ease;}
-    header.scrolled{box-shadow:0 8px 30px rgba(17,123,127,.10);}
+    /* Cabeçalho: vidro fosco ao rolar (desktop) + logo 20% maior no topo */
+    .site-header{transition:background .3s ease, backdrop-filter .3s ease, box-shadow .3s ease, border-color .3s ease;
+      background:rgba(252,249,245,.88); -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px);
+      border-bottom:1px solid rgba(17,123,127,.05);}
+    .site-logo{height:2.25rem; transition:height .3s ease;}
+    @media (min-width:1024px){
+      .site-header{background:transparent; -webkit-backdrop-filter:none; backdrop-filter:none; border-bottom-color:transparent; box-shadow:none;}
+      .site-header.scrolled{background:rgba(252,249,245,.72); -webkit-backdrop-filter:blur(14px) saturate(150%); backdrop-filter:blur(14px) saturate(150%); box-shadow:0 10px 34px rgba(17,123,127,.12); border-bottom-color:rgba(17,123,127,.06);}
+      .site-header:not(.scrolled) .site-logo{height:2.7rem;} /* +20% no início */
+    }
     .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);}
     .reveal.is-visible{opacity:1;transform:none;}
     details>summary{transition:color .2s ease;} details[open]>summary{color:#A52A7E;}

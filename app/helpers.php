@@ -66,11 +66,15 @@ function get_nav(): array
             'label' => 'Abordagem TCC', 'to' => '/abordagem-tcc',
             'children' => [
                 ['label' => 'O que é a TCC?',            'to' => '/abordagem-tcc/o-que-e'],
-                ['label' => 'Terapias Contextuais (3ª onda)', 'to' => '/abordagem-tcc/terapias-contextuais'],
-                ['label' => 'Atendimento Presencial',    'to' => '/abordagem-tcc/presencial'],
-                ['label' => 'Atendimento Online',        'to' => '/abordagem-tcc/online'],
                 ['label' => 'Orientação de Pais',        'to' => '/abordagem-tcc/orientacao-de-pais'],
                 ['label' => 'Supervisão para Psicólogos','to' => '/abordagem-tcc/supervisao'],
+            ],
+        ],
+        [
+            'label' => 'Atendimento', 'to' => '/atendimento',
+            'children' => [
+                ['label' => 'Atendimento Presencial', 'to' => '/atendimento/presencial'],
+                ['label' => 'Atendimento Online',     'to' => '/atendimento/online'],
             ],
         ],
         ['label' => 'Blog', 'to' => '/blog'],
@@ -137,6 +141,7 @@ function faq_default(): array
         ['q' => 'Quanto tempo dura o processo terapêutico?', 'a' => 'A TCC é considerada uma terapia de médio prazo. A duração depende da demanda, dos objetivos terapêuticos e do engajamento — sendo sempre revisada periodicamente.'],
         ['q' => 'Você atende crianças?', 'a' => 'O atendimento clínico individual é para adolescentes (a partir de 14 anos) e adultos. Para crianças, ofereço o serviço de Orientação de Pais.'],
         ['q' => 'Como faço para agendar a primeira consulta?', 'a' => 'O primeiro contato pode ser feito pelo WhatsApp ou e-mail. Após uma breve conversa, agendamos a sessão inicial de acolhimento.'],
+        ['q' => 'Você atende Unimed ou algum outro convênio?', 'a' => 'Com toda a transparência: no momento não atendo por convênios — incluindo a Unimed. Sei que isso pode pesar na sua decisão, e por isso a primeira sugestão é entrar em contato com o seu plano de saúde para conhecer os profissionais credenciados disponíveis. Se você preferir seguir com o atendimento particular, será um prazer acolher você — e emito recibo que pode ser usado para solicitar reembolso ao seu plano (conforme as regras de cada convênio) e na declaração de Imposto de Renda. Fico à disposição para conversarmos sobre o que faz mais sentido para o seu momento.'],
         ['q' => 'Você emite recibo para reembolso?', 'a' => 'Sim. Emito recibo padrão que pode ser apresentado a planos de saúde e usado para Imposto de Renda.'],
     ];
 }

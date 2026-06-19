@@ -106,7 +106,7 @@ function routes_table(): array
             'view' => 'home.php',
             'title' => 'Aline Politi — Psicóloga Clínica & Terapia Cognitivo-Comportamental',
             'description' => 'Psicoterapia em TCC para adultos, orientação de pais e supervisão para psicólogos. Atendimento presencial e online com Aline Politi, CRP 06/113904.',
-            'canonical' => '/', 'ogImage' => asset('portrait.svg'),
+            'canonical' => '/', 'ogImage' => asset('og.jpg'),
         ],
         '/a-psicologa' => [
             'view' => 'a-psicologa/index.php',
@@ -128,9 +128,21 @@ function routes_table(): array
         ],
         '/a-psicologa/pesquisas' => [
             'view' => 'a-psicologa/pesquisas.php',
-            'title' => 'Pesquisas & Artigos | Aline Politi',
-            'description' => 'Produções acadêmicas, pesquisas e artigos publicados por Aline Politi em Terapia Cognitivo-Comportamental e saúde mental.',
+            'title' => 'Pesquisas & Publicações | Aline Politi — Psicóloga',
+            'description' => 'A produção acadêmica de Aline Politi: mestrado na USP (depressão materna e práticas parentais) e graduação na UNAERP (estilos parentais e adolescentes).',
             'canonical' => '/a-psicologa/pesquisas',
+        ],
+        '/a-psicologa/pesquisas/mestrado' => [
+            'view' => 'a-psicologa/pesquisas-mestrado.php',
+            'title' => 'Mestrado na USP: depressão materna e práticas parentais | Aline Politi',
+            'description' => 'A pesquisa de mestrado de Aline Politi na USP (FFCLRP), sob orientação da Dra. Sônia Regina Loureiro: práticas educativas parentais e o comportamento de crianças que convivem com a depressão materna.',
+            'canonical' => '/a-psicologa/pesquisas/mestrado',
+        ],
+        '/a-psicologa/pesquisas/graduacao' => [
+            'view' => 'a-psicologa/pesquisas-graduacao.php',
+            'title' => 'Graduação na UNAERP: estilos parentais e adolescentes | Aline Politi',
+            'description' => 'A monografia de graduação de Aline Politi na UNAERP (2011): estilos parentais e comportamento de adolescentes — o início da sua linha de pesquisa em Psicologia.',
+            'canonical' => '/a-psicologa/pesquisas/graduacao',
         ],
         '/a-psicologa/valores' => [
             'view' => 'a-psicologa/valores.php',
@@ -156,17 +168,17 @@ function routes_table(): array
             'description' => 'As terapias contextuais — a 3ª onda da TCC: ACT (Hayes), DBT (Linehan), Terapia do Esquema (Young) e Terapia Focada na Compaixão (Gilbert, Neff). Abordagens atuais integradas à prática clínica.',
             'canonical' => '/abordagem-tcc/terapias-contextuais',
         ],
-        '/abordagem-tcc/presencial' => [
+        '/atendimento/presencial' => [
             'view' => 'abordagem-tcc/presencial.php',
             'title' => 'Atendimento Presencial | Aline Politi — Psicóloga TCC',
             'description' => 'Consulta psicológica presencial em consultório, com toda a estrutura e o acolhimento da Terapia Cognitivo-Comportamental.',
-            'canonical' => '/abordagem-tcc/presencial',
+            'canonical' => '/atendimento/presencial',
         ],
-        '/abordagem-tcc/online' => [
+        '/atendimento/online' => [
             'view' => 'abordagem-tcc/online.php',
             'title' => 'Atendimento Online | Psicóloga TCC — Aline Politi',
             'description' => 'Psicoterapia online em TCC com a mesma qualidade clínica e ética do atendimento presencial — para todo o Brasil e brasileiros no exterior.',
-            'canonical' => '/abordagem-tcc/online',
+            'canonical' => '/atendimento/online',
         ],
         '/abordagem-tcc/orientacao-de-pais' => [
             'view' => 'abordagem-tcc/orientacao-de-pais.php',
@@ -179,6 +191,12 @@ function routes_table(): array
             'title' => 'Supervisão para Psicólogos | Aline Politi — TCC',
             'description' => 'Supervisão clínica para psicólogos que desejam aprofundar a prática em Terapia Cognitivo-Comportamental: discussão de casos, técnica e ética.',
             'canonical' => '/abordagem-tcc/supervisao',
+        ],
+        '/atendimento' => [
+            'view' => 'atendimento.php',
+            'title' => 'Atendimento online e presencial | Psicóloga Aline Politi — Jaboticabal',
+            'description' => 'Atendimento psicológico em TCC com Aline Politi: presencial em Jaboticabal e online para todo o Brasil. Escolha o formato que cabe na sua vida.',
+            'canonical' => '/atendimento',
         ],
         '/blog' => [
             'view' => 'blog.php',
@@ -275,14 +293,17 @@ function render_sitemap(): string
         ['/a-psicologa/trajetoria', 'yearly', '0.6'],
         ['/a-psicologa/especializacoes', 'yearly', '0.6'],
         ['/a-psicologa/pesquisas', 'monthly', '0.5'],
+        ['/a-psicologa/pesquisas/mestrado', 'yearly', '0.6'],
+        ['/a-psicologa/pesquisas/graduacao', 'yearly', '0.5'],
         ['/a-psicologa/valores', 'yearly', '0.5'],
         ['/abordagem-tcc', 'monthly', '0.9'],
         ['/abordagem-tcc/o-que-e', 'yearly', '0.8'],
         ['/abordagem-tcc/terapias-contextuais', 'monthly', '0.8'],
-        ['/abordagem-tcc/presencial', 'yearly', '0.8'],
-        ['/abordagem-tcc/online', 'yearly', '0.8'],
+        ['/atendimento/presencial', 'yearly', '0.8'],
+        ['/atendimento/online', 'yearly', '0.8'],
         ['/abordagem-tcc/orientacao-de-pais', 'yearly', '0.8'],
         ['/abordagem-tcc/supervisao', 'yearly', '0.7'],
+        ['/atendimento', 'monthly', '0.8'],
         ['/blog', 'weekly', '0.7'],
         ['/perguntas-frequentes', 'monthly', '0.7'],
         ['/contato', 'yearly', '0.8'],

@@ -11,13 +11,20 @@ page_hero('Aline', 'Politi', 'A Psicóloga', 'Uma jornada de estudo, escuta e cu
 <section class="max-w-6xl mx-auto px-6 lg:px-8 pb-12 grid lg:grid-cols-[1fr_1.2fr] gap-12 items-center">
   <div class="relative">
     <div class="absolute -inset-6 bg-teal-mid/15 blob-1" aria-hidden="true"></div>
-    <img src="<?= asset('portrait.svg') ?>" alt="Aline Politi, psicóloga clínica" width="1000" height="1000" class="relative w-full h-auto blob-2 ring-1 ring-teal-dark/10">
+    <img src="<?= asset('portrait.jpg') ?>" alt="Aline Politi, psicóloga clínica" width="910" height="1000" class="relative w-full h-auto blob-2 ring-1 ring-teal-dark/10" loading="lazy">
   </div>
   <div>
     <p class="text-lg text-ink/75 leading-relaxed">
       Sou Aline Politi, psicóloga clínica (<?= e(SITE_CRP) ?>) com prática em
       <strong>Terapia Cognitivo-Comportamental</strong>. Acredito em uma psicologia que une rigor técnico e
       sensibilidade humana — onde cada pessoa é acolhida em sua singularidade.
+    </p>
+    <p class="mt-5 text-ink/70 leading-relaxed">
+      Minha dedicação a compreender as <strong>relações entre pais e filhos</strong> e o
+      <strong>desenvolvimento humano desde a infância</strong> não começou no consultório: nasceu ainda na
+      graduação, em 2007. São quase duas décadas estudando como o cuidado, o vínculo e as
+      <strong>práticas educativas parentais</strong> moldam quem nos tornamos — uma jornada que passou pela
+      graduação na UNAERP e pelo <a href="<?= url('/a-psicologa/pesquisas/mestrado') ?>" class="text-teal-dark font-semibold hover:text-magenta">mestrado na USP</a>.
     </p>
     <p class="mt-5 text-ink/70 leading-relaxed">
       Atendo adolescentes, adultos e casais em demandas como ansiedade, depressão, autoconhecimento e fases de

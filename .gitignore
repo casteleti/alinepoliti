@@ -16,3 +16,6 @@ Thumbs.db
 
 # Uploads de mídia gerados em produção (se houver no futuro)
 /public/uploads/
+
+# Imagens originais (pesadas) — mantidas no disco, fora do repo
+/public/assets/_originais/

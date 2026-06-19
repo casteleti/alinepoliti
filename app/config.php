@@ -32,8 +32,9 @@ const SITE_ADDRESS          = 'Avenida 15 de Novembro, 418 — Centro, Jaboticab
 const SITE_THEME_COLOR      = '#117B7F';
 
 // URL canônica de produção (usada no sitemap e nas tags canonical absolutas).
-// ⚠️ Confirme/ajuste se o domínio final for outro.
-const SITE_ORIGIN = 'https://www.alinepoliti.com.br';
+// ⚠️ Temporário: domínio definitivo (alinepoliti.com.br) ainda não foi aprovado/migrado.
+// Ajuste para o domínio final assim que aprovado.
+const SITE_ORIGIN = 'https://aline.daksa.com.br';
 
 // Google Analytics 4 (gtag). Deixe vazio para desativar (ex.: em testes locais).
 const GA_MEASUREMENT_ID = 'G-KD55BQNYBC';

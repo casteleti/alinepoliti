@@ -27,8 +27,8 @@ page_hero('Aline', 'Politi', 'A Psicóloga', 'Uma jornada de estudo, escuta e cu
       graduação na UNAERP e pelo <a href="<?= url('/a-psicologa/pesquisas/mestrado') ?>" class="text-teal-dark font-semibold hover:text-magenta">mestrado na USP</a>.
     </p>
     <p class="mt-5 text-ink/70 leading-relaxed">
-      Atendo adolescentes, adultos e casais em demandas como ansiedade, depressão, autoconhecimento e fases de
-      transição. Também ofereço orientação de pais e supervisão para psicólogos.
+      Atendo crianças a partir de 10 anos, adolescentes, adultos e casais em demandas como ansiedade, depressão,
+      autoconhecimento e fases de transição. Também ofereço orientação de pais e supervisão para psicólogos.
     </p>
     <p class="mt-5 text-ink/70 leading-relaxed">
       Tenho formação na TCC clássica e nas <a href="<?= url('/abordagem-tcc/terapias-contextuais') ?>" class="text-teal-dark font-semibold hover:text-magenta">terapias contextuais</a>

@@ -1,7 +1,7 @@
 <?php page_hero('Áreas de', 'especialização', 'A Psicóloga'); prose_open(); ?>
 <h2>Públicos atendidos</h2>
 <ul>
-  <li>Adolescentes a partir de 14 anos</li>
+  <li>Crianças a partir de 10 anos e adolescentes</li>
   <li>Adultos e idosos</li>
   <li>Casais</li>
   <li>Pais que buscam orientação no manejo dos filhos</li>

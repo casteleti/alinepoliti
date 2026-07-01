@@ -2,19 +2,19 @@
 /** Home — porte fiel de src/routes/index.tsx */
 $servicos = [
     ['icon' => 'heart-handshake', 'bg' => 'bg-teal-mid/10', 'text' => 'text-teal-mid', 'hover' => 'hover:border-teal-mid',
-     'title' => 'Atendimento Clínico', 'desc' => 'Psicoterapia individual focada em ansiedade, depressão e autoconhecimento.',
-     'items' => ['Adolescentes e adultos', 'Abordagem TCC', 'Plano terapêutico personalizado'], 'to' => '/atendimento/presencial'],
+     'title' => 'Atendimento Clínico', 'desc' => 'Psicoterapia individual, familiar e de casal.',
+     'items' => ['Crianças, adolescentes e adultos', 'Abordagem TCC e contextuais', 'Plano terapêutico personalizado'], 'to' => '/atendimento/presencial'],
     ['icon' => 'users', 'bg' => 'bg-magenta/10', 'text' => 'text-magenta', 'hover' => 'hover:border-magenta',
      'title' => 'Orientação de Pais', 'desc' => 'Suporte estratégico para os desafios do desenvolvimento infantil e da dinâmica familiar.',
      'items' => ['Manejo de comportamento', 'Comunicação assertiva', 'Fortalecimento de vínculos'], 'to' => '/abordagem-tcc/orientacao-de-pais'],
     ['icon' => 'graduation-cap', 'bg' => 'bg-amber/15', 'text' => 'text-amber', 'hover' => 'hover:border-amber',
-     'title' => 'Supervisão Clínica', 'desc' => 'Mentoria para psicólogos que desejam aprofundar a prática em TCC.',
+     'title' => 'Supervisão Clínica', 'desc' => 'Para psicólogos que buscam desenvolvimento e desejam aprofundar a prática em TCC.',
      'items' => ['Discussão de casos', 'Aperfeiçoamento técnico', 'Ética e manejo clínico'], 'to' => '/abordagem-tcc/supervisao'],
 ];
 $etapas = [
     ['n' => '01', 't' => 'Identificação de padrões', 'd' => 'Mapeamos os pensamentos automáticos que geram desconforto emocional e comportamentos disfuncionais.'],
     ['n' => '02', 't' => 'Reestruturação cognitiva', 'd' => 'Flexibilizamos crenças rígidas e construímos perspectivas mais realistas e saudáveis.'],
-    ['n' => '03', 't' => 'Resolução de problemas', 'd' => 'Foco no aqui e agora, desenvolvendo ferramentas práticas para os desafios atuais da sua vida.'],
+    ['n' => '03', 't' => 'Resolução de problemas', 'd' => 'Conceitualizar a história de vida e olhar para o aqui e agora, desenvolvendo ferramentas práticas para os desafios atuais da sua vida.'],
     ['n' => '04', 't' => 'Manutenção e autonomia', 'd' => 'Construímos juntos um repertório que você leva para a vida — terapia que ensina a se cuidar.'],
 ];
 $modalidades = [
@@ -36,12 +36,12 @@ $modalidades = [
       <h1 class="font-display text-[clamp(3rem,7vw,6.5rem)] text-teal-dark leading-[0.92]">
         Equilíbrio
         <span class="block font-heading not-italic text-[clamp(2rem,4.5vw,4rem)] text-magenta mt-3">
-          Cognitivo &amp; <em class="font-display italic">Emocional</em>
+          Cognitivo, Emocional &amp; <em class="font-display italic">Comportamental</em>
         </span>
       </h1>
       <p class="mt-8 text-lg text-ink/70 max-w-lg leading-relaxed">
         Transforme sua forma de sentir através da ciência do pensamento. Atendimento especializado em
-        <strong class="text-teal-dark"> Terapia Cognitivo-Comportamental</strong> para adolescentes e adultos — presencial e online.
+        <strong class="text-teal-dark"> Terapia Cognitivo-Comportamental</strong> para crianças, adolescentes e adultos — presencial e online.
       </p>
       <div class="mt-10 flex flex-wrap gap-3">
         <a href="<?= e(whatsapp_url()) ?>" target="_blank" rel="noopener"
@@ -56,11 +56,11 @@ $modalidades = [
     <div class="relative">
       <div class="absolute -inset-6 bg-gradient-to-br from-teal-mid/25 via-cream to-amber/20 blob-1 blur-2xl" aria-hidden="true"></div>
       <div class="relative aspect-square w-full max-w-[520px] mx-auto blob-1 overflow-hidden ring-1 ring-teal-dark/10 bg-teal-dark/5">
-        <span class="absolute top-5 left-6 z-10 text-[11px] font-bold uppercase tracking-[0.25em] text-[#FCEBC6] drop-shadow-[0_1px_4px_rgba(0,0,0,0.45)]">Psicóloga Aline Politi</span>
         <img src="<?= asset('consultoria.jpg') ?>" alt="Aline Politi, psicóloga clínica especialista em TCC" width="764" height="820" fetchpriority="high" class="w-full h-full object-cover">
       </div>
       <div class="absolute -bottom-4 -left-4 lg:-left-10 bg-white px-6 py-5 rounded-2xl shadow-xl shadow-teal-dark/10 ring-1 ring-teal-dark/5 max-w-[270px] rotate-[-3deg]">
         <p class="font-display italic text-teal-dark leading-snug text-xl text-center">“O cuidado que começa no acolhimento.”</p>
+        <p class="mt-2.5 font-display italic text-magenta text-base text-center">— Aline Politi</p>
       </div>
     </div>
   </div>
@@ -102,7 +102,7 @@ $modalidades = [
       <span class="text-xs font-bold tracking-[0.25em] uppercase text-magenta">A psicóloga</span>
       <h2 class="font-display italic text-5xl md:text-6xl text-teal-dark mt-3 leading-tight">Um percurso dedicado à <span class="not-italic font-heading text-magenta">saúde mental</span>.</h2>
       <p class="mt-8 text-lg text-ink/75 leading-relaxed">
-        Acredito em uma psicologia humanista e baseada em evidências. Com prática clínica em TCC, ofereço
+        Acredito em uma psicologia humanizada e baseada em evidências. Com prática clínica em TCC e terapias contextuais, ofereço
         um espaço seguro onde técnica e empatia se encontram para promover mudanças reais e duradouras.
       </p>
       <div class="mt-8 flex flex-wrap gap-3">
@@ -121,7 +121,7 @@ $modalidades = [
     <div class="lg:sticky lg:top-32">
       <span class="inline-block py-1.5 px-4 rounded-full bg-magenta/10 text-magenta text-xs font-bold tracking-[0.2em] uppercase mb-6">Baseada em evidências</span>
       <h2 class="font-display italic text-5xl text-teal-dark leading-tight">Como a TCC atua no seu <span class="not-italic font-heading">dia a dia</span>?</h2>
-      <p class="mt-6 text-ink/70 leading-relaxed max-w-md">A Terapia Cognitivo-Comportamental conecta pensamentos, emoções e comportamentos — e oferece ferramentas práticas para transformá-los.</p>
+      <p class="mt-6 text-ink/70 leading-relaxed max-w-md">A Terapia Cognitivo-Comportamental conecta pensamentos, emoções e comportamentos — e oferece ferramentas práticas para reestruturá-los.</p>
     </div>
     <div class="space-y-12">
       <?php foreach ($etapas as $b): ?>
@@ -153,6 +153,6 @@ $modalidades = [
 
 <?php mapa_clinica('Atendimento presencial e online'); ?>
 
-<?php bloco_psicologa(); ?>
+<?php bloco_psicologa('Quando eu mudo, o meu mundo se transforma.'); ?>
 
 <?php cta_section(); ?>

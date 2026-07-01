@@ -13,5 +13,5 @@
 <h2>Atualização contínua</h2>
 <p>Participo de um <strong>grupo de consultoria em DBT</strong>, com encontros semanais online — um espaço de estudo, discussão de casos e aprimoramento entre psicólogos. Na DBT, esse cuidado com o próprio terapeuta é parte do método: para cuidar bem, é preciso estar bem.</p>
 <h2>Prática clínica</h2>
-<p>Atendo adolescentes, adultos e casais, em consultório e online, com prática baseada em evidências e atualização constante.</p>
+<p>Atendo crianças a partir de 10 anos, adolescentes, adultos e casais, em consultório e online, com prática baseada em evidências e atualização constante. Também ofereço supervisão para psicólogos.</p>
 <?php prose_close(); cta_section(); ?>

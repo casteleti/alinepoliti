@@ -25,7 +25,8 @@
           <li>Manejo de birras, crises e desafios de comportamento</li>
           <li>Comunicação assertiva e validação emocional</li>
           <li>Estabelecimento de rotinas e limites saudáveis</li>
-          <li>Apoio em diagnósticos como TDAH, TEA e ansiedade infantil</li>
+          <li>Desenvolvimento de habilidades parentais específicas para a relação com os filhos</li>
+          <li>Apoio, suporte e direcionamento em diagnósticos como TDAH, TEA e ansiedade infantil</li>
         </ul>
       </div>
     </div>

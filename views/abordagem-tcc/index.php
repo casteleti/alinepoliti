@@ -6,7 +6,7 @@ $items = [
     ['icon' => 'users', 'title' => 'Orientação de Pais', 'to' => '/abordagem-tcc/orientacao-de-pais', 'desc' => 'Suporte para os desafios da parentalidade.'],
     ['icon' => 'graduation-cap', 'title' => 'Supervisão para Psicólogos', 'to' => '/abordagem-tcc/supervisao', 'desc' => 'Aprofundamento técnico em TCC.'],
 ];
-page_hero('Terapia Cognitivo-', 'Comportamental', 'Abordagem', 'Uma abordagem científica, breve e colaborativa — onde pensamentos, emoções e comportamentos são compreendidos e ressignificados.');
+page_hero('Terapia Cognitivo-', 'Comportamental', 'Abordagem', 'Uma abordagem científica, baseada em evidências e colaborativa — onde pensamentos, emoções e comportamentos são compreendidos e ressignificados.');
 ?>
 <section class="max-w-6xl mx-auto px-6 lg:px-8 pb-16 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
   <?php foreach ($items as $idx => $it):

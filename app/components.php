@@ -376,7 +376,7 @@ function bloco_psicologa(string $quote = 'Acolher o que se sente é o primeiro p
           <p class="mt-5 max-w-2xl mx-auto text-ink/75 leading-relaxed">
             A <strong>Psicóloga Aline Politi</strong> (CRP 06/113904) dedica-se, há quase duas décadas, a compreender as
             relações entre pais e filhos e o desenvolvimento humano. Une ciência e acolhimento na Terapia
-            Cognitivo-Comportamental — um espaço seguro para adolescentes, adultos e casais, com orientação de pais,
+            Cognitivo-Comportamental — um espaço seguro para crianças (a partir de 10 anos), adolescentes, adultos e casais, com orientação de pais,
             presencial em Jaboticabal e online.
           </p>
           <p class="mt-8 font-display italic text-[clamp(1.5rem,3vw,2.4rem)] text-magenta leading-snug max-w-3xl mx-auto">

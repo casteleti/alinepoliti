@@ -23,7 +23,7 @@
         <p>A TCC costuma ser uma terapia de médio prazo. A duração depende da demanda, dos objetivos terapêuticos e do engajamento no processo, sendo revisada periodicamente.</p>
         <h2>Benefícios clínicos</h2>
         <ul>
-          <li>Eficácia comprovada para ansiedade, depressão e fobias</li>
+          <li>Eficácia comprovada para transtornos ansiosos, fobias, transtornos de humor (como a depressão e o Transtorno Bipolar), TDAH, transtornos de personalidade (como o Borderline) e TEA</li>
           <li>Ferramentas práticas para o dia a dia</li>
           <li>Autonomia: você aprende a se cuidar</li>
           <li>Resultados objetivos e mensuráveis</li>

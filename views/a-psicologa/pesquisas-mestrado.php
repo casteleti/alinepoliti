@@ -39,7 +39,7 @@
 <p>
   Acredito em uma <strong>psicologia clínica</strong> que une ciência e acolhimento. Como <strong>psicóloga em
   Jaboticabal</strong>, ofereço <strong>atendimento presencial</strong> e <strong>atendimento online</strong> para
-  adolescentes, adultos e casais, em demandas como <strong>ansiedade</strong>, depressão e relações familiares. A
+  crianças a partir de 10 anos, adolescentes, adultos e casais, em demandas como <strong>ansiedade</strong>, depressão e relações familiares. A
   pesquisa me lembra, todos os dias, de que por trás de cada sintoma há uma história — e que compreendê-la é o início
   do cuidado.
 </p>

@@ -228,3 +228,78 @@ function csrf_check(): bool
 {
     return isset($_POST['csrf'], $_SESSION['csrf']) && hash_equals($_SESSION['csrf'], (string)$_POST['csrf']);
 }
+
+/* ---------------------------------------------------------------------------
+ * Palavras-chave (universo semântico) — usadas no pré-rodapé.
+ * Fonte: tabela palavras_chave; se não houver MySQL, cai no fallback PHP.
+ * ------------------------------------------------------------------------- */
+
+/** Fallback (sem MySQL) das expressões usadas no pré-rodapé. */
+function keywords_fallback(): array
+{
+    return [
+        'Local — Psicóloga TCC + cidade' => [
+            'Psicóloga TCC em Jaboticabal', 'Psicóloga TCC próxima de Monte Alto', 'Psicóloga TCC próxima de Guariba',
+            'Psicóloga TCC próxima de Taquaritinga', 'Psicóloga TCC próxima de Bebedouro', 'Psicóloga TCC próxima de Araraquara',
+            'Psicóloga TCC próxima de Ribeirão Preto', 'Psicóloga TCC próxima de Sertãozinho',
+        ],
+        'Local — genérico' => [
+            'Psicóloga em Jaboticabal', 'Psicóloga clínica em Jaboticabal', 'Psicóloga particular em Jaboticabal',
+            'Psicóloga em Monte Alto', 'Psicóloga em Guariba', 'Psicóloga em Taquaritinga',
+        ],
+        'Local — terapia + tema' => [
+            'Terapia cognitivo-comportamental em Jaboticabal', 'Terapia TCC em Jaboticabal', 'Psicoterapia em Jaboticabal',
+            'Terapia para ansiedade em Jaboticabal', 'Terapia de casal em Jaboticabal',
+        ],
+        'Online' => [
+            'Terapia online', 'Psicóloga online particular', 'Psicóloga TCC online', 'Terapia cognitivo-comportamental online',
+            'Psicoterapia online', 'Terapia online para ansiedade', 'Consulta psicológica online', 'Psicóloga por videochamada',
+        ],
+        'Orientação de pais' => [
+            'Orientação de pais', 'Orientação parental online', 'Orientação de pais para TDAH', 'Orientação de pais para limites',
+            'Orientação de pais com base na TCC', 'Educação parental positiva', 'Manejo de comportamento infantil',
+        ],
+        'Supervisão / mentoria' => [
+            'Supervisão clínica', 'Supervisão clínica online', 'Supervisão para psicólogos', 'Supervisão em TCC para psicólogos',
+            'Supervisão em DBT para psicólogos', 'Mentoria para psicólogos TCC', 'Supervisão para psicólogos iniciantes',
+        ],
+        'Informacional / GEO' => [
+            'O que é a TCC?', 'Como funciona a terapia cognitivo-comportamental?', 'A TCC funciona para ansiedade?',
+            'O que é DBT?', 'Terapia online é eficaz?', 'Como saber se preciso de terapia?', 'O que é orientação de pais?',
+        ],
+    ];
+}
+
+/** Expressões de um ou mais grupos (MySQL → fallback PHP). */
+function keywords_do_grupo(array $grupos): array
+{
+    $pdo = db();
+    if ($pdo) {
+        try {
+            $in = implode(',', array_fill(0, count($grupos), '?'));
+            $stmt = $pdo->prepare("SELECT expressao FROM palavras_chave WHERE ativo = 1 AND grupo IN ($in)");
+            $stmt->execute($grupos);
+            $rows = $stmt->fetchAll(PDO::FETCH_COLUMN);
+            if ($rows) {
+                return $rows;
+            }
+        } catch (Throwable $e) {
+            error_log('[alinepoliti] keywords: ' . $e->getMessage());
+        }
+    }
+    $fb = keywords_fallback();
+    $out = [];
+    foreach ($grupos as $g) {
+        if (!empty($fb[$g])) {
+            $out = array_merge($out, $fb[$g]);
+        }
+    }
+    return $out;
+}
+
+/** Uma expressão aleatória (sorteada a cada carregamento) dentre os grupos dados. */
+function keyword_aleatoria(array $grupos): ?string
+{
+    $pool = keywords_do_grupo($grupos);
+    return $pool ? $pool[array_rand($pool)] : null;
+}

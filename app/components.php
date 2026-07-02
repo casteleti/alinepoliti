@@ -391,3 +391,43 @@ function bloco_psicologa(string $quote = 'Acolher o que se sente é o primeiro p
     </section>
     <?php
 }
+
+/**
+ * Pré-rodapé — 5 âncoras sorteadas a cada carregamento (uma por grupo da tabela
+ * palavras_chave), cada uma linkada a uma das 5 páginas mais estratégicas do site.
+ */
+function pre_rodape(): void
+{
+    $slots = [
+        ['grupos' => ['Local — Psicóloga TCC + cidade', 'Local — genérico', 'Local — terapia + tema'], 'to' => '/'],
+        ['grupos' => ['Online'],                'to' => '/atendimento/online'],
+        ['grupos' => ['Orientação de pais'],    'to' => '/abordagem-tcc/orientacao-de-pais'],
+        ['grupos' => ['Supervisão / mentoria'], 'to' => '/abordagem-tcc/supervisao'],
+        ['grupos' => ['Informacional / GEO'],   'to' => '/blog'],
+    ];
+    $links = [];
+    foreach ($slots as $s) {
+        $exp = keyword_aleatoria($s['grupos']);
+        if ($exp !== null) {
+            $links[] = ['label' => $exp, 'to' => $s['to']];
+        }
+    }
+    if (!$links) {
+        return;
+    }
+    ?>
+    <nav aria-label="Explore também" class="border-t border-teal-dark/5">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8 py-10 lg:py-12">
+        <ul class="flex flex-wrap items-center justify-center gap-x-8 lg:gap-x-12 gap-y-3">
+          <?php foreach ($links as $l): ?>
+            <li>
+              <a href="<?= url($l['to']) ?>" class="font-display italic text-lg lg:text-xl text-teal-dark/40 hover:text-magenta transition-colors">
+                <?= e($l['label']) ?>
+              </a>
+            </li>
+          <?php endforeach; ?>
+        </ul>
+      </div>
+    </nav>
+    <?php
+}

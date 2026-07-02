@@ -162,6 +162,7 @@ $siteJsonLd = json_encode([
   <?php render_header(); ?>
   <?php render_breadcrumbs(); ?>
   <main id="conteudo" class="flex-1"><?= $content ?></main>
+  <?php pre_rodape(); ?>
   <?php render_footer(); ?>
 
   <script>

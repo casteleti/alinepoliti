@@ -3,7 +3,7 @@
 $servicos = [
     ['icon' => 'heart-handshake', 'bg' => 'bg-teal-mid/10', 'text' => 'text-teal-mid', 'hover' => 'hover:border-teal-mid',
      'title' => 'Atendimento Clínico', 'desc' => 'Psicoterapia individual, familiar e de casal.',
-     'items' => ['Crianças, adolescentes e adultos', 'Abordagem TCC e contextuais', 'Plano terapêutico personalizado'], 'to' => '/atendimento/presencial'],
+     'items' => ['Crianças (a partir de 10 anos), adolescentes e adultos', 'Abordagem TCC e contextuais', 'Plano terapêutico personalizado'], 'to' => '/atendimento/presencial'],
     ['icon' => 'users', 'bg' => 'bg-magenta/10', 'text' => 'text-magenta', 'hover' => 'hover:border-magenta',
      'title' => 'Orientação de Pais', 'desc' => 'Suporte estratégico para os desafios do desenvolvimento infantil e da dinâmica familiar.',
      'items' => ['Manejo de comportamento', 'Comunicação assertiva', 'Fortalecimento de vínculos'], 'to' => '/abordagem-tcc/orientacao-de-pais'],
@@ -41,7 +41,7 @@ $modalidades = [
       </h1>
       <p class="mt-8 text-lg text-ink/70 max-w-lg leading-relaxed">
         Transforme sua forma de sentir através da ciência do pensamento. Atendimento especializado em
-        <strong class="text-teal-dark"> Terapia Cognitivo-Comportamental</strong> para crianças, adolescentes e adultos — presencial e online.
+        <strong class="text-teal-dark"> Terapia Cognitivo-Comportamental</strong> para crianças (a partir de 10 anos), adolescentes e adultos — presencial e online.
       </p>
       <div class="mt-10 flex flex-wrap gap-3">
         <a href="<?= e(whatsapp_url()) ?>" target="_blank" rel="noopener"

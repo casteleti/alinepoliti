@@ -417,11 +417,11 @@ function pre_rodape(): void
     }
     ?>
     <nav aria-label="Explore também" class="border-t border-teal-dark/5">
-      <div class="max-w-7xl mx-auto px-6 lg:px-8 py-10 lg:py-12">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8 py-6 lg:py-7">
         <ul class="flex flex-wrap items-center justify-center gap-x-8 lg:gap-x-12 gap-y-3">
           <?php foreach ($links as $l): ?>
             <li>
-              <a href="<?= url($l['to']) ?>" class="font-display italic text-lg lg:text-xl text-teal-dark/40 hover:text-magenta transition-colors">
+              <a href="<?= url($l['to']) ?>" class="font-display italic text-base lg:text-lg text-white hover:text-magenta transition-colors">
                 <?= e($l['label']) ?>
               </a>
             </li>

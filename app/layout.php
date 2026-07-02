@@ -12,6 +12,7 @@ $canonical   = isset($meta['canonical']) ? abs_url($meta['canonical']) : '';
 $ogTitle     = $meta['ogTitle']     ?? $title;
 $ogDesc      = $meta['ogDescription'] ?? $description;
 $ogImage     = $meta['ogImage']     ?? asset('og.jpg');
+if ($ogImage !== '' && $ogImage[0] === '/') { $ogImage = abs_url($ogImage); } // OG/Twitter exigem URL absoluta
 $extraJsonLd = $meta['jsonld']      ?? '';
 
 $siteJsonLd = json_encode([

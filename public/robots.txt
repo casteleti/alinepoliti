@@ -17,4 +17,4 @@ Allow: /
 User-agent: PerplexityBot
 Allow: /
 
-Sitemap: /sitemap.xml
+Sitemap: https://alinepoliti.com.br/sitemap.xml

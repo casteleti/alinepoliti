@@ -31,10 +31,9 @@ const SITE_INSTAGRAM_HANDLE = '@alinepoliti';
 const SITE_ADDRESS          = 'Avenida 15 de Novembro, 418 — Centro, Jaboticabal/SP · CEP 14870-600';
 const SITE_THEME_COLOR      = '#117B7F';
 
-// URL canônica de produção (usada no sitemap e nas tags canonical absolutas).
-// ⚠️ Temporário: domínio definitivo (alinepoliti.com.br) ainda não foi aprovado/migrado.
-// Ajuste para o domínio final assim que aprovado.
-const SITE_ORIGIN = 'https://aline.daksa.com.br';
+// URL canônica de produção (usada no sitemap, robots e nas tags canonical/OG absolutas).
+// Host canônico = apex sem www (o www ainda responde 503 no servidor — ver .htaccess).
+const SITE_ORIGIN = 'https://alinepoliti.com.br';
 
 // Google Analytics 4 (gtag). Deixe vazio para desativar (ex.: em testes locais).
 const GA_MEASUREMENT_ID = 'G-KD55BQNYBC';

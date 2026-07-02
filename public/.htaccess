@@ -2,19 +2,18 @@
 Options -MultiViews -Indexes
 RewriteEngine On
 
-# === Canonicalização 301 (DESATIVADA temporariamente — domínio final ainda não aprovado) ===
-# Enquanto o site roda em aline.daksa.com.br (VPS), não force redirect para
-# www.alinepoliti.com.br (domínio antigo/outra hospedagem). Reative isto
-# quando o domínio definitivo for aprovado e apontado para esta VPS.
-#
-# RewriteCond %{HTTPS} !=on
-# RewriteCond %{HTTP:X-Forwarded-Proto} !=https
-# RewriteCond %{HTTP_HOST} !^localhost [NC]
-# RewriteCond %{HTTP_HOST} !^127\.0\.0\.1 [NC]
-# RewriteRule ^ https://www.alinepoliti.com.br%{REQUEST_URI} [R=301,L]
-#
-# RewriteCond %{HTTP_HOST} ^alinepoliti\.com\.br [NC]
-# RewriteRule ^ https://www.alinepoliti.com.br%{REQUEST_URI} [R=301,L]
+# === Canonicalização 301 — força HTTPS + host canônico (apex, sem www) ===
+# Não roda em localhost/dev. Ao forçar HTTPS mantém o host (não quebra previews);
+# a consolidação de domínio p/ o Google é feita pela tag canonical (SITE_ORIGIN).
+RewriteCond %{HTTP_HOST} !^localhost [NC]
+RewriteCond %{HTTP_HOST} !^127\.0\.0\.1 [NC]
+RewriteCond %{HTTPS} !=on
+RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
+# www.alinepoliti.com.br → alinepoliti.com.br (apex é o host canônico; www responde 503)
+RewriteCond %{HTTP_HOST} ^www\.alinepoliti\.com\.br [NC]
+RewriteRule ^ https://alinepoliti.com.br%{REQUEST_URI} [R=301,L]
 
 # Serve arquivos e pastas reais (assets, etc.) diretamente
 RewriteCond %{REQUEST_FILENAME} -f [OR]

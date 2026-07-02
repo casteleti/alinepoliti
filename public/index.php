@@ -104,7 +104,7 @@ function routes_table(): array
     return [
         '/' => [
             'view' => 'home.php',
-            'title' => 'Aline Politi — Psicóloga Clínica & Terapia Cognitivo-Comportamental',
+            'title' => 'Aline Politi — Psicóloga TCC em Jaboticabal-SP',
             'description' => 'Psicoterapia em TCC para adultos, orientação de pais e supervisão para psicólogos. Atendimento presencial e online com Aline Politi, CRP 06/113904.',
             'canonical' => '/', 'ogImage' => asset('og.jpg'),
         ],
@@ -134,13 +134,13 @@ function routes_table(): array
         ],
         '/a-psicologa/pesquisas/mestrado' => [
             'view' => 'a-psicologa/pesquisas-mestrado.php',
-            'title' => 'Mestrado na USP: depressão materna e práticas parentais | Aline Politi',
+            'title' => 'Mestrado na USP: práticas parentais | Aline Politi',
             'description' => 'A pesquisa de mestrado de Aline Politi na USP (FFCLRP), sob orientação da Dra. Sônia Regina Loureiro: práticas educativas parentais e o comportamento de crianças que convivem com a depressão materna.',
             'canonical' => '/a-psicologa/pesquisas/mestrado',
         ],
         '/a-psicologa/pesquisas/graduacao' => [
             'view' => 'a-psicologa/pesquisas-graduacao.php',
-            'title' => 'Graduação na UNAERP: estilos parentais e adolescentes | Aline Politi',
+            'title' => 'Graduação na UNAERP: estilos parentais | Aline Politi',
             'description' => 'A monografia de graduação de Aline Politi na UNAERP (2011): estilos parentais e comportamento de adolescentes — o início da sua linha de pesquisa em Psicologia.',
             'canonical' => '/a-psicologa/pesquisas/graduacao',
         ],
@@ -152,19 +152,19 @@ function routes_table(): array
         ],
         '/abordagem-tcc' => [
             'view' => 'abordagem-tcc/index.php',
-            'title' => 'Abordagem TCC | Terapia Cognitivo-Comportamental — Aline Politi',
+            'title' => 'Abordagem TCC | Aline Politi — Psicóloga em Jaboticabal',
             'description' => 'Saiba o que é a Terapia Cognitivo-Comportamental (TCC), como funciona o atendimento presencial e online, orientação de pais e supervisão para psicólogos.',
             'canonical' => '/abordagem-tcc',
         ],
         '/abordagem-tcc/o-que-e' => [
             'view' => 'abordagem-tcc/o-que-e.php',
-            'title' => 'O que é a TCC? | Terapia Cognitivo-Comportamental — Aline Politi',
+            'title' => 'O que é a Terapia Cognitivo-Comportamental? | Aline Politi',
             'description' => 'Entenda o que é a Terapia Cognitivo-Comportamental (TCC), como funciona o processo, sua duração e os benefícios comprovados.',
             'canonical' => '/abordagem-tcc/o-que-e',
         ],
         '/abordagem-tcc/terapias-contextuais' => [
             'view' => 'abordagem-tcc/terapias-contextuais.php',
-            'title' => 'Terapias Contextuais (3ª onda da TCC) | ACT, DBT, Esquema e Compaixão — Aline Politi',
+            'title' => 'Terapias Contextuais: ACT, DBT e Esquema | Aline Politi',
             'description' => 'As terapias contextuais — a 3ª onda da TCC: ACT (Hayes), DBT (Linehan), Terapia do Esquema (Young) e Terapia Focada na Compaixão (Gilbert, Neff). Abordagens atuais integradas à prática clínica.',
             'canonical' => '/abordagem-tcc/terapias-contextuais',
         ],
@@ -194,7 +194,7 @@ function routes_table(): array
         ],
         '/atendimento' => [
             'view' => 'atendimento.php',
-            'title' => 'Atendimento online e presencial | Psicóloga Aline Politi — Jaboticabal',
+            'title' => 'Atendimento em Jaboticabal e Online | Aline Politi',
             'description' => 'Atendimento psicológico em TCC com Aline Politi: presencial em Jaboticabal e online para todo o Brasil. Escolha o formato que cabe na sua vida.',
             'canonical' => '/atendimento',
         ],

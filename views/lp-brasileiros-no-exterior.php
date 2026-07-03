@@ -251,7 +251,7 @@ $waBtn = static function (string $rotulo) use ($wa): string {
         <?= csrf_field() ?>
         <input type="hidden" name="origem" value="brasileiros-exterior">
         <input type="hidden" name="assunto" value="Brasileiros no exterior">
-        <input type="hidden" name="retorno" value="/atendimento/brasileiros-no-exterior">
+        <input type="hidden" name="retorno" value="/psicologa-para-brasileiros-no-exterior">
         <button type="submit" class="mt-2 py-4 bg-amber text-ink font-bold rounded-full hover:bg-cream transition-colors">Enviar mensagem</button>
         <p class="text-xs text-cream/50 text-center">Seus dados são tratados com sigilo e não são compartilhados (LGPD).</p>
       <?php endif; ?>

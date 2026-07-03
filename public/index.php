@@ -211,11 +211,11 @@ function routes_table(): array
             'canonical' => '/abordagem-tcc/supervisao',
         ],
         // Landing page autônoma (tráfego pago) — fora do menu e do sitemap
-        '/atendimento/brasileiros-no-exterior' => [
+        '/psicologa-para-brasileiros-no-exterior' => [
             'view' => 'lp-brasileiros-no-exterior.php',
             'title' => 'Psicóloga brasileira para quem mora no exterior | Aline Politi',
             'description' => 'Atendimento psicológico online em português para brasileiros que vivem fora. Psicóloga clínica (CRP 06/113904), TCC e terapias contextuais. Acolhimento e sigilo.',
-            'canonical' => '/atendimento/brasileiros-no-exterior',
+            'canonical' => '/psicologa-para-brasileiros-no-exterior',
             'ogImage' => asset('og.jpg'),
             'no_breadcrumb' => true,
         ],

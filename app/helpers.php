@@ -319,26 +319,27 @@ function assuntos_contato(): array
  *   1) SMTP autenticado (caixa do próprio domínio)  2) Resend (API)  3) mail() nativo.
  * Retorna true em caso de sucesso (best-effort).
  */
-function enviar_email(string $assunto, string $texto, string $replyTo = ''): bool
+function enviar_email(string $assunto, string $texto, string $replyTo = '', bool $html = false): bool
 {
     $para = SITE_EMAIL;
 
     // 1) SMTP autenticado (e-mail do domínio) — preferido
     if (SMTP_HOST !== '' && SMTP_USER !== '') {
-        if (smtp_enviar($para, $assunto, $texto, $replyTo)) {
+        if (smtp_enviar($para, $assunto, $texto, $replyTo, $html)) {
             return true;
         }
     }
 
     // 2) Resend (API), se configurado
     if (RESEND_API_KEY !== '' && function_exists('curl_init')) {
-        $payload = json_encode(array_filter([
+        $campos = array_filter([
             'from'     => RESEND_FROM,
             'to'       => [$para],
             'reply_to' => $replyTo !== '' ? $replyTo : null,
             'subject'  => $assunto,
-            'text'     => $texto,
-        ], static fn($v) => $v !== null), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+        ], static fn($v) => $v !== null);
+        $campos[$html ? 'html' : 'text'] = $texto;
+        $payload = json_encode($campos, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
 
         try {
             $ch = curl_init('https://api.resend.com/emails');
@@ -364,7 +365,8 @@ function enviar_email(string $assunto, string $texto, string $replyTo = ''): boo
     // 3) Fallback: mail() nativo (pode não entregar sem MTA configurado).
     $headers = 'From: ' . (MAIL_FROM !== '' ? MAIL_FROM : RESEND_FROM) . "\r\n"
         . 'Reply-To: ' . ($replyTo !== '' ? $replyTo : $para) . "\r\n"
-        . 'Content-Type: text/plain; charset=UTF-8';
+        . 'MIME-Version: 1.0' . "\r\n"
+        . 'Content-Type: ' . ($html ? 'text/html' : 'text/plain') . '; charset=UTF-8';
     return @mail($para, $assunto, $texto, $headers);
 }
 
@@ -372,7 +374,7 @@ function enviar_email(string $assunto, string $texto, string $replyTo = ''): boo
  * Cliente SMTP mínimo (AUTH LOGIN) — envia e-mail de texto simples autenticando
  * numa caixa do próprio domínio. Suporta STARTTLS (587) e SSL implícito (465).
  */
-function smtp_enviar(string $to, string $assunto, string $texto, string $replyTo = ''): bool
+function smtp_enviar(string $to, string $assunto, string $texto, string $replyTo = '', bool $html = false): bool
 {
     $fromEmail = MAIL_FROM !== '' ? MAIL_FROM : SMTP_USER;
     $fromName  = MAIL_FROM_NAME;
@@ -438,17 +440,15 @@ function smtp_enviar(string $to, string $assunto, string $texto, string $replyTo
         'To: <' . $to . '>',
         'Subject: ' . mb_encode_mimeheader($assunto, 'UTF-8'),
         'MIME-Version: 1.0',
-        'Content-Type: text/plain; charset=UTF-8',
-        'Content-Transfer-Encoding: 8bit',
+        'Content-Type: ' . ($html ? 'text/html' : 'text/plain') . '; charset=UTF-8',
+        'Content-Transfer-Encoding: base64',
     ];
     if ($replyTo !== '') {
         array_splice($headers, 3, 0, ['Reply-To: <' . $replyTo . '>']);
     }
-    // Normaliza quebras e faz dot-stuffing (linhas iniciadas por ".")
-    $body = str_replace("\r\n", "\n", $texto);
-    $body = preg_replace('/^\./m', '..', $body);
-    $body = str_replace("\n", "\r\n", $body);
-    $send(implode("\r\n", $headers) . "\r\n\r\n" . $body . "\r\n."); $r = $read();
+    // base64 (preserva acentos/UTF-8; sem risco de dot-stuffing). chunk_split já quebra em CRLF.
+    $body = chunk_split(base64_encode($texto));
+    $send(implode("\r\n", $headers) . "\r\n\r\n" . $body . '.'); $r = $read();
     $ok = $is($r, '250');
 
     $send('QUIT'); @fclose($fp);

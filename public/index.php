@@ -278,15 +278,36 @@ function handle_contato(): void
         }
     }
 
-    // Dispara e-mail para a psicóloga (Resend → fallback mail)
-    $body = "Novo contato pelo site\n\n"
-        . "Assunto: {$assunto}\n"
-        . "Origem: {$origem}\n\n"
-        . "Nome: {$nome}\n"
-        . "E-mail: {$email}\n"
-        . "WhatsApp/Telefone: {$telefone}\n\n"
-        . "Mensagem:\n{$msg}\n";
-    enviar_email('Contato pelo site — ' . $assunto . ' — ' . $nome, $body, $email);
+    // Nome amigável da página de origem
+    $paginas = [
+        'contato'         => 'Contato',
+        'online'          => 'Atendimento Online',
+        'presencial'      => 'Atendimento Presencial',
+        'supervisao'      => 'Supervisão para Psicólogos',
+        'orientacao-pais' => 'Orientação de Pais',
+    ];
+    $pagina = $paginas[$origem] ?? ucfirst($origem);
+
+    // Dispara e-mail para a psicóloga (HTML, UTF-8) — SMTP → Resend → mail()
+    $linha = static fn(string $rot, string $val): string =>
+        '<p style="margin:0 0 10px;"><strong style="color:#117B7F;">' . e($rot) . ':</strong> ' . nl2br(e($val)) . '</p>';
+
+    $body = '<div style="font-family:Arial,Helvetica,sans-serif;font-size:15px;line-height:1.6;color:#1F3334;max-width:560px;">'
+        . '<div style="background:#117B7F;color:#FCF9F5;padding:16px 20px;border-radius:12px 12px 0 0;">'
+        . '<strong style="font-size:17px;">Novo contato pelo site</strong>'
+        . '<div style="font-size:13px;opacity:.85;margin-top:2px;">Assunto: ' . e($assunto) . '</div></div>'
+        . '<div style="border:1px solid #eadfce;border-top:none;border-radius:0 0 12px 12px;padding:20px;">'
+        . $linha('Nome do Contato', $nome)
+        . $linha('E-mail', $email)
+        . $linha('WhatsApp/Telefone', $telefone)
+        . $linha('Assunto', $assunto)
+        . '<div style="margin:14px 0;border-top:1px solid #eee;"></div>'
+        . $linha('Mensagem', $msg)
+        . '<p style="margin:18px 0 0;font-size:12px;color:#8a8f8f;">Convertido pela página '
+        . '<strong>' . e($pagina) . '</strong> · ' . date('d/m/Y H:i') . '</p>'
+        . '</div></div>';
+
+    enviar_email('Contato pelo site — ' . $assunto . ' — ' . $nome, $body, $email, true);
 
     $_SESSION['flash'] = ['type' => 'ok'];
     $back('?enviado=1');

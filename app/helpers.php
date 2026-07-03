@@ -193,7 +193,7 @@ function find_post(string $slug): ?array
             $stmt->execute([$slug]);
             $row = $stmt->fetch();
             if ($row) {
-                return $row;
+                return enriquecer_artigo($row);
             }
         } catch (Throwable $e) {
             error_log('[alinepoliti] find_post: ' . $e->getMessage());
@@ -201,7 +201,7 @@ function find_post(string $slug): ?array
     }
     foreach (seed_artigos() as $a) {
         if ($a['slug'] === $slug) {
-            return $a;
+            return enriquecer_artigo($a);
         }
     }
     return null;
@@ -641,10 +641,62 @@ function blog_extrair_referencias(string $html): array
         if (preg_match_all('/<li>(.*?)<\/li>/isu', $m[1], $lis)) {
             foreach ($lis[1] as $li) {
                 $t = trim(preg_replace('/\s+/u', ' ', strip_tags($li)));
+                $t = html_entity_decode($t, ENT_QUOTES | ENT_HTML5, 'UTF-8'); // "&amp;" -> "&"
                 if ($t !== '') { $fontes[] = $t; }
             }
         }
         $html = preg_replace($re, '', $html);
     }
     return [trim((string)$html), $fontes];
+}
+
+/**
+ * Enriquece um artigo com os dados de SEO/GEO do código (app/seed_blog_seo.php),
+ * preenchendo o que estiver faltando — para que FAQ/TL;DR/Fontes/metas apareçam
+ * mesmo que o banco de produção não tenha sido semeado. Idempotente.
+ */
+function enriquecer_artigo(array $post): array
+{
+    static $seo = null;
+    if ($seo === null) {
+        $f = __DIR__ . '/seed_blog_seo.php';
+        $seo = is_file($f) ? (require $f) : [];
+        if (!is_array($seo)) { $seo = []; }
+    }
+    $s = $seo[$post['slug'] ?? ''] ?? null;
+    if (!$s) { return $post; }
+
+    $conteudo = (string)($post['conteudo'] ?? '');
+
+    // 1) Referências ainda inline + campo fontes vazio → extrai
+    if (empty($post['fontes'])) {
+        [$c, $fs] = blog_extrair_referencias($conteudo);
+        if ($fs) { $conteudo = $c; $post['fontes'] = implode("\n", $fs); }
+    }
+    // 2) Abertura (lead) e fechamento (complemento) — só se ainda não estiverem no texto.
+    //    Compara contra o texto SEM tags (o lead tem <strong> no meio).
+    $plain = strip_tags($conteudo);
+    if (!empty($s['lead'])) {
+        $marca = trim(strip_tags($s['lead']));
+        if ($marca !== '' && mb_stripos($plain, mb_substr($marca, 0, 40)) === false) {
+            $conteudo = $s['lead'] . "\n\n" . $conteudo;
+        }
+    }
+    if (!empty($s['complemento']) && preg_match('/<h2>(.*?)<\/h2>/u', $s['complemento'], $mm)) {
+        $h2 = trim(strip_tags($mm[1]));
+        if ($h2 !== '' && mb_stripos($plain, $h2) === false) {
+            $conteudo .= "\n\n" . $s['complemento'];
+        }
+    }
+    $post['conteudo'] = $conteudo;
+
+    // 3) Metadados vazios → preenche do código
+    foreach (['meta_titulo', 'meta_descricao', 'keyword_foco'] as $k) {
+        if (empty($post[$k]) && !empty($s[$k])) { $post[$k] = $s[$k]; }
+    }
+    if (empty($post['tldr']) && !empty($s['tldr'])) { $post['tldr'] = implode("\n", $s['tldr']); }
+    if (empty($post['faq']) && !empty($s['faq'])) { $post['faq'] = json_encode($s['faq'], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES); }
+    if (empty($post['tags'])) { $post['tags'] = implode(', ', blog_extrair_tags((string)($post['titulo'] ?? ''), $conteudo, 10)); }
+
+    return $post;
 }

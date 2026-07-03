@@ -32,4 +32,12 @@
     </div>
   </div>
 </section>
+<?php bloco_contato_pagina([
+    'origem'       => 'orientacao-pais',
+    'assunto_fixo' => 'Orientação de pais',
+    'secao'        => 'Precisa de orientação de pais?',
+    'titulo'       => 'Envie sua mensagem',
+    'subtitulo'    => 'Conte um pouco do seu contexto familiar que eu retorno em breve.',
+    'retorno'      => '/abordagem-tcc/orientacao-de-pais',
+]); ?>
 <?php cta_section(); ?>

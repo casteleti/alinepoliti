@@ -221,22 +221,38 @@ function routes_table(): array
 
 function handle_contato(): void
 {
+    // Path de retorno (página de origem do form). Só aceita caminho interno.
+    $retorno = (string)($_POST['retorno'] ?? '/contato');
+    if (!preg_match('#^/[a-z0-9/\-]*$#i', $retorno)) {
+        $retorno = '/contato';
+    }
+    $back = static fn(string $q = '') => header('Location: ' . url($retorno) . $q . '#form');
+
     // Honeypot anti-spam (campo oculto "website" deve vir vazio)
     if (!empty($_POST['website'] ?? '')) {
-        header('Location: ' . url('/contato') . '?enviado=1');
+        $back('?enviado=1');
         return;
     }
 
-    $nome = trim((string)($_POST['nome'] ?? ''));
-    $email = trim((string)($_POST['email'] ?? ''));
-    $msg = trim((string)($_POST['mensagem'] ?? ''));
+    $nome     = trim((string)($_POST['nome'] ?? ''));
+    $email    = trim((string)($_POST['email'] ?? ''));
+    $telefone = trim((string)($_POST['telefone'] ?? ''));
+    $msg      = trim((string)($_POST['mensagem'] ?? ''));
+    $origem   = trim((string)($_POST['origem'] ?? 'contato'));
+    $assunto  = trim((string)($_POST['assunto'] ?? '')) ?: 'Outro assunto';
 
     $errors = [];
+    if (!csrf_check()) {
+        $errors[] = 'Sua sessão expirou. Recarregue a página e tente novamente.';
+    }
     if ($nome === '') {
         $errors[] = 'Informe seu nome.';
     }
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $errors[] = 'Informe um e-mail válido.';
+    }
+    if (strlen(preg_replace('/\D+/', '', $telefone)) < 10) {
+        $errors[] = 'Informe um WhatsApp/telefone com DDD.';
     }
     if (mb_strlen($msg) < 5) {
         $errors[] = 'Escreva uma mensagem.';
@@ -244,30 +260,36 @@ function handle_contato(): void
 
     if ($errors) {
         $_SESSION['flash'] = ['type' => 'erro', 'errors' => $errors];
-        $_SESSION['old'] = compact('nome', 'email', 'msg');
-        header('Location: ' . url('/contato') . '#form');
+        $_SESSION['old'] = ['nome' => $nome, 'email' => $email, 'telefone' => $telefone, 'assunto' => $assunto, 'msg' => $msg];
+        $back();
         return;
     }
 
     // Persiste no banco (se disponível)
     if ($pdo = db()) {
         try {
-            $stmt = $pdo->prepare('INSERT INTO contatos (nome, email, mensagem, ip, criado_em) VALUES (?, ?, ?, ?, NOW())');
-            $stmt->execute([$nome, $email, $msg, $_SERVER['REMOTE_ADDR'] ?? null]);
+            $stmt = $pdo->prepare(
+                'INSERT INTO contatos (nome, email, telefone, assunto, origem, mensagem, ip, criado_em)
+                 VALUES (?, ?, ?, ?, ?, ?, ?, NOW())'
+            );
+            $stmt->execute([$nome, $email, $telefone, $assunto, $origem, $msg, $_SERVER['REMOTE_ADDR'] ?? null]);
         } catch (Throwable $e) {
             error_log('[alinepoliti] contato insert: ' . $e->getMessage());
         }
     }
 
-    // Envia e-mail (best effort)
-    $body = "Nome: {$nome}\nE-mail: {$email}\n\n{$msg}\n";
-    $headers = 'From: site@' . preg_replace('/^www\./', '', $_SERVER['HTTP_HOST'] ?? 'alinepoliti.com.br') . "\r\n"
-        . 'Reply-To: ' . $email . "\r\n"
-        . 'Content-Type: text/plain; charset=UTF-8';
-    @mail(SITE_EMAIL, 'Contato pelo site — ' . $nome, $body, $headers);
+    // Dispara e-mail para a psicóloga (Resend → fallback mail)
+    $body = "Novo contato pelo site\n\n"
+        . "Assunto: {$assunto}\n"
+        . "Origem: {$origem}\n\n"
+        . "Nome: {$nome}\n"
+        . "E-mail: {$email}\n"
+        . "WhatsApp/Telefone: {$telefone}\n\n"
+        . "Mensagem:\n{$msg}\n";
+    enviar_email('Contato pelo site — ' . $assunto . ' — ' . $nome, $body, $email);
 
     $_SESSION['flash'] = ['type' => 'ok'];
-    header('Location: ' . url('/contato') . '?enviado=1#form');
+    $back('?enviado=1');
 }
 
 function build_faq_jsonld(): string

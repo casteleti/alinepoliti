@@ -303,3 +303,58 @@ function keyword_aleatoria(array $grupos): ?string
     $pool = keywords_do_grupo($grupos);
     return $pool ? $pool[array_rand($pool)] : null;
 }
+
+/* ---------------------------------------------------------------------------
+ * Formulários de contato — assuntos + envio de e-mail (Resend → fallback mail).
+ * ------------------------------------------------------------------------- */
+
+/** Opções do campo "Assunto" (form geral /contato). */
+function assuntos_contato(): array
+{
+    return ['Consulta presencial', 'Consulta online', 'Supervisão', 'Orientação de pais', 'Outro assunto'];
+}
+
+/**
+ * Envia e-mail via API do Resend (se houver RESEND_API_KEY); senão, mail() nativo.
+ * Retorna true em caso de sucesso (best-effort).
+ */
+function enviar_email(string $assunto, string $texto, string $replyTo = ''): bool
+{
+    $para = SITE_EMAIL;
+
+    if (RESEND_API_KEY !== '' && function_exists('curl_init')) {
+        $payload = json_encode(array_filter([
+            'from'     => RESEND_FROM,
+            'to'       => [$para],
+            'reply_to' => $replyTo !== '' ? $replyTo : null,
+            'subject'  => $assunto,
+            'text'     => $texto,
+        ], static fn($v) => $v !== null), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+
+        try {
+            $ch = curl_init('https://api.resend.com/emails');
+            curl_setopt_array($ch, [
+                CURLOPT_POST           => true,
+                CURLOPT_POSTFIELDS     => $payload,
+                CURLOPT_HTTPHEADER     => ['Authorization: Bearer ' . RESEND_API_KEY, 'Content-Type: application/json'],
+                CURLOPT_RETURNTRANSFER => true,
+                CURLOPT_TIMEOUT        => 8,
+            ]);
+            $resp = curl_exec($ch);
+            $code = (int)curl_getinfo($ch, CURLINFO_HTTP_CODE);
+            curl_close($ch);
+            if ($code >= 200 && $code < 300) {
+                return true;
+            }
+            error_log('[alinepoliti] resend HTTP ' . $code . ': ' . (string)$resp);
+        } catch (Throwable $e) {
+            error_log('[alinepoliti] resend erro: ' . $e->getMessage());
+        }
+    }
+
+    // Fallback: mail() nativo (pode não entregar sem MTA configurado).
+    $headers = 'From: ' . RESEND_FROM . "\r\n"
+        . 'Reply-To: ' . ($replyTo !== '' ? $replyTo : $para) . "\r\n"
+        . 'Content-Type: text/plain; charset=UTF-8';
+    return @mail($para, $assunto, $texto, $headers);
+}

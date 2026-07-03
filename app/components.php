@@ -431,3 +431,115 @@ function pre_rodape(): void
     </nav>
     <?php
 }
+
+/**
+ * Formulário de contato reutilizável (salva no banco + dispara e-mail).
+ * Opções:
+ *   'origem'       string  — identifica a página de origem (ex.: 'online')
+ *   'assunto_fixo' ?string — se definido, oculta o select e fixa o assunto
+ *   'titulo'       string  — título do card
+ *   'subtitulo'    string  — linha de apoio (opcional)
+ *   'retorno'      string  — path de retorno após enviar (default: página atual)
+ */
+function render_form_contato(array $opts = []): void
+{
+    $origem      = $opts['origem'] ?? 'contato';
+    $assuntoFixo = $opts['assunto_fixo'] ?? null;
+    $titulo      = $opts['titulo'] ?? 'Envie uma mensagem';
+    $subtitulo   = $opts['subtitulo'] ?? '';
+    $retorno     = $opts['retorno'] ?? ($GLOBALS['__path'] ?? '/contato');
+
+    $flash = $_SESSION['flash'] ?? null;
+    $old   = $_SESSION['old'] ?? [];
+    unset($_SESSION['flash'], $_SESSION['old']);
+    $ok    = isset($_GET['enviado']) || (($flash['type'] ?? '') === 'ok');
+    $erros = (($flash['type'] ?? '') === 'erro') ? ($flash['errors'] ?? []) : [];
+
+    $inputCls = 'w-full bg-transparent border-b border-cream/30 py-3 focus:outline-none focus:border-amber transition-colors text-cream';
+    $labelCls = 'block text-xs font-bold uppercase tracking-[0.2em] mb-2 text-cream/60';
+    ?>
+    <form id="form" method="post" action="<?= url('/contato') ?>" class="bg-teal-dark text-cream p-8 lg:p-10 rounded-[2rem] grid gap-5 relative overflow-hidden">
+      <div class="absolute -top-20 -right-20 size-64 bg-magenta/30 rounded-full blur-3xl" aria-hidden="true"></div>
+
+      <?php if ($ok): ?>
+        <div class="relative text-center py-4">
+          <div class="mx-auto size-16 rounded-full bg-amber/20 text-amber flex items-center justify-center mb-5" aria-hidden="true">
+            <svg class="size-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg>
+          </div>
+          <h2 class="font-display italic text-3xl text-cream mb-2">Mensagem enviada! 🌿</h2>
+          <p class="text-cream/80 max-w-sm mx-auto leading-relaxed">Recebi o seu contato com todo o cuidado e retornarei em breve. Se preferir, você pode falar comigo agora mesmo no WhatsApp.</p>
+          <a href="<?= e(whatsapp_url()) ?>" target="_blank" rel="noopener" class="mt-6 inline-flex items-center gap-2 px-6 py-3 rounded-full bg-amber text-ink font-bold hover:bg-cream transition-colors">
+            <?= icon('message-circle', 'size-4') ?> Falar no WhatsApp
+          </a>
+        </div>
+      <?php else: ?>
+        <div class="relative">
+          <h2 class="font-display italic text-3xl text-cream"><?= e($titulo) ?></h2>
+          <?php if ($subtitulo !== ''): ?><p class="mt-2 text-cream/70 text-sm leading-relaxed"><?= e($subtitulo) ?></p><?php endif; ?>
+        </div>
+
+        <?php if ($erros): ?>
+          <div class="relative rounded-xl bg-cream/10 border border-cream/30 text-cream px-4 py-3 text-sm">
+            <?php foreach ($erros as $err): ?><p>• <?= e($err) ?></p><?php endforeach; ?>
+          </div>
+        <?php endif; ?>
+
+        <div class="grid sm:grid-cols-2 gap-4 relative">
+          <div>
+            <label class="<?= $labelCls ?>">Nome</label>
+            <input type="text" name="nome" required value="<?= e($old['nome'] ?? '') ?>" class="<?= $inputCls ?>">
+          </div>
+          <div>
+            <label class="<?= $labelCls ?>">E-mail</label>
+            <input type="email" name="email" required value="<?= e($old['email'] ?? '') ?>" class="<?= $inputCls ?>">
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-4 relative">
+          <div>
+            <label class="<?= $labelCls ?>">WhatsApp / Telefone</label>
+            <input type="tel" name="telefone" required value="<?= e($old['telefone'] ?? '') ?>" placeholder="(16) 99999-9999" class="<?= $inputCls ?> placeholder:text-cream/30">
+          </div>
+          <?php if ($assuntoFixo === null): ?>
+          <div>
+            <label class="<?= $labelCls ?>">Assunto</label>
+            <select name="assunto" required class="<?= $inputCls ?> appearance-none cursor-pointer">
+              <option value="" class="text-ink" disabled <?= empty($old['assunto']) ? 'selected' : '' ?>>Selecione…</option>
+              <?php foreach (assuntos_contato() as $a): ?>
+                <option value="<?= e($a) ?>" class="text-ink" <?= (($old['assunto'] ?? '') === $a) ? 'selected' : '' ?>><?= e($a) ?></option>
+              <?php endforeach; ?>
+            </select>
+          </div>
+          <?php endif; ?>
+        </div>
+
+        <div class="relative">
+          <label class="<?= $labelCls ?>">Mensagem</label>
+          <textarea name="mensagem" rows="5" required class="<?= $inputCls ?> resize-none"><?= e($old['msg'] ?? '') ?></textarea>
+        </div>
+
+        <input type="text" name="website" tabindex="-1" autocomplete="off" class="hidden" aria-hidden="true">
+        <?= csrf_field() ?>
+        <input type="hidden" name="origem" value="<?= e($origem) ?>">
+        <input type="hidden" name="retorno" value="<?= e($retorno) ?>">
+        <?php if ($assuntoFixo !== null): ?><input type="hidden" name="assunto" value="<?= e($assuntoFixo) ?>"><?php endif; ?>
+        <button type="submit" class="relative mt-2 py-4 bg-amber text-ink font-bold rounded-full hover:bg-cream transition-colors">Enviar mensagem</button>
+      <?php endif; ?>
+    </form>
+    <?php
+}
+
+/** Bloco de página: título + formulário de contato específico (assunto fixo). */
+function bloco_contato_pagina(array $opts = []): void
+{
+    $secao = $opts['secao'] ?? 'Fale comigo';
+    ?>
+    <section class="max-w-2xl mx-auto px-6 lg:px-8 py-16">
+      <div class="text-center mb-8">
+        <span class="text-xs font-bold tracking-[0.25em] uppercase text-magenta">Contato</span>
+        <h2 class="font-heading text-3xl md:text-4xl text-teal-dark mt-3"><?= e($secao) ?></h2>
+      </div>
+      <?php render_form_contato($opts); ?>
+    </section>
+    <?php
+}

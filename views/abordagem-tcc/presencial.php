@@ -26,5 +26,13 @@
 <h2>Agendamento</h2>
 <p>O primeiro contato pode ser feito pelo WhatsApp ou e-mail para verificarmos disponibilidade.</p>
 <?php prose_close(); ?>
+<?php bloco_contato_pagina([
+    'origem'       => 'presencial',
+    'assunto_fixo' => 'Consulta presencial',
+    'secao'        => 'Agende sua consulta presencial',
+    'titulo'       => 'Envie sua mensagem',
+    'subtitulo'    => 'Preencha os campos e eu retorno em breve para combinarmos o melhor horário.',
+    'retorno'      => '/atendimento/presencial',
+]); ?>
 <?php mapa_clinica('Onde fica o consultório'); ?>
 <?php cta_section(); ?>

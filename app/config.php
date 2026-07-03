@@ -42,6 +42,12 @@ const GA_MEASUREMENT_ID = 'G-KD55BQNYBC';
 // ⚠️ NÃO crie tag de page_view do GA4 dentro do GTM (o gtag acima já faz) — evita pageview duplicado.
 const GTM_CONTAINER_ID = 'GTM-N9KKF9ZT';
 
+// E-mail transacional (Resend). Defina RESEND_API_KEY no ambiente do servidor
+// (NUNCA versionar a chave). Sem chave, o envio cai no mail() nativo (best-effort).
+// O remetente (RESEND_FROM) precisa usar um domínio verificado no Resend.
+define('RESEND_API_KEY', getenv('RESEND_API_KEY') ?: '');
+define('RESEND_FROM',    getenv('RESEND_FROM') ?: 'Site Aline Politi <contato@alinepoliti.com.br>');
+
 // Ambiente
 define('IS_DEV', (getenv('APP_ENV') ?: 'dev') === 'dev');
 error_reporting(E_ALL);

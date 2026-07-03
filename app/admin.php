@@ -126,7 +126,7 @@ function admin_dashboard(): void
 {
     $pdo = admin_db();
     $posts = $pdo->query('SELECT id, titulo, slug, publicado_em, ativo FROM posts ORDER BY publicado_em DESC')->fetchAll();
-    $contatos = $pdo->query('SELECT nome, email, mensagem, criado_em FROM contatos ORDER BY criado_em DESC LIMIT 10')->fetchAll();
+    $contatos = $pdo->query('SELECT nome, email, telefone, assunto, origem, mensagem, criado_em FROM contatos ORDER BY criado_em DESC LIMIT 20')->fetchAll();
     $flash = $_SESSION['admin_flash'] ?? '';
     unset($_SESSION['admin_flash']);
 
@@ -170,8 +170,15 @@ function admin_dashboard(): void
         <p class="px-5 py-6 text-ink/60 text-sm">Nenhuma mensagem recebida ainda.</p>
       <?php else: foreach ($contatos as $c): ?>
         <div class="px-5 py-4">
-          <div class="flex justify-between text-sm"><span class="font-semibold text-teal-dark"><?= e($c['nome']) ?></span><span class="text-ink/50"><?= e(date('d/m/Y H:i', strtotime((string)$c['criado_em']))) ?></span></div>
-          <p class="text-xs text-ink/50"><?= e($c['email']) ?></p>
+          <div class="flex justify-between items-start gap-3 text-sm">
+            <span class="font-semibold text-teal-dark"><?= e($c['nome']) ?></span>
+            <span class="text-ink/50 whitespace-nowrap"><?= e(date('d/m/Y H:i', strtotime((string)$c['criado_em']))) ?></span>
+          </div>
+          <div class="flex flex-wrap gap-2 mt-1.5">
+            <?php if (!empty($c['assunto'])): ?><span class="text-[11px] font-semibold px-2 py-0.5 rounded-full bg-magenta/10 text-magenta"><?= e($c['assunto']) ?></span><?php endif; ?>
+            <?php if (!empty($c['origem'])): ?><span class="text-[11px] px-2 py-0.5 rounded-full bg-teal-mid/10 text-teal-dark/70">via <?= e($c['origem']) ?></span><?php endif; ?>
+          </div>
+          <p class="text-xs text-ink/50 mt-1.5"><?= e($c['email']) ?><?php if (!empty($c['telefone'])): ?> · <?= e($c['telefone']) ?><?php endif; ?></p>
           <p class="text-sm text-ink/75 mt-1"><?= nl2br(e($c['mensagem'])) ?></p>
         </div>
       <?php endforeach; endif; ?>

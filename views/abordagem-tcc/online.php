@@ -51,4 +51,12 @@
     </div>
   </div>
 </section>
+<?php bloco_contato_pagina([
+    'origem'       => 'online',
+    'assunto_fixo' => 'Consulta online',
+    'secao'        => 'Agende sua consulta online',
+    'titulo'       => 'Envie sua mensagem',
+    'subtitulo'    => 'Preencha os campos e eu retorno em breve pelo canal que você preferir.',
+    'retorno'      => '/atendimento/online',
+]); ?>
 <?php cta_section(); ?>

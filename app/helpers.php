@@ -628,3 +628,23 @@ function blog_seo_score(array $post): array
     $ok = count(array_filter($checks, static fn($c) => $c[1]));
     return ['checks' => $checks, 'ok' => $ok, 'total' => count($checks), 'pct' => (int)round($ok / count($checks) * 100)];
 }
+
+/**
+ * Recorta a seção de referências/fontes do fim do HTML.
+ * Retorna [conteudo_sem_referencias, array_de_fontes].
+ */
+function blog_extrair_referencias(string $html): array
+{
+    $fontes = [];
+    $re = '/<h2>\s*(?:refer[êe]ncias|fontes(?:\s*&amp;\s*refer[êe]ncias)?)\s*<\/h2>\s*<ul>(.*?)<\/ul>\s*$/isu';
+    if (preg_match($re, $html, $m)) {
+        if (preg_match_all('/<li>(.*?)<\/li>/isu', $m[1], $lis)) {
+            foreach ($lis[1] as $li) {
+                $t = trim(preg_replace('/\s+/u', ' ', strip_tags($li)));
+                if ($t !== '') { $fontes[] = $t; }
+            }
+        }
+        $html = preg_replace($re, '', $html);
+    }
+    return [trim((string)$html), $fontes];
+}

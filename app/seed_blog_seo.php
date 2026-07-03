@@ -1,0 +1,203 @@
+<?php
+/**
+ * Metadados de SEO/GEO curados para os 16 artigos de fábrica.
+ * Aplicado por bin/seed.php (com extração automática de referências).
+ * Campos: keyword_foco, meta_titulo (<=60), meta_descricao (120-160),
+ * tldr (linhas), faq (pares q/a), lead (abertura c/ keyword), complemento (fechamento).
+ */
+declare(strict_types=1);
+
+return [
+    'o-que-e-terapia-cognitivo-comportamental' => [
+        'keyword_foco'   => 'terapia cognitivo-comportamental',
+        'meta_titulo'    => 'O que é a Terapia Cognitivo-Comportamental (TCC)?',
+        'meta_descricao' => 'Entenda o que é a Terapia Cognitivo-Comportamental (TCC): como Aaron Beck a criou e como pensamentos, emoções e comportamentos se conectam.',
+        'tldr'           => ["A TCC conecta pensamentos, emoções e comportamentos.", "É estruturada, de médio prazo e baseada em evidências.", "Nasceu com Aaron Beck nos anos 1960."],
+        'lead'           => '<p>A <strong>Terapia Cognitivo-Comportamental</strong> é hoje uma das formas de psicoterapia mais recomendadas — e entender como ela funciona ajuda a decidir se faz sentido para você.</p>',
+        'complemento'    => '<h2>Como saber se a TCC é para você</h2><p>A TCC costuma ser indicada quando você quer compreender o que sustenta o seu sofrimento e sair com ferramentas práticas para o dia a dia. Não exige que você "já saiba explicar" o que sente: o trabalho é feito em conjunto, no seu ritmo, como uma parceria entre terapeuta e paciente. Se você se identificou com a proposta, conversar com uma psicóloga é o primeiro passo para avaliar, com calma, o que faz mais sentido no seu momento de vida.</p>',
+        'faq'            => [
+            ['q' => 'A TCC tem base científica?', 'a' => 'Sim. É uma das abordagens psicológicas mais estudadas, com eficácia comprovada para diversos quadros.'],
+            ['q' => 'Quanto tempo dura a TCC?', 'a' => 'É uma terapia de médio prazo; a duração depende da demanda e é revisada ao longo do processo.'],
+        ],
+    ],
+    'ansiedade-como-a-tcc-ajuda' => [
+        'keyword_foco'   => 'ansiedade',
+        'meta_titulo'    => 'Ansiedade: como a TCC ajuda a quebrar o ciclo do medo',
+        'meta_descricao' => 'A ansiedade se mantém por pensamentos catastróficos e evitação. Veja como a Terapia Cognitivo-Comportamental interrompe esse ciclo do medo.',
+        'tldr'           => ["A ansiedade se alimenta da evitação.", "Pensamentos catastróficos ampliam o medo.", "A TCC quebra o ciclo com exposição gradual."],
+        'lead'           => '<p>A <strong>ansiedade</strong> em excesso rouba o sono, aperta o peito e faz a mente correr sempre para o pior — mas é possível recuperar o controle.</p>',
+        'complemento'    => '<h2>Quando procurar ajuda para a ansiedade</h2><p>Sentir ansiedade é normal; ela vira um problema quando é intensa, frequente e atrapalha a sua vida — o trabalho, o sono, os relacionamentos. Se você percebe que tem evitado situações, adiado planos ou vivido em estado de alerta constante, a psicoterapia pode ajudar a interromper esse ciclo com técnicas eficazes e baseadas em evidências. Buscar apoio não é exagero nem fraqueza: é uma forma concreta de cuidado com você mesmo.</p>',
+        'faq'            => [
+            ['q' => 'A TCC funciona para ansiedade?', 'a' => 'Sim, é uma das abordagens com mais evidência para os transtornos de ansiedade.'],
+            ['q' => 'Preciso de remédio para tratar a ansiedade?', 'a' => 'Depende de cada caso; a psicoterapia pode ser suficiente ou combinada com acompanhamento médico.'],
+        ],
+    ],
+    'depressao-triade-cognitiva-beck' => [
+        'keyword_foco'   => 'depressão',
+        'meta_titulo'    => 'Depressão e a tríade cognitiva de Aaron Beck',
+        'meta_descricao' => 'A depressão distorce como vemos a nós, o mundo e o futuro. Conheça a tríade cognitiva de Beck e a ativação comportamental no tratamento.',
+        'tldr'           => ["A depressão distorce a visão de si, do mundo e do futuro.", "É a tríade cognitiva de Aaron Beck.", "A ativação comportamental ajuda a retomar a vida."],
+        'lead'           => '<p>A <strong>depressão</strong> não é frescura nem falta de força de vontade — é um quadro de saúde real, e que tem tratamento.</p>',
+        'complemento'    => '<h2>Quando buscar ajuda</h2><p>Tristeza faz parte da vida; a depressão é diferente: persiste por semanas, tira a energia e o prazer, e afeta o sono, o apetite e a concentração. Se você se reconhece nesse quadro, procurar um psicólogo — e, quando necessário, um médico — é um passo importante e corajoso. A recuperação é possível, muitas pessoas voltam a viver plenamente, e o cuidado profissional faz uma diferença real ao longo desse caminho.</p>',
+        'faq'            => [
+            ['q' => 'Depressão tem tratamento?', 'a' => 'Sim, é eficaz; muitas pessoas se recuperam com psicoterapia e, quando necessário, acompanhamento médico.'],
+            ['q' => 'A TCC ajuda na depressão?', 'a' => 'Sim, é uma das abordagens de primeira linha, com forte respaldo científico.'],
+        ],
+    ],
+    'reestruturacao-cognitiva-pensamentos-automaticos' => [
+        'keyword_foco'   => 'pensamentos automáticos',
+        'meta_titulo'    => 'Reestruturação cognitiva e pensamentos automáticos',
+        'meta_descricao' => 'Pensamentos automáticos surgem sem convite e moldam emoções. Aprenda o que são e como o registro de pensamentos ajuda a transformá-los.',
+        'tldr'           => ["Pensamentos automáticos surgem sem esforço e moldam emoções.", "Nem todo pensamento é verdade.", "O registro de pensamentos ajuda a examiná-los."],
+        'lead'           => '<p>Os <strong>pensamentos automáticos</strong> passam rápido pela mente e, sem que percebamos, definem grande parte de como nos sentimos.</p>',
+        'complemento'    => '<h2>Como isso aparece na terapia</h2><p>Na prática clínica, aprender a identificar pensamentos automáticos é um dos primeiros passos da TCC. Com o registro de pensamentos, você começa a notar padrões que se repetem, questionar interpretações que pareciam verdades absolutas e construir formas mais realistas de enxergar as situações. É uma habilidade que se leva para a vida inteira — e que costuma trazer alívio já nas primeiras semanas de trabalho, porque devolve a você algum poder de escolha sobre a própria mente.</p>',
+        'faq'            => [
+            ['q' => 'O que são pensamentos automáticos?', 'a' => 'São interpretações rápidas e involuntárias que passam pela mente e influenciam como nos sentimos.'],
+            ['q' => 'Como mudar pensamentos automáticos?', 'a' => 'Identificando-os e questionando as evidências, com técnicas da TCC como o registro de pensamentos.'],
+        ],
+    ],
+    'terapia-online-funciona-ciencia' => [
+        'keyword_foco'   => 'terapia online',
+        'meta_titulo'    => 'Terapia online funciona? O que diz a ciência',
+        'meta_descricao' => 'A psicoterapia por vídeo tem respaldo científico e regulamentação do CFP. Veja as evidências de que a terapia online funciona e quando é indicada.',
+        'tldr'           => ["A terapia online tem eficácia comparável à presencial.", "É regulamentada pela Resolução CFP 11/2018.", "Exige ambiente privado e boa conexão."],
+        'lead'           => '<p>A <strong>terapia online</strong> deixou de ser exceção e hoje é uma opção séria, ética e regulamentada de cuidado psicológico.</p>',
+        'complemento'    => '<h2>Para quem a terapia online é indicada</h2><p>O atendimento online costuma funcionar bem para quem tem rotina corrida, mora longe de um consultório, viaja com frequência ou simplesmente se sente mais confortável em casa. Exige apenas um ambiente reservado e uma boa conexão de internet. O que sustenta os resultados é a qualidade do vínculo terapêutico e o uso de métodos baseados em evidências — e ambos são plenamente possíveis à distância, com o mesmo sigilo do atendimento presencial.</p>',
+        'faq'            => [
+            ['q' => 'Terapia online é tão eficaz quanto a presencial?', 'a' => 'Estudos mostram resultados equivalentes para a maioria das demandas.'],
+            ['q' => 'A terapia online é sigilosa?', 'a' => 'Sim, segue o mesmo sigilo profissional, em plataforma segura.'],
+        ],
+    ],
+    'orientacao-de-pais-base-cientifica' => [
+        'keyword_foco'   => 'orientação de pais',
+        'meta_titulo'    => 'Orientação de pais: o que a ciência recomenda',
+        'meta_descricao' => 'Birras, limites e comunicação: a orientação de pais baseada em evidências transforma a rotina familiar com técnicas validadas pela pesquisa.',
+        'tldr'           => ["Intervir junto aos pais muda o comportamento infantil.", "Rotinas e limites consistentes geram segurança.", "É baseada em evidências (Kazdin, Barkley)."],
+        'lead'           => '<p>A <strong>orientação de pais</strong> parte de uma ideia simples: às vezes, a forma mais eficaz de ajudar a criança é ajudar quem cuida dela.</p>',
+        'complemento'    => '<h2>Como funciona na prática</h2><p>Na orientação de pais, você recebe estratégias concretas para os desafios do dia a dia — birras, limites, rotina, comunicação. Não se trata de culpar ninguém: educar é difícil, e pequenas mudanças na forma de responder aos filhos costumam produzir grandes diferenças no clima de casa. É um espaço de apoio e escuta, baseado no que a pesquisa em psicologia mostra que realmente funciona, respeitando o jeito e os valores de cada família.</p>',
+        'faq'            => [
+            ['q' => 'Orientação de pais substitui a terapia da criança?', 'a' => 'Muitas vezes é a intervenção mais eficaz; em outros casos, complementa o atendimento da criança.'],
+            ['q' => 'A partir de que idade?', 'a' => 'É indicada para pais de crianças; o atendimento clínico individual é a partir de 10 anos.'],
+        ],
+    ],
+    'ataques-de-panico-entender-tratar' => [
+        'keyword_foco'   => 'ataques de pânico',
+        'meta_titulo'    => 'Ataques de pânico: entender para tratar',
+        'meta_descricao' => 'Coração disparado, falta de ar e medo de que algo terrível aconteça. Entenda o ciclo dos ataques de pânico e como a TCC ajuda a interrompê-lo.',
+        'tldr'           => ["O pânico é um alarme falso do corpo.", "O medo do medo alimenta novas crises.", "A TCC reduz a frequência e a intensidade."],
+        'lead'           => '<p>Os <strong>ataques de pânico</strong> chegam de repente, com sintomas tão intensos que muita gente pensa estar tendo um infarto.</p>',
+        'complemento'    => '<h2>O que fazer diante do pânico</h2><p>Entender que a crise, por mais assustadora que seja, não oferece risco físico já ajuda a reduzir o medo que a alimenta. Na terapia, você aprende a interpretar as sensações do corpo de outra forma e a enfrentar, aos poucos, aquilo que vinha evitando por receio de uma nova crise. A TCC é uma das abordagens mais eficazes para o transtorno de pânico — e procurar ajuda encurta bastante esse caminho de volta à tranquilidade.</p>',
+        'faq'            => [
+            ['q' => 'Ataque de pânico é perigoso?', 'a' => 'É muito assustador, mas não oferece risco físico; é uma resposta de alarme exagerada.'],
+            ['q' => 'Pânico tem tratamento?', 'a' => 'Sim, a TCC é altamente eficaz para o transtorno de pânico.'],
+        ],
+    ],
+    'autoestima-reconstruir-relacao-consigo' => [
+        'keyword_foco'   => 'autoestima',
+        'meta_titulo'    => 'Autoestima: reconstruir a relação consigo mesmo',
+        'meta_descricao' => 'Autoestima não é se achar perfeito — é parar de se atacar. Veja como a TCC e a autocompaixão ajudam a transformar a autocrítica em cuidado.',
+        'tldr'           => ["Autoestima é parar de se atacar, não se achar perfeito.", "A autocrítica alimenta a baixa autoestima.", "TCC e autocompaixão ajudam a reconstruí-la."],
+        'lead'           => '<p>A <strong>autoestima</strong> não se conquista se achando perfeito, mas parando de se atacar a cada erro ou tropeço.</p>',
+        'complemento'    => '<h2>Como a terapia ajuda</h2><p>Na terapia, olhamos com cuidado para a voz interna que critica — de onde ela vem, o que a alimenta, a quem ela pertence — e construímos uma relação mais justa e gentil com você mesmo. Não é sobre inflar o ego nem fingir que está tudo bem, e sim sobre parar de se diminuir sem necessidade. Com o tempo, essa mudança se reflete nas escolhas, nos relacionamentos e na forma como você se posiciona no mundo.</p>',
+        'faq'            => [
+            ['q' => 'Dá para melhorar a autoestima?', 'a' => 'Sim, é uma habilidade que se desenvolve com prática e apoio terapêutico.'],
+            ['q' => 'Autoestima é o mesmo que ego?', 'a' => 'Não; trata-se da relação de respeito e cuidado que você tem consigo mesmo.'],
+        ],
+    ],
+    'burnout-quando-o-trabalho-adoece' => [
+        'keyword_foco'   => 'burnout',
+        'meta_titulo'    => 'Burnout: quando o trabalho adoece',
+        'meta_descricao' => 'Exaustão que o descanso não resolve, distanciamento e queda de desempenho. Entenda o burnout, como diferenciá-lo do estresse e como a terapia ajuda.',
+        'tldr'           => ["Burnout é exaustão ligada ao trabalho.", "Vai além do cansaço comum.", "O tratamento envolve mudanças pessoais e de contexto."],
+        'lead'           => '<p>O <strong>burnout</strong> é a exaustão que o fim de semana não cura — um esgotamento que nasce da relação com o trabalho.</p>',
+        'complemento'    => '<h2>Quando buscar ajuda</h2><p>Se o cansaço virou constante, o trabalho perdeu o sentido e o corpo começou a dar sinais — insônia, irritabilidade, dores —, vale levar isso a sério. O burnout raramente se resolve só com férias: costuma exigir mudanças na rotina, no ambiente de trabalho e, sobretudo, no cuidado consigo. A psicoterapia ajuda a entender o que levou ao esgotamento, a reconstruir limites mais saudáveis e a recuperar, aos poucos, a energia e o prazer no que se faz.</p>',
+        'faq'            => [
+            ['q' => 'Burnout é depressão?', 'a' => 'São quadros diferentes, embora possam se sobrepor; o burnout está ligado ao contexto de trabalho.'],
+            ['q' => 'Como tratar o burnout?', 'a' => 'Com psicoterapia, ajustes na rotina e, muitas vezes, mudanças no ambiente de trabalho.'],
+        ],
+    ],
+    'autocompaixao-pare-de-ser-seu-pior-critico' => [
+        'keyword_foco'   => 'autocompaixão',
+        'meta_titulo'    => 'Autocompaixão: pare de ser seu pior crítico',
+        'meta_descricao' => 'Tratar-se com gentileza não é fraqueza nem autopiedade — é uma habilidade científica. Conheça os três pilares da autocompaixão de Kristin Neff.',
+        'tldr'           => ["Autocompaixão não é autopiedade.", "Tem três pilares (Kristin Neff).", "Sustenta a mudança melhor que a autocrítica."],
+        'lead'           => '<p>A <strong>autocompaixão</strong> é tratar-se com a mesma gentileza que você ofereceria, sem pensar, a um amigo em sofrimento.</p>',
+        'complemento'    => '<h2>Como desenvolver a autocompaixão</h2><p>Ao contrário do que muitos imaginam, ser gentil consigo não enfraquece nem acomoda — a pesquisa mostra que a autocompaixão sustenta a mudança melhor do que a autocrítica dura. Na terapia, você treina reconhecer o próprio sofrimento sem exagerá-lo, responder a ele com cuidado em vez de ataque, e lembrar que errar e falhar fazem parte de ser humano. É uma habilidade que se aprende — e que muda a forma de atravessar os dias difíceis.</p>',
+        'faq'            => [
+            ['q' => 'Autocompaixão é frescura?', 'a' => 'Não; é uma habilidade com respaldo científico, associada a mais bem-estar e resiliência.'],
+            ['q' => 'Como praticar autocompaixão?', 'a' => 'Reconhecendo o sofrimento, tratando-se com gentileza e lembrando que a imperfeição é humana.'],
+        ],
+    ],
+    'regulacao-emocional-habilidades-dbt' => [
+        'keyword_foco'   => 'regulação emocional',
+        'meta_titulo'    => 'Regulação emocional: as habilidades da DBT',
+        'meta_descricao' => 'Quando as emoções parecem incontroláveis, é possível aprender habilidades concretas. Conheça a DBT de Marsha Linehan e seus quatro módulos.',
+        'tldr'           => ["Emoções intensas podem ser reguladas com habilidades.", "A DBT foi criada por Marsha Linehan.", "Tem quatro módulos, incluindo tolerância ao mal-estar."],
+        'lead'           => '<p>A <strong>regulação emocional</strong> não é controlar ou reprimir o que se sente, mas aprender a lidar com emoções intensas sem ser dominado por elas.</p>',
+        'complemento'    => '<h2>Habilidades que se aprendem</h2><p>A DBT parte de uma ideia libertadora: regular emoções é uma habilidade, e habilidades podem ser treinadas por qualquer pessoa. Você aprende a nomear o que sente, a tolerar momentos de crise sem piorar as coisas por impulso e a agir de forma alinhada aos seus valores mesmo sob forte tensão. Para muita gente, esse aprendizado é a diferença entre reagir no automático, do jeito de sempre, e conseguir escolher a própria resposta.</p>',
+        'faq'            => [
+            ['q' => 'Para quem é a DBT?', 'a' => 'Foi criada para a desregulação emocional intensa, mas suas habilidades ajudam muitas pessoas.'],
+            ['q' => 'DBT é diferente da TCC?', 'a' => 'É uma evolução da TCC (terceira onda) que une aceitação e mudança.'],
+        ],
+    ],
+    'act-aceitar-agir-pelos-valores' => [
+        'keyword_foco'   => 'aceitação',
+        'meta_titulo'    => 'Aceitação e Compromisso (ACT): agir pelos valores',
+        'meta_descricao' => 'E se o objetivo não fosse eliminar o desconforto, mas viver com sentido apesar dele? Conheça a ACT — Terapia de Aceitação e Compromisso.',
+        'tldr'           => ["A ACT não busca eliminar o desconforto.", "Propõe aceitar e agir pelos seus valores.", "É uma das terapias contextuais (3ª onda)."],
+        'lead'           => '<p>A <strong>aceitação</strong>, na ACT, não é resignação: é abrir espaço para o que se sente, para poder agir pelo que realmente importa.</p>',
+        'complemento'    => '<h2>Como a ACT funciona na prática</h2><p>Em vez de brigar com pensamentos e emoções difíceis — uma luta que costuma cansar e não resolver —, a ACT ajuda você a mudar a relação com eles, para que deixem de comandar as suas escolhas. O foco sai do "eliminar o desconforto a todo custo" e vai para "construir uma vida com sentido", guiada pelos seus valores. É uma das terapias contextuais, a chamada terceira onda da TCC, e vem ganhando cada vez mais respaldo científico. Se você sente que vive numa luta constante com os próprios pensamentos e emoções, vale conhecê-la um pouco mais de perto.</p>',
+        'faq'            => [
+            ['q' => 'O que significa aceitação na ACT?', 'a' => 'É abrir espaço para o que se sente, em vez de lutar contra, para agir pelo que importa.'],
+            ['q' => 'A ACT ignora o sofrimento?', 'a' => 'Não; ela muda a relação com o sofrimento para que ele deixe de comandar a vida.'],
+        ],
+    ],
+    'terapia-do-esquema-padroes-que-repetimos' => [
+        'keyword_foco'   => 'terapia do esquema',
+        'meta_titulo'    => 'Terapia do Esquema: por que repetimos padrões',
+        'meta_descricao' => 'Relações que terminam parecidas e sensações que voltam sempre. A Terapia do Esquema ajuda a entender padrões da infância — e a reescrevê-los.',
+        'tldr'           => ["Padrões profundos se formam na infância.", "São os esquemas iniciais desadaptativos.", "A terapia ajuda a reconhecê-los e reescrevê-los."],
+        'lead'           => '<p>A <strong>Terapia do Esquema</strong> ajuda a entender por que certas dores e certos padrões parecem se repetir a vida inteira.</p>',
+        'complemento'    => '<h2>Como reescrever os padrões</h2><p>Os esquemas se formam cedo, muitas vezes na infância, e passam a filtrar silenciosamente como interpretamos os relacionamentos e a nós mesmos. Na terapia, esses padrões são reconhecidos, compreendidos na sua origem e, aos poucos, transformados. Não se trata de culpar o passado nem os pais, e sim de deixar de ser governado por ele — para conseguir escolher, no presente, respostas diferentes das de sempre. Reconhecer um padrão que se repete já é, por si só, o começo de ter escolha diante dele. É um trabalho profundo, e profundamente libertador.</p>',
+        'faq'            => [
+            ['q' => 'O que é um esquema?', 'a' => 'É um padrão emocional e de pensamento formado cedo na vida, que se repete nos relacionamentos.'],
+            ['q' => 'Dá para mudar esses padrões?', 'a' => 'Sim; a Terapia do Esquema foi criada justamente para transformá-los.'],
+        ],
+    ],
+    'mindfulness-na-terapia' => [
+        'keyword_foco'   => 'mindfulness',
+        'meta_titulo'    => 'Mindfulness na terapia: o que é (e o que não é)',
+        'meta_descricao' => 'Mindfulness virou moda — e muita confusão. Entenda o que a atenção plena realmente é, o que a ciência mostra e como ela entra na TCC.',
+        'tldr'           => ["Mindfulness é atenção plena ao presente, sem julgamento.", "Não é esvaziar a mente nem relaxamento.", "Tem respaldo científico e entra na TCC."],
+        'lead'           => '<p>O <strong>mindfulness</strong> — ou atenção plena — é prestar atenção ao momento presente, com abertura e sem julgamento.</p>',
+        'complemento'    => '<h2>Mindfulness na prática clínica</h2><p>Na terapia, o mindfulness não é técnica de relaxamento nem uma tentativa de esvaziar a mente: é treinar a atenção para perceber pensamentos e emoções à medida que surgem, sem ser arrastado por eles. Essa habilidade ajuda a responder às situações de forma mais consciente, em vez de reagir no automático, e tem respaldo científico para estresse, ansiedade e regulação emocional. Poucos minutos de prática por dia, com constância, já costumam fazer diferença. Com orientação, ela se torna um recurso simples e acessível para o dia a dia.</p>',
+        'faq'            => [
+            ['q' => 'Mindfulness é religião?', 'a' => 'Não; na terapia é usado como habilidade psicológica, sem conteúdo religioso.'],
+            ['q' => 'Mindfulness funciona?', 'a' => 'Há evidência de benefícios para estresse, ansiedade e regulação emocional.'],
+        ],
+    ],
+    'meu-filho-adolescente-precisa-de-terapia' => [
+        'keyword_foco'   => 'adolescente',
+        'meta_titulo'    => 'Meu filho adolescente precisa de terapia?',
+        'meta_descricao' => 'Nem toda crise da adolescência exige terapia — mas alguns sinais merecem atenção. Um guia para pais, com base na psicologia, sobre quando buscar ajuda.',
+        'tldr'           => ["Nem toda crise adolescente exige terapia.", "Alguns sinais merecem atenção.", "A família é parte do processo."],
+        'lead'           => '<p>Saber quando um <strong>adolescente</strong> precisa de terapia é uma dúvida comum — e absolutamente legítima — de muitos pais.</p>',
+        'complemento'    => '<h2>Como a família participa</h2><p>Nem toda oscilação de humor é sinal de alerta; a adolescência é, por natureza, um período de mudanças intensas. Mas sofrimento persistente, isolamento, queda no rendimento escolar ou mudanças bruscas de comportamento merecem atenção e escuta. Nesses casos, a terapia oferece um espaço seguro e sem julgamento para o adolescente — e a família costuma ser parte importante do processo, sempre respeitando o sigilo e o espaço do jovem. Na dúvida, conversar com um psicólogo ajuda a clarear.</p>',
+        'faq'            => [
+            ['q' => 'Quando levar o adolescente ao psicólogo?', 'a' => 'Quando há sofrimento persistente, mudanças bruscas de comportamento ou queda no funcionamento.'],
+            ['q' => 'A partir de que idade a Aline atende?', 'a' => 'O atendimento clínico individual é a partir de 10 anos.'],
+        ],
+    ],
+    'terapia-de-casal-o-que-a-ciencia-diz' => [
+        'keyword_foco'   => 'terapia de casal',
+        'meta_titulo'    => 'Terapia de casal: o que a ciência diz',
+        'meta_descricao' => 'Brigar não é o problema — o problema é como brigamos. Veja o que a pesquisa em relacionamentos revela sobre o que aproxima e afasta os casais.',
+        'tldr'           => ["O problema não é brigar, é como se briga.", "Certos padrões preveem o desgaste.", "A ciência mostra o que aproxima os casais."],
+        'lead'           => '<p>A <strong>terapia de casal</strong> parte de uma constatação da ciência: o problema raramente é brigar, e sim o modo como se briga.</p>',
+        'complemento'    => '<h2>O que a terapia de casal oferece</h2><p>No processo, o casal aprende a comunicar necessidades sem ataque, a escutar de verdade — e não apenas a esperar a vez de responder — e a lidar com os conflitos que todo relacionamento tem. O objetivo não é acabar com as diferenças, e sim transformar a forma de conversar sobre elas. Abordagens baseadas em evidência ajudam a reconstruir o vínculo e a confiança, e costumam funcionar melhor quando os dois se engajam no cuidado com a relação.</p>',
+        'faq'            => [
+            ['q' => 'Terapia de casal funciona?', 'a' => 'Sim; abordagens baseadas em evidência ajudam a melhorar a comunicação e o vínculo.'],
+            ['q' => 'Os dois precisam querer?', 'a' => 'O engajamento de ambos ajuda muito, mas o processo pode começar mesmo com um mais resistente.'],
+        ],
+    ],
+];

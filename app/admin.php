@@ -256,10 +256,25 @@ function admin_post_form(?int $id): void
           <textarea name="tldr" rows="3" class="<?= $inp ?>" placeholder="Ex.: A TCC trata a ansiedade em médio prazo.&#10;Foca em pensamentos, emoções e comportamentos."><?= e($post['tldr']) ?></textarea>
         </label>
 
-        <label class="grid gap-1.5">
-          <span class="<?= $lbl ?>">Conteúdo <span class="font-normal lowercase tracking-normal">(HTML: &lt;h2&gt;, &lt;p&gt;, &lt;ul&gt;&lt;li&gt;, &lt;strong&gt;)</span></span>
-          <textarea name="conteudo" id="f-conteudo" rows="16" required class="<?= $inp ?> font-mono text-sm"><?= e($post['conteudo']) ?></textarea>
-        </label>
+        <style>.rt-btn{font-size:.78rem;padding:.28rem .62rem;border:1px solid rgba(17,123,127,.15);border-radius:.5rem;color:#117B7F;background:#fff;line-height:1;}
+          .rt-btn:hover{border-color:#A52A7E;color:#A52A7E;}
+          #rt-editor:empty:before{content:'Escreva o conteúdo aqui…';color:#9aa;}</style>
+        <div class="grid gap-1.5">
+          <div class="flex items-center justify-between">
+            <span class="<?= $lbl ?>">Conteúdo</span>
+            <button type="button" id="html-toggle" class="text-[11px] font-bold uppercase tracking-wider text-teal-dark/60 hover:text-magenta border border-teal-dark/15 rounded-full px-2.5 py-1">&lt;/&gt; HTML</button>
+          </div>
+          <div id="rt-toolbar" class="flex flex-wrap gap-1.5">
+            <button type="button" class="rt-btn" data-cmd="formatBlock" data-val="h2">H2</button>
+            <button type="button" class="rt-btn" data-cmd="formatBlock" data-val="p">¶ Parágrafo</button>
+            <button type="button" class="rt-btn font-bold" data-cmd="bold">N</button>
+            <button type="button" class="rt-btn italic" data-cmd="italic">I</button>
+            <button type="button" class="rt-btn" data-cmd="insertUnorderedList">• Lista</button>
+            <button type="button" class="rt-btn" data-cmd="createLink">🔗 Link</button>
+          </div>
+          <div id="rt-editor" contenteditable="true" class="rounded-lg border border-teal-dark/15 px-4 py-3 min-h-[320px] max-h-[600px] overflow-auto focus:outline-none focus:border-teal-mid text-[15px] leading-relaxed [&_h2]:font-heading [&_h2]:text-teal-dark [&_h2]:text-xl [&_h2]:mt-4 [&_h2]:mb-2 [&_ul]:list-disc [&_ul]:pl-6 [&_p]:mb-3 [&_a]:text-teal-dark [&_a]:underline"></div>
+          <textarea name="conteudo" id="f-conteudo" rows="16" required class="<?= $inp ?> font-mono text-sm hidden"><?= e($post['conteudo']) ?></textarea>
+        </div>
 
         <!-- SEO on-page -->
         <div class="border-t border-teal-dark/10 pt-5 grid gap-5">
@@ -372,6 +387,30 @@ function admin_post_form(?int $id): void
     <script>
     (function () {
       var form = document.getElementById('post-form');
+      // ---- Editor visual (contenteditable) + toggle HTML ----
+      var editor = document.getElementById('rt-editor');
+      var ta = document.getElementById('f-conteudo');
+      if (editor && ta) {
+        editor.innerHTML = ta.value || '';
+        var sync = function(){ ta.value = editor.innerHTML; };
+        editor.addEventListener('input', sync);
+        document.querySelectorAll('#rt-toolbar .rt-btn').forEach(function(b){
+          b.addEventListener('mousedown', function(e){ e.preventDefault(); });
+          b.onclick = function(){
+            var cmd = b.getAttribute('data-cmd'), val = b.getAttribute('data-val') || null;
+            if (cmd === 'createLink') { var u = prompt('URL do link:', 'https://'); if (u) document.execCommand('createLink', false, u); }
+            else document.execCommand(cmd, false, val);
+            editor.focus(); sync();
+          };
+        });
+        var htmlMode = false;
+        document.getElementById('html-toggle').onclick = function(){
+          htmlMode = !htmlMode;
+          if (htmlMode) { ta.value = editor.innerHTML; ta.classList.remove('hidden'); editor.classList.add('hidden'); document.getElementById('rt-toolbar').classList.add('hidden'); this.classList.add('bg-teal-dark','text-cream'); }
+          else { editor.innerHTML = ta.value; ta.classList.add('hidden'); editor.classList.remove('hidden'); document.getElementById('rt-toolbar').classList.remove('hidden'); this.classList.remove('bg-teal-dark','text-cream'); }
+        };
+        form.addEventListener('submit', function(){ if (!htmlMode) ta.value = editor.innerHTML; });
+      }
       // ---- Tags ----
       var hidden = document.getElementById('f-tags');
       var chips  = document.getElementById('tag-chips');

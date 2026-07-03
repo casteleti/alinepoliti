@@ -26,7 +26,7 @@ $waBtn = static function (string $rotulo) use ($wa): string {
   <div class="absolute -bottom-24 -right-16 size-80 bg-amber/15 blob-2 blur-3xl" aria-hidden="true"></div>
   <div class="relative max-w-6xl mx-auto px-6 lg:px-8 pt-10 lg:pt-16 pb-14 grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
     <div class="text-center lg:text-left">
-      <span class="<?= $pill ?> mb-5"><span class="size-1.5 rounded-full bg-magenta"></span> Atendimento online · Brasileiros no exterior</span>
+      <span class="<?= $pill ?> mb-5 hidden lg:inline-flex">Psicóloga online · p/ brasileiros no exterior</span>
       <h1 class="font-display text-[clamp(2.6rem,9vw,4.8rem)] text-teal-dark leading-[0.98]">Longe do Brasil, perto de quem <em class="italic text-magenta">entende você</em></h1>
       <p class="mt-6 text-lg text-ink/70 leading-relaxed max-w-xl mx-auto lg:mx-0">Psicoterapia online em português, com uma psicóloga brasileira que compreende a sua história e o seu momento — onde quer que você esteja.</p>
       <div class="mt-8 flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
@@ -40,6 +40,13 @@ $waBtn = static function (string $rotulo) use ($wa): string {
       </ul>
     </div>
     <div class="relative order-first lg:order-last">
+      <!-- Sobrelinha (mobile): acima da foto, centralizada, 2 linhas -->
+      <div class="lg:hidden text-center mb-4">
+        <span class="inline-flex flex-col items-center px-5 py-2.5 rounded-2xl bg-magenta/10 text-magenta text-sm font-extrabold tracking-[0.18em] uppercase leading-tight">
+          <span>Psicóloga online</span>
+          <span>p/ brasileiros no exterior</span>
+        </span>
+      </div>
       <div class="relative w-full max-w-[420px] mx-auto">
         <div class="absolute -inset-5 bg-gradient-to-br from-teal-mid/25 via-cream to-amber/20 blob-1 blur-2xl" aria-hidden="true"></div>
         <div class="relative aspect-square blob-1 overflow-hidden ring-1 ring-teal-dark/10">

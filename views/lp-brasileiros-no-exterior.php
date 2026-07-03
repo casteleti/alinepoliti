@@ -15,7 +15,7 @@ $erros   = (($flash['type'] ?? '') === 'erro') ? ($flash['errors'] ?? []) : [];
 
 $pill  = 'inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-magenta/10 text-magenta text-[11px] font-bold tracking-[0.2em] uppercase';
 $waBtn = static function (string $rotulo) use ($wa): string {
-    return '<a href="' . e($wa) . '" target="_blank" rel="noopener" class="js-wa inline-flex items-center justify-center gap-2.5 px-7 py-4 bg-teal-dark text-cream rounded-full font-semibold hover:bg-teal-mid transition-all shadow-xl shadow-teal-dark/20">'
+    return '<a href="' . e($wa) . '" target="_blank" rel="noopener" class="js-wa inline-flex items-center justify-center gap-2.5 px-7 py-4 bg-teal-dark text-cream rounded-full font-semibold hover:bg-teal-mid transition-all shadow-xl shadow-teal-dark/20 whitespace-nowrap">'
         . icon('message-circle', 'size-5') . e($rotulo) . '</a>';
 };
 ?>
@@ -31,7 +31,7 @@ $waBtn = static function (string $rotulo) use ($wa): string {
       <p class="mt-6 text-lg text-ink/70 leading-relaxed max-w-xl mx-auto lg:mx-0">Psicoterapia online em português, com uma psicóloga brasileira que compreende a sua história e o seu momento — onde quer que você esteja.</p>
       <div class="mt-8 flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
         <?= $waBtn('Conversar no WhatsApp') ?>
-        <a href="#form" class="inline-flex items-center justify-center gap-2 px-7 py-4 border border-teal-dark/20 text-teal-dark rounded-full font-medium hover:bg-white transition-all">Deixar minha mensagem</a>
+        <a href="#form" class="inline-flex items-center justify-center gap-2 px-7 py-4 border border-teal-dark/20 text-teal-dark rounded-full font-medium hover:bg-white transition-all whitespace-nowrap">Deixar minha mensagem</a>
       </div>
       <ul class="mt-8 flex flex-wrap gap-2 justify-center lg:justify-start">
         <?php foreach (['CRP 06/113904', 'Quase 20 anos de experiência', 'Terapia Cognitivo-Comportamental', 'Online e sigiloso'] as $selo): ?>
@@ -40,9 +40,23 @@ $waBtn = static function (string $rotulo) use ($wa): string {
       </ul>
     </div>
     <div class="relative order-first lg:order-last">
-      <div class="absolute -inset-5 bg-gradient-to-br from-teal-mid/25 via-cream to-amber/20 blob-1 blur-2xl" aria-hidden="true"></div>
-      <div class="relative aspect-square w-full max-w-[420px] mx-auto blob-1 overflow-hidden ring-1 ring-teal-dark/10">
-        <img src="<?= asset('consultoria.jpg') ?>" alt="Aline Politi, psicóloga clínica, em atendimento online" width="764" height="820" fetchpriority="high" class="w-full h-full object-cover">
+      <div class="relative w-full max-w-[420px] mx-auto">
+        <div class="absolute -inset-5 bg-gradient-to-br from-teal-mid/25 via-cream to-amber/20 blob-1 blur-2xl" aria-hidden="true"></div>
+        <div class="relative aspect-square blob-1 overflow-hidden ring-1 ring-teal-dark/10">
+          <img src="<?= asset('consultoria.jpg') ?>" alt="Aline Politi, psicóloga clínica, em atendimento online" width="764" height="820" fetchpriority="high" class="w-full h-full object-cover">
+        </div>
+        <!-- Selo bandeira do Brasil -->
+        <div class="absolute bottom-3 left-1 lg:-left-3 size-16 lg:size-20 rounded-full bg-white p-1.5 shadow-xl shadow-teal-dark/20 ring-1 ring-teal-dark/5" aria-label="Atendimento em português (Brasil)" title="Atendimento em português">
+          <svg viewBox="0 0 100 100" class="w-full h-full" role="img" aria-hidden="true">
+            <defs><clipPath id="brflag"><circle cx="50" cy="50" r="50"/></clipPath></defs>
+            <g clip-path="url(#brflag)">
+              <rect width="100" height="100" fill="#009C3B"/>
+              <polygon points="50,10 90,50 50,90 10,50" fill="#FFDF00"/>
+              <circle cx="50" cy="50" r="19" fill="#002776"/>
+              <path d="M33 46 A22 22 0 0 1 67 52" fill="none" stroke="#fff" stroke-width="3.2"/>
+            </g>
+          </svg>
+        </div>
       </div>
     </div>
   </div>

@@ -42,9 +42,24 @@ const GA_MEASUREMENT_ID = 'G-KD55BQNYBC';
 // ⚠️ NÃO crie tag de page_view do GA4 dentro do GTM (o gtag acima já faz) — evita pageview duplicado.
 const GTM_CONTAINER_ID = 'GTM-N9KKF9ZT';
 
-// E-mail transacional (Resend). Defina RESEND_API_KEY no ambiente do servidor
-// (NUNCA versionar a chave). Sem chave, o envio cai no mail() nativo (best-effort).
-// O remetente (RESEND_FROM) precisa usar um domínio verificado no Resend.
+// -------- Envio de e-mail (defina no ambiente do servidor — NUNCA versionar senhas) --------
+// Preferência: 1) SMTP autenticado (caixa do próprio domínio) → 2) Resend → 3) mail() nativo.
+//
+// SMTP (recomendado — usa um e-mail real do domínio):
+//   SMTP_HOST   ex.: smtp.hostinger.com / smtp.zoho.com / smtp.gmail.com / mail.seudominio
+//   SMTP_PORT   587 (STARTTLS) ou 465 (SSL)
+//   SMTP_SECURE 'tls' (para 587) ou 'ssl' (para 465)
+//   SMTP_USER   caixa completa, ex.: atendimento@alinepoliti.com.br
+//   SMTP_PASS   senha da caixa (ideal: senha de app)
+define('SMTP_HOST',      getenv('SMTP_HOST') ?: '');
+define('SMTP_PORT',      (int)(getenv('SMTP_PORT') ?: 587));
+define('SMTP_SECURE',    getenv('SMTP_SECURE') ?: 'tls');
+define('SMTP_USER',      getenv('SMTP_USER') ?: '');
+define('SMTP_PASS',      getenv('SMTP_PASS') ?: '');
+define('MAIL_FROM',      getenv('MAIL_FROM') ?: '');            // default: SMTP_USER
+define('MAIL_FROM_NAME', getenv('MAIL_FROM_NAME') ?: 'Site Aline Politi');
+
+// Resend (alternativa por API — opcional). Sem SMTP nem chave, cai no mail() nativo.
 define('RESEND_API_KEY', getenv('RESEND_API_KEY') ?: '');
 define('RESEND_FROM',    getenv('RESEND_FROM') ?: 'Site Aline Politi <contato@alinepoliti.com.br>');
 

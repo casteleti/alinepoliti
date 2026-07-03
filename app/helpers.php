@@ -315,13 +315,22 @@ function assuntos_contato(): array
 }
 
 /**
- * Envia e-mail via API do Resend (se houver RESEND_API_KEY); senão, mail() nativo.
+ * Envia e-mail. Ordem de preferência:
+ *   1) SMTP autenticado (caixa do próprio domínio)  2) Resend (API)  3) mail() nativo.
  * Retorna true em caso de sucesso (best-effort).
  */
 function enviar_email(string $assunto, string $texto, string $replyTo = ''): bool
 {
     $para = SITE_EMAIL;
 
+    // 1) SMTP autenticado (e-mail do domínio) — preferido
+    if (SMTP_HOST !== '' && SMTP_USER !== '') {
+        if (smtp_enviar($para, $assunto, $texto, $replyTo)) {
+            return true;
+        }
+    }
+
+    // 2) Resend (API), se configurado
     if (RESEND_API_KEY !== '' && function_exists('curl_init')) {
         $payload = json_encode(array_filter([
             'from'     => RESEND_FROM,
@@ -352,9 +361,97 @@ function enviar_email(string $assunto, string $texto, string $replyTo = ''): boo
         }
     }
 
-    // Fallback: mail() nativo (pode não entregar sem MTA configurado).
-    $headers = 'From: ' . RESEND_FROM . "\r\n"
+    // 3) Fallback: mail() nativo (pode não entregar sem MTA configurado).
+    $headers = 'From: ' . (MAIL_FROM !== '' ? MAIL_FROM : RESEND_FROM) . "\r\n"
         . 'Reply-To: ' . ($replyTo !== '' ? $replyTo : $para) . "\r\n"
         . 'Content-Type: text/plain; charset=UTF-8';
     return @mail($para, $assunto, $texto, $headers);
+}
+
+/**
+ * Cliente SMTP mínimo (AUTH LOGIN) — envia e-mail de texto simples autenticando
+ * numa caixa do próprio domínio. Suporta STARTTLS (587) e SSL implícito (465).
+ */
+function smtp_enviar(string $to, string $assunto, string $texto, string $replyTo = ''): bool
+{
+    $fromEmail = MAIL_FROM !== '' ? MAIL_FROM : SMTP_USER;
+    $fromName  = MAIL_FROM_NAME;
+    $errno = 0; $errstr = '';
+
+    $endpoint = (SMTP_SECURE === 'ssl' ? 'ssl://' : '') . SMTP_HOST . ':' . SMTP_PORT;
+    $ctx = stream_context_create(['ssl' => ['verify_peer' => true, 'verify_peer_name' => true, 'SNI_enabled' => true]]);
+    $fp = @stream_socket_client($endpoint, $errno, $errstr, 15, STREAM_CLIENT_CONNECT, $ctx);
+    if (!$fp) {
+        error_log("[alinepoliti] smtp connect falhou: {$errstr} ({$errno})");
+        return false;
+    }
+    stream_set_timeout($fp, 15);
+
+    $read = static function () use ($fp): string {
+        $data = '';
+        while (($line = fgets($fp, 515)) !== false) {
+            $data .= $line;
+            if (strlen($line) < 4 || $line[3] === ' ') { break; }
+        }
+        return $data;
+    };
+    $send = static function (string $c) use ($fp): void { fwrite($fp, $c . "\r\n"); };
+    $is   = static fn(string $r, string $code): bool => strncmp($r, $code, 3) === 0;
+    $fail = static function (string $ctx, string $r) use ($fp): bool {
+        error_log('[alinepoliti] smtp ' . $ctx . ': ' . trim($r));
+        @fwrite($fp, "QUIT\r\n"); @fclose($fp);
+        return false;
+    };
+
+    if (!$is($read(), '220')) { return $fail('greet', ''); }
+    $ehlo = preg_replace('/[^a-z0-9.\-]/i', '', $_SERVER['HTTP_HOST'] ?? 'localhost') ?: 'localhost';
+
+    $send("EHLO {$ehlo}"); $read();
+    if (SMTP_SECURE === 'tls') {
+        $send('STARTTLS'); $r = $read();
+        if (!$is($r, '220')) { return $fail('starttls', $r); }
+        $crypto = STREAM_CRYPTO_METHOD_TLS_CLIENT;
+        if (defined('STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT')) { $crypto |= STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT; }
+        if (defined('STREAM_CRYPTO_METHOD_TLSv1_3_CLIENT')) { $crypto |= STREAM_CRYPTO_METHOD_TLSv1_3_CLIENT; }
+        if (!@stream_socket_enable_crypto($fp, true, $crypto)) { return $fail('tls-handshake', ''); }
+        $send("EHLO {$ehlo}"); $read();
+    }
+
+    $send('AUTH LOGIN'); $r = $read();
+    if (!$is($r, '334')) { return $fail('auth', $r); }
+    $send(base64_encode(SMTP_USER)); $r = $read();
+    if (!$is($r, '334')) { return $fail('auth-user', $r); }
+    $send(base64_encode(SMTP_PASS)); $r = $read();
+    if (!$is($r, '235')) { return $fail('auth-pass', $r); }
+
+    $send("MAIL FROM:<{$fromEmail}>"); $r = $read();
+    if (!$is($r, '250')) { return $fail('mail-from', $r); }
+    $send("RCPT TO:<{$to}>"); $r = $read();
+    if (!$is($r, '250') && !$is($r, '251')) { return $fail('rcpt-to', $r); }
+    $send('DATA'); $r = $read();
+    if (!$is($r, '354')) { return $fail('data', $r); }
+
+    $fromHeader = $fromName !== '' ? mb_encode_mimeheader($fromName, 'UTF-8') . " <{$fromEmail}>" : $fromEmail;
+    $headers = [
+        'Date: ' . date('r'),
+        'From: ' . $fromHeader,
+        'To: <' . $to . '>',
+        'Subject: ' . mb_encode_mimeheader($assunto, 'UTF-8'),
+        'MIME-Version: 1.0',
+        'Content-Type: text/plain; charset=UTF-8',
+        'Content-Transfer-Encoding: 8bit',
+    ];
+    if ($replyTo !== '') {
+        array_splice($headers, 3, 0, ['Reply-To: <' . $replyTo . '>']);
+    }
+    // Normaliza quebras e faz dot-stuffing (linhas iniciadas por ".")
+    $body = str_replace("\r\n", "\n", $texto);
+    $body = preg_replace('/^\./m', '..', $body);
+    $body = str_replace("\n", "\r\n", $body);
+    $send(implode("\r\n", $headers) . "\r\n\r\n" . $body . "\r\n."); $r = $read();
+    $ok = $is($r, '250');
+
+    $send('QUIT'); @fclose($fp);
+    if (!$ok) { error_log('[alinepoliti] smtp data-final: ' . trim($r)); }
+    return $ok;
 }

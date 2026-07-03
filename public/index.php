@@ -58,10 +58,11 @@ if (isset($routes[$path])) {
 } elseif (preg_match('#^/blog/([a-z0-9\-]+)$#', $path, $m) && ($post = find_post($m[1]))) {
     $GLOBALS['breadcrumb_leaf'] = $post['titulo'];
     render('blog-post.php', [
-        'title'       => $post['titulo'] . ' | Blog — Aline Politi',
-        'description' => $post['resumo'] ?: 'Artigo de Aline Politi sobre psicologia e TCC.',
+        'title'       => ((string)($post['meta_titulo'] ?? '')) ?: ($post['titulo'] . ' | Blog — Aline Politi'),
+        'description' => ((string)($post['meta_descricao'] ?? '')) ?: ($post['resumo'] ?: 'Artigo de Aline Politi sobre psicologia e TCC.'),
         'canonical'   => '/blog/' . $post['slug'],
         'ogTitle'     => $post['titulo'],
+        'ogImage'     => !empty($post['capa']) ? asset('blog/' . $post['capa']) : asset('og.jpg'),
         'jsonld'      => article_jsonld($post),
     ], ['post' => $post]);
 } else {
@@ -86,17 +87,34 @@ function render(string $view, array $meta, array $vars = []): void
 function article_jsonld(array $post): string
 {
     $pub = !empty($post['publicado_em']) ? date('c', strtotime((string)$post['publicado_em'])) : null;
-    return json_encode(array_filter([
+    $article = array_filter([
         '@context'      => 'https://schema.org',
         '@type'         => 'BlogPosting',
         'headline'      => $post['titulo'],
-        'description'   => $post['resumo'] ?? null,
+        'description'   => ((string)($post['meta_descricao'] ?? '')) ?: ($post['resumo'] ?? null),
+        'image'         => !empty($post['capa']) ? abs_url('/assets/blog/' . $post['capa']) : null,
         'datePublished' => $pub,
+        'keywords'      => !empty($post['tags']) ? $post['tags'] : null,
         'inLanguage'    => 'pt-BR',
-        'author'        => ['@type' => 'Person', 'name' => $post['autor'] ?? SITE_NAME],
+        'author'        => ['@type' => 'Person', 'name' => SITE_NAME, 'jobTitle' => 'Psicóloga Clínica', 'identifier' => SITE_CRP],
         'publisher'     => ['@type' => 'Organization', 'name' => 'Aline Politi · Psicologia'],
         'mainEntityOfPage' => abs_url('/blog/' . $post['slug']),
-    ]), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+    ], static fn($v) => $v !== null);
+
+    $graph = [$article];
+    $faq = blog_faq($post);
+    if ($faq) {
+        $graph[] = [
+            '@context'   => 'https://schema.org',
+            '@type'      => 'FAQPage',
+            'mainEntity' => array_map(static fn($f) => [
+                '@type'          => 'Question',
+                'name'           => $f['q'],
+                'acceptedAnswer' => ['@type' => 'Answer', 'text' => $f['a']],
+            ], $faq),
+        ];
+    }
+    return json_encode(count($graph) === 1 ? $graph[0] : $graph, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
 }
 
 function routes_table(): array

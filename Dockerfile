@@ -1,7 +1,11 @@
 FROM php:8.2-apache
 
-RUN docker-php-ext-install pdo pdo_mysql \
-    && a2enmod rewrite headers expires deflate
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends libwebp-dev libjpeg-dev libpng-dev libfreetype6-dev \
+    && docker-php-ext-configure gd --with-webp --with-jpeg --with-freetype \
+    && docker-php-ext-install gd pdo pdo_mysql \
+    && a2enmod rewrite headers expires deflate \
+    && rm -rf /var/lib/apt/lists/*
 
 ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
 RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf \

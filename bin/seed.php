@@ -18,8 +18,8 @@ if (!$pdo) {
 }
 
 $artigos = require __DIR__ . '/../app/seed_artigos.php';
-$sql = 'INSERT INTO posts (slug, titulo, resumo, conteudo, publicado_em, ativo)
-        VALUES (:slug, :titulo, :resumo, :conteudo, :pub, 1)
+$sql = 'INSERT INTO posts (slug, titulo, resumo, conteudo, tags, publicado_em, ativo)
+        VALUES (:slug, :titulo, :resumo, :conteudo, :tags, :pub, 1)
         ON DUPLICATE KEY UPDATE titulo=VALUES(titulo), resumo=VALUES(resumo),
           conteudo=VALUES(conteudo), publicado_em=VALUES(publicado_em), ativo=1';
 $stmt = $pdo->prepare($sql);
@@ -31,6 +31,7 @@ foreach ($artigos as $a) {
         ':titulo' => $a['titulo'],
         ':resumo' => $a['resumo'],
         ':conteudo' => $a['conteudo'],
+        ':tags' => implode(', ', blog_extrair_tags($a['titulo'], $a['conteudo'], 10)),
         ':pub' => date('Y-m-d H:i:s', strtotime((string)$a['publicado_em'])),
     ]);
     $n++;

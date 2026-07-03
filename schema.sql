@@ -24,6 +24,13 @@ CREATE TABLE IF NOT EXISTS posts (
   resumo        VARCHAR(500) NULL,
   conteudo      MEDIUMTEXT NOT NULL,
   capa          VARCHAR(255) NULL,
+  meta_titulo   VARCHAR(70)  NULL,
+  meta_descricao VARCHAR(180) NULL,
+  keyword_foco  VARCHAR(120) NULL,
+  tags          VARCHAR(600) NULL,
+  tldr          TEXT NULL,
+  faq           MEDIUMTEXT NULL,
+  fontes        TEXT NULL,
   publicado_em  DATETIME NULL,
   ativo         TINYINT(1) NOT NULL DEFAULT 1,
   criado_em     DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP

@@ -159,22 +159,28 @@ function seed_artigos(): array
 /** Posts do blog — do banco (se houver) ou dos artigos-semente. */
 function blog_posts(): array
 {
+    $porSlug = [];
+    // Seed (base) — sempre disponível
+    foreach (seed_artigos() as $a) {
+        $porSlug[$a['slug']] = $a;
+    }
+    // Banco — sobrepõe/adiciona (resiliente: criar 1 post no painel não some com os do seed)
     $pdo = db();
     if ($pdo) {
         try {
             $rows = $pdo->query(
-                'SELECT slug, titulo, resumo, publicado_em FROM posts WHERE ativo = 1 ORDER BY publicado_em DESC'
+                'SELECT slug, titulo, resumo, capa, tags, publicado_em FROM posts WHERE ativo = 1'
             )->fetchAll();
-            if ($rows) {
-                return $rows;
+            foreach ($rows as $r) {
+                $porSlug[$r['slug']] = array_merge($porSlug[$r['slug']] ?? [], $r);
             }
         } catch (Throwable $e) {
             error_log('[alinepoliti] blog: ' . $e->getMessage());
         }
     }
-    $seed = seed_artigos();
-    usort($seed, fn($x, $y) => strcmp((string)$y['publicado_em'], (string)$x['publicado_em']));
-    return $seed;
+    $lista = array_values($porSlug);
+    usort($lista, fn($x, $y) => strcmp((string)($y['publicado_em'] ?? ''), (string)($x['publicado_em'] ?? '')));
+    return $lista;
 }
 
 /** Localiza um post pelo slug (banco ou semente). */
@@ -183,7 +189,7 @@ function find_post(string $slug): ?array
     $pdo = db();
     if ($pdo) {
         try {
-            $stmt = $pdo->prepare('SELECT slug, titulo, resumo, conteudo, publicado_em FROM posts WHERE slug = ? AND ativo = 1 LIMIT 1');
+            $stmt = $pdo->prepare('SELECT * FROM posts WHERE slug = ? AND ativo = 1 LIMIT 1');
             $stmt->execute([$slug]);
             $row = $stmt->fetch();
             if ($row) {
@@ -454,4 +460,171 @@ function smtp_enviar(string $to, string $assunto, string $texto, string $replyTo
     $send('QUIT'); @fclose($fp);
     if (!$ok) { error_log('[alinepoliti] smtp data-final: ' . trim($r)); }
     return $ok;
+}
+
+/* ---------------------------------------------------------------------------
+ * Motor de blog (SEO/GEO): tags automáticas, imagem WebP, interlinking,
+ * relacionados, checklist de SEO e FAQ.
+ * ------------------------------------------------------------------------- */
+
+/** Todas as expressões da tabela palavras_chave (DB → fallback), em cache. */
+function todas_keywords(): array
+{
+    static $cache = null;
+    if ($cache !== null) { return $cache; }
+    $pdo = db();
+    if ($pdo) {
+        try {
+            $r = $pdo->query('SELECT expressao FROM palavras_chave WHERE ativo = 1')->fetchAll(PDO::FETCH_COLUMN);
+            if ($r) { return $cache = $r; }
+        } catch (Throwable $e) { /* fallback */ }
+    }
+    $flat = [];
+    foreach (keywords_fallback() as $g) { $flat = array_merge($flat, $g); }
+    return $cache = $flat;
+}
+
+/** Stopwords PT (para extração de tags por frequência). */
+function stopwords_pt(): array
+{
+    return array_flip(['a','o','e','de','da','do','das','dos','em','no','na','nos','nas','um','uma','uns','umas',
+        'para','por','com','sem','que','se','ao','aos','à','às','como','mais','mas','ou','os','as','sua','seu','suas','seus',
+        'ser','está','estão','é','são','foi','ele','ela','eles','elas','isso','este','esta','esse','essa','entre','sobre',
+        'quando','onde','também','já','não','sim','the','and','of','to','in','pela','pelo','pelas','pelos','você','vocês',
+        'nossa','nosso','minha','meu','muito','muitos','muita','muitas','pode','podem','ter','tem','têm','dela','dele','seus']);
+}
+
+/** Extrai até $limite tags: casa com o banco de palavras-chave + termos frequentes. */
+function blog_extrair_tags(string $titulo, string $conteudo, int $limite = 10): array
+{
+    $texto = mb_strtolower(strip_tags($titulo . ' ' . $conteudo), 'UTF-8');
+    $out = []; $seen = [];
+    $add = static function (string $tag) use (&$out, &$seen, $limite): void {
+        $k = mb_strtolower(trim($tag), 'UTF-8');
+        if ($k === '' || isset($seen[$k]) || count($out) >= $limite) { return; }
+        $seen[$k] = true; $out[] = trim($tag);
+    };
+    foreach (todas_keywords() as $kw) {
+        $k = mb_strtolower($kw, 'UTF-8');
+        if (mb_strlen($k) > 45 || str_contains($k, '?')) { continue; }
+        if (mb_stripos($texto, $k) !== false) { $add($kw); }
+    }
+    if (count($out) < $limite) {
+        $stop = stopwords_pt();
+        $palavras = preg_split('/[^\p{L}\-]+/u', $texto, -1, PREG_SPLIT_NO_EMPTY) ?: [];
+        $freq = [];
+        foreach ($palavras as $p) {
+            if (mb_strlen($p) < 4 || isset($stop[$p])) { continue; }
+            $freq[$p] = ($freq[$p] ?? 0) + 1;
+        }
+        arsort($freq);
+        foreach (array_keys($freq) as $p) { $add(mb_convert_case($p, MB_CASE_TITLE, 'UTF-8')); }
+    }
+    return $out;
+}
+
+/**
+ * Converte imagem enviada em WebP 900x1501 (cover), salva em public/assets/blog/
+ * com nome sequencial psicologa-aline-politi-NNNN.webp. Retorna o nome ou null.
+ */
+function blog_gerar_webp(array $file, int $tw = 900, int $th = 1501): ?string
+{
+    if (($file['error'] ?? UPLOAD_ERR_NO_FILE) !== UPLOAD_ERR_OK) { return null; }
+    if (!function_exists('imagewebp')) { error_log('[alinepoliti] webp: GD sem suporte a WebP'); return null; }
+    $data = @file_get_contents($file['tmp_name']);
+    if ($data === false) { return null; }
+    $src = @imagecreatefromstring($data);
+    if (!$src) { error_log('[alinepoliti] webp: arquivo não é imagem válida'); return null; }
+
+    $w = imagesx($src); $h = imagesy($src);
+    $ar = $tw / $th;
+    if ($w / $h > $ar) { $sh = $h; $sw = (int)round($h * $ar); }
+    else               { $sw = $w; $sh = (int)round($w / $ar); }
+    $sx = (int)(($w - $sw) / 2); $sy = (int)(($h - $sh) / 2);
+    $dst = imagecreatetruecolor($tw, $th);
+    imagecopyresampled($dst, $src, 0, 0, $sx, $sy, $tw, $th, $sw, $sh);
+
+    $dir = dirname(__DIR__) . '/public/assets/blog';
+    if (!is_dir($dir)) { @mkdir($dir, 0775, true); }
+    $n = 0;
+    foreach (glob($dir . '/psicologa-aline-politi-*.webp') ?: [] as $f) {
+        if (preg_match('/-(\d+)\.webp$/', $f, $mm)) { $n = max($n, (int)$mm[1]); }
+    }
+    $nome = sprintf('psicologa-aline-politi-%04d.webp', $n + 1);
+    $ok = imagewebp($dst, $dir . '/' . $nome, 82);
+    imagedestroy($src); imagedestroy($dst);
+    return $ok ? $nome : null;
+}
+
+/** Insere links internos automáticos (1ª ocorrência de cada termo) no HTML do artigo. */
+function blog_interlink(string $html): string
+{
+    $mapa = [
+        'terapia cognitivo-comportamental' => '/abordagem-tcc/o-que-e',
+        'terapias contextuais'             => '/abordagem-tcc/terapias-contextuais',
+        'orientação de pais'               => '/abordagem-tcc/orientacao-de-pais',
+        'supervisão'                       => '/abordagem-tcc/supervisao',
+        'terapia online'                   => '/atendimento/online',
+        'atendimento presencial'           => '/atendimento/presencial',
+    ];
+    foreach ($mapa as $frase => $path) {
+        $rep = '<a href="' . url($path) . '" class="text-teal-dark font-semibold hover:text-magenta">$0</a>';
+        $novo = @preg_replace('/' . preg_quote($frase, '/') . '(?![^<]*>)(?![^<]*<\/a>)/iu', $rep, $html, 1);
+        if ($novo !== null) { $html = $novo; }
+    }
+    return $html;
+}
+
+/** Artigos relacionados (por tags em comum; cai em recentes se não houver). */
+function blog_relacionados(array $post, int $n = 3): array
+{
+    $meu = array_map(static fn($t) => mb_strtolower(trim($t), 'UTF-8'),
+        array_filter(explode(',', (string)($post['tags'] ?? ''))));
+    $scored = [];
+    foreach (blog_posts() as $p) {
+        if (($p['slug'] ?? '') === ($post['slug'] ?? '')) { continue; }
+        $pt = array_map(static fn($t) => mb_strtolower(trim($t), 'UTF-8'),
+            array_filter(explode(',', (string)($p['tags'] ?? ''))));
+        $scored[] = ['p' => $p, 's' => count(array_intersect($meu, $pt))];
+    }
+    usort($scored, static fn($a, $b) => $b['s'] <=> $a['s']);
+    return array_map(static fn($x) => $x['p'], array_slice($scored, 0, $n));
+}
+
+/** FAQ do post (JSON → array de ['q'=>..,'a'=>..]). */
+function blog_faq(array $post): array
+{
+    $raw = (string)($post['faq'] ?? '');
+    if ($raw === '') { return []; }
+    $d = json_decode($raw, true);
+    if (!is_array($d)) { return []; }
+    return array_values(array_filter($d, static fn($x) =>
+        is_array($x) && trim((string)($x['q'] ?? '')) !== '' && trim((string)($x['a'] ?? '')) !== ''));
+}
+
+/** Checklist de SEO do artigo → ['checks'=>[[label,ok]], 'ok','total','pct']. */
+function blog_seo_score(array $post): array
+{
+    $titulo = (string)($post['titulo'] ?? '');
+    $metaT  = ((string)($post['meta_titulo'] ?? '')) ?: $titulo;
+    $metaD  = ((string)($post['meta_descricao'] ?? '')) ?: (string)($post['resumo'] ?? '');
+    $kw     = mb_strtolower(trim((string)($post['keyword_foco'] ?? '')), 'UTF-8');
+    $texto  = strip_tags((string)($post['conteudo'] ?? ''));
+    $nPal   = count(preg_split('/\s+/u', trim($texto)) ?: []);
+    $inicio = mb_strtolower(mb_substr($texto, 0, 300), 'UTF-8');
+
+    $checks = [
+        ['Título até 60 caracteres',        mb_strlen($metaT) > 0 && mb_strlen($metaT) <= 60],
+        ['Meta descrição (120–160)',        mb_strlen($metaD) >= 120 && mb_strlen($metaD) <= 160],
+        ['Palavra-chave foco definida',     $kw !== ''],
+        ['Keyword no título',               $kw !== '' && mb_stripos($metaT, $kw) !== false],
+        ['Keyword no início do texto',      $kw !== '' && mb_stripos($inicio, $kw) !== false],
+        ['Conteúdo com 300+ palavras',      $nPal >= 300],
+        ['Imagem de capa',                  !empty($post['capa'])],
+        ['Tags definidas',                  trim((string)($post['tags'] ?? '')) !== ''],
+        ['Tem FAQ (bom para IA)',           blog_faq($post) !== []],
+        ['Tem resumo rápido (TL;DR)',       trim((string)($post['tldr'] ?? '')) !== ''],
+    ];
+    $ok = count(array_filter($checks, static fn($c) => $c[1]));
+    return ['checks' => $checks, 'ok' => $ok, 'total' => count($checks), 'pct' => (int)round($ok / count($checks) * 100)];
 }

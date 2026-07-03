@@ -12,26 +12,17 @@ $relac  = blog_relacionados($post, 3);
     <p class="text-xs font-bold tracking-[0.2em] uppercase text-magenta mb-6">Publicado em <?= e(date('d/m/Y', strtotime((string)$post['publicado_em']))) ?></p>
   <?php endif; ?>
 
-  <?php if (!empty($post['capa'])): ?>
-    <img src="<?= asset('blog/' . $post['capa']) ?>" alt="<?= e($post['titulo']) ?>" width="900" height="1501"
-         class="w-full max-w-xs mx-auto h-auto rounded-2xl ring-1 ring-teal-dark/10 mb-10" loading="lazy">
-  <?php endif; ?>
-
-  <?php if ($tldr): ?>
-    <div class="rounded-2xl bg-cream border border-teal-dark/10 p-6 mb-10">
-      <p class="text-xs font-bold uppercase tracking-[0.2em] text-magenta mb-3">Resumo rápido</p>
-      <ul class="space-y-2 text-ink/80">
-        <?php foreach ($tldr as $b): ?>
-          <li class="flex gap-2.5"><span class="text-teal-mid mt-1">•</span><span><?= e($b) ?></span></li>
-        <?php endforeach; ?>
-      </ul>
-    </div>
-  <?php endif; ?>
-
-  <div class="space-y-6 text-ink/80 text-[17px] leading-[1.8] [&>h2]:font-heading [&>h2]:text-teal-dark [&>h2]:text-3xl [&>h2]:mt-12 [&>h2]:mb-4 [&>h3]:font-heading [&>h3]:text-teal-dark [&>h3]:text-xl [&>ul]:list-disc [&>ul]:pl-6 [&>ul]:space-y-2 [&_strong]:text-teal-dark">
+  <!-- 02 · Texto (esquerda) com a imagem flutuando à direita; ao fim da imagem, o texto ocupa a largura toda -->
+  <div class="text-ink/80 text-[17px] leading-[1.8] [&>h2]:font-heading [&>h2]:text-teal-dark [&>h2]:text-3xl [&>h2]:mt-10 [&>h2]:mb-4 [&>h3]:font-heading [&>h3]:text-teal-dark [&>h3]:text-xl [&>p]:mb-5 [&>ul]:list-disc [&>ul]:pl-6 [&>ul]:space-y-2 [&>ul]:mb-5 [&_strong]:text-teal-dark [&_a]:text-teal-dark">
+    <?php if (!empty($post['capa'])): ?>
+      <img src="<?= asset('blog/' . $post['capa']) ?>" alt="<?= e($post['titulo']) ?>" width="900" height="1501"
+           class="w-full sm:w-[42%] sm:float-right sm:ml-8 sm:mb-4 mb-6 rounded-2xl ring-1 ring-teal-dark/10" loading="lazy">
+    <?php endif; ?>
     <?= blog_interlink((string)$post['conteudo']) /* HTML confiável (autoria do admin) + links internos automáticos */ ?>
+    <div class="clear-both"></div>
   </div>
 
+  <!-- 04 · Fontes & referências -->
   <?php if ($fontes): ?>
     <div class="mt-12 pt-6 border-t border-teal-dark/10">
       <p class="text-xs font-bold uppercase tracking-[0.2em] text-magenta mb-3">Fontes &amp; referências</p>
@@ -43,6 +34,19 @@ $relac  = blog_relacionados($post, 3);
     </div>
   <?php endif; ?>
 
+  <!-- 05 · Resumo rápido (TL;DR) -->
+  <?php if ($tldr): ?>
+    <div class="mt-10 rounded-2xl bg-cream border border-teal-dark/10 p-6">
+      <p class="text-xs font-bold uppercase tracking-[0.2em] text-magenta mb-3">Resumo rápido</p>
+      <ul class="space-y-2 text-ink/80">
+        <?php foreach ($tldr as $b): ?>
+          <li class="flex gap-2.5"><span class="text-teal-mid mt-1">•</span><span><?= e($b) ?></span></li>
+        <?php endforeach; ?>
+      </ul>
+    </div>
+  <?php endif; ?>
+
+  <!-- 06 · Perguntas frequentes -->
   <?php if ($faq): ?>
     <section class="mt-14">
       <h2 class="font-heading text-3xl text-teal-dark mb-6">Perguntas frequentes</h2>
@@ -60,6 +64,7 @@ $relac  = blog_relacionados($post, 3);
     </section>
   <?php endif; ?>
 
+  <!-- 07 · Leia também -->
   <?php if ($relac): ?>
     <section class="mt-14">
       <h2 class="font-heading text-2xl text-teal-dark mb-5">Leia também</h2>

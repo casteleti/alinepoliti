@@ -42,6 +42,10 @@ const GA_MEASUREMENT_ID = 'G-KD55BQNYBC';
 // ⚠️ NÃO crie tag de page_view do GA4 dentro do GTM (o gtag acima já faz) — evita pageview duplicado.
 const GTM_CONTAINER_ID = 'GTM-N9KKF9ZT';
 
+// Meta Pixel (Facebook/Instagram Ads). Deixe vazio para desativar.
+// Preencha com o ID do pixel para ativar rastreamento de PageView/Contact/Lead.
+const META_PIXEL_ID = '';
+
 // -------- Envio de e-mail (defina no ambiente do servidor — NUNCA versionar senhas) --------
 // Preferência: 1) SMTP autenticado (caixa do próprio domínio) → 2) Resend → 3) mail() nativo.
 //

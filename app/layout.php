@@ -72,6 +72,16 @@ $siteJsonLd = json_encode([
     gtag('config', '<?= e(GA_MEASUREMENT_ID) ?>');
   </script>
 <?php endif; ?>
+<?php if (META_PIXEL_ID !== ''): ?>
+  <!-- Meta Pixel -->
+  <script>!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+  n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');fbq('init','<?= e(META_PIXEL_ID) ?>');fbq('track','PageView');</script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=<?= e(META_PIXEL_ID) ?>&ev=PageView&noscript=1"/></noscript>
+  <!-- End Meta Pixel -->
+<?php endif; ?>
   <title><?= e($title) ?></title>
   <meta name="description" content="<?= e($description) ?>">
   <meta name="author" content="Aline Politi">
@@ -160,7 +170,7 @@ $siteJsonLd = json_encode([
 <?php endif; ?>
   <a href="#conteudo" class="skip-link">Pular para o conteúdo</a>
   <?php render_header(); ?>
-  <?php render_breadcrumbs(); ?>
+  <?php if (empty($meta['no_breadcrumb'])) { render_breadcrumbs(); } ?>
   <main id="conteudo" class="flex-1"><?= $content ?></main>
   <?php pre_rodape(); ?>
   <?php render_footer(); ?>

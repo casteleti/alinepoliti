@@ -210,6 +210,15 @@ function routes_table(): array
             'description' => 'Supervisão clínica para psicólogos que desejam aprofundar a prática em Terapia Cognitivo-Comportamental: discussão de casos, técnica e ética.',
             'canonical' => '/abordagem-tcc/supervisao',
         ],
+        // Landing page autônoma (tráfego pago) — fora do menu e do sitemap
+        '/atendimento/brasileiros-no-exterior' => [
+            'view' => 'lp-brasileiros-no-exterior.php',
+            'title' => 'Psicóloga brasileira para quem mora no exterior | Aline Politi',
+            'description' => 'Atendimento psicológico online em português para brasileiros que vivem fora. Psicóloga clínica (CRP 06/113904), TCC e terapias contextuais. Acolhimento e sigilo.',
+            'canonical' => '/atendimento/brasileiros-no-exterior',
+            'ogImage' => asset('og.jpg'),
+            'no_breadcrumb' => true,
+        ],
         '/atendimento' => [
             'view' => 'atendimento.php',
             'title' => 'Atendimento em Jaboticabal e Online | Aline Politi',
@@ -256,8 +265,14 @@ function handle_contato(): void
     $email    = trim((string)($_POST['email'] ?? ''));
     $telefone = trim((string)($_POST['telefone'] ?? ''));
     $msg      = trim((string)($_POST['mensagem'] ?? ''));
+    $local    = trim((string)($_POST['local'] ?? ''));
     $origem   = trim((string)($_POST['origem'] ?? 'contato'));
     $assunto  = trim((string)($_POST['assunto'] ?? '')) ?: 'Outro assunto';
+
+    // Campo "país/cidade" (LP brasileiros no exterior) entra na mensagem
+    if ($local !== '') {
+        $msg = trim('País/cidade: ' . $local . ($msg !== '' ? "\n\n" . $msg : ''));
+    }
 
     $errors = [];
     if (!csrf_check()) {
@@ -303,6 +318,7 @@ function handle_contato(): void
         'presencial'      => 'Atendimento Presencial',
         'supervisao'      => 'Supervisão para Psicólogos',
         'orientacao-pais' => 'Orientação de Pais',
+        'brasileiros-exterior' => 'LP · Brasileiros no Exterior',
     ];
     $pagina = $paginas[$origem] ?? ucfirst($origem);
 

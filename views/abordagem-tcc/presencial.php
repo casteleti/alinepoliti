@@ -1,5 +1,5 @@
 <?php page_hero('Atendimento', 'presencial', 'Modalidade', 'Um espaço pensado para sua escuta, com privacidade e conforto.'); prose_open(); ?>
-<img src="<?= asset('banner.jpg') ?>" alt="Consultório de Aline Politi em Jaboticabal" width="1600" height="800" loading="lazy" class="w-full rounded-[2rem] ring-1 ring-teal-dark/10">
+<img src="<?= asset('banner.webp') ?>" alt="Consultório de Aline Politi em Jaboticabal" width="1600" height="800" loading="lazy" class="w-full rounded-[2rem] ring-1 ring-teal-dark/10">
 <h2>Como é a sessão</h2>
 <p>As sessões presenciais têm duração média de 50 minutos e acontecem em consultório com ambiente acolhedor, reservado e silencioso. A frequência habitual é semanal e revisada conforme o processo.</p>
 

@@ -64,7 +64,7 @@ $siteJsonLd = json_encode([
             'jobTitle'      => 'Psicóloga Clínica',
             'identifier'    => SITE_CRP,
             'url'           => abs_url('/a-psicologa'),
-            'image'         => abs_url('/assets/portrait.jpg'),
+            'image'         => abs_url('/assets/portrait.webp'),
             'worksFor'      => ['@id' => $_orgId],
             'knowsLanguage' => 'pt-BR',
             'knowsAbout'    => $_knowsAbout,

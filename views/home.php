@@ -56,7 +56,7 @@ $modalidades = [
     <div class="relative">
       <div class="absolute -inset-6 bg-gradient-to-br from-teal-mid/25 via-cream to-amber/20 blob-1 blur-2xl" aria-hidden="true"></div>
       <div class="relative aspect-square w-full max-w-[520px] mx-auto blob-1 overflow-hidden ring-1 ring-teal-dark/10 bg-teal-dark/5">
-        <img src="<?= asset('consultoria.jpg') ?>" alt="Aline Politi, psicóloga clínica especialista em TCC" width="764" height="820" fetchpriority="high" class="w-full h-full object-cover">
+        <img src="<?= asset('consultoria.webp') ?>" alt="Aline Politi, psicóloga clínica especialista em TCC" width="764" height="820" fetchpriority="high" class="w-full h-full object-cover">
       </div>
       <div class="absolute -bottom-4 -left-4 lg:-left-10 bg-white px-6 py-5 rounded-2xl shadow-xl shadow-teal-dark/10 ring-1 ring-teal-dark/5 max-w-[270px] rotate-[-3deg]">
         <p class="font-display italic text-teal-dark leading-snug text-xl text-center">“O cuidado que começa no acolhimento.”</p>
@@ -96,7 +96,7 @@ $modalidades = [
   <div class="relative max-w-7xl mx-auto px-6 lg:px-8 grid lg:grid-cols-2 gap-16 items-center">
     <div class="relative order-2 lg:order-1">
       <div class="absolute -inset-4 bg-amber/15 blob-2" aria-hidden="true"></div>
-      <img src="<?= asset('banner.jpg') ?>" alt="Consultório de Aline Politi em Jaboticabal" width="1600" height="800" class="relative w-full h-auto blob-1 ring-1 ring-teal-dark/10" loading="lazy">
+      <img src="<?= asset('banner.webp') ?>" alt="Consultório de Aline Politi em Jaboticabal" width="1600" height="800" class="relative w-full h-auto blob-1 ring-1 ring-teal-dark/10" loading="lazy">
     </div>
     <div class="order-1 lg:order-2">
       <span class="text-xs font-bold tracking-[0.25em] uppercase text-magenta">A psicóloga</span>

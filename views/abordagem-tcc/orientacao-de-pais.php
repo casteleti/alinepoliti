@@ -5,7 +5,7 @@
   <div class="relative max-w-6xl mx-auto px-6 lg:px-8 grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
     <!-- Ilustração (esquerda no desktop) -->
     <div class="order-2 lg:order-1">
-      <img src="<?= asset('orientacao-pais.png') ?>" alt="Orientação de pais com base na TCC — Aline Politi"
+      <img src="<?= asset('orientacao-pais.webp') ?>" alt="Orientação de pais com base na TCC — Aline Politi"
            width="800" height="800" class="w-full h-auto max-w-md mx-auto">
     </div>
     <!-- Texto (direita no desktop) -->

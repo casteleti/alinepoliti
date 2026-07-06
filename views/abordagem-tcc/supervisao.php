@@ -54,7 +54,7 @@
     </div>
     <!-- Ilustração (direita no desktop) -->
     <div class="order-2">
-      <img src="<?= asset('supervisao.png') ?>" alt="Supervisão clínica em TCC com Aline Politi"
+      <img src="<?= asset('supervisao.webp') ?>" alt="Supervisão clínica em TCC com Aline Politi"
            width="900" height="900" class="w-full h-auto max-w-md mx-auto">
     </div>
   </div>

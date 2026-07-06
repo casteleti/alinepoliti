@@ -50,7 +50,7 @@ $waBtn = static function (string $rotulo) use ($wa): string {
       <div class="relative w-full max-w-[420px] mx-auto">
         <div class="absolute -inset-5 bg-gradient-to-br from-teal-mid/25 via-cream to-amber/20 blob-1 blur-2xl" aria-hidden="true"></div>
         <div class="relative aspect-square blob-1 overflow-hidden ring-1 ring-teal-dark/10">
-          <img src="<?= asset('consultoria.jpg') ?>" alt="Aline Politi, psicóloga clínica, em atendimento online" width="764" height="820" fetchpriority="high" class="w-full h-full object-cover">
+          <img src="<?= asset('consultoria.webp') ?>" alt="Aline Politi, psicóloga clínica, em atendimento online" width="764" height="820" fetchpriority="high" class="w-full h-full object-cover">
         </div>
         <!-- Selo bandeira do Brasil -->
         <div class="absolute bottom-3 left-1 lg:-left-3 size-16 lg:size-20 rounded-full bg-white p-1.5 shadow-xl shadow-teal-dark/20 ring-1 ring-teal-dark/5" aria-label="Atendimento em português (Brasil)" title="Atendimento em português">
@@ -101,7 +101,7 @@ $waBtn = static function (string $rotulo) use ($wa): string {
   <div class="max-w-5xl mx-auto px-6 lg:px-8 grid lg:grid-cols-[0.8fr_1fr] gap-10 lg:gap-14 items-center">
     <div class="relative order-first">
       <div class="absolute -inset-4 bg-amber/15 blob-2" aria-hidden="true"></div>
-      <img src="<?= asset('portrait.jpg') ?>" alt="Aline Politi, psicóloga clínica (CRP 06/113904)" width="600" height="750" class="relative w-full max-w-xs mx-auto h-auto blob-1 ring-1 ring-teal-dark/10" loading="lazy">
+      <img src="<?= asset('portrait.webp') ?>" alt="Aline Politi, psicóloga clínica (CRP 06/113904)" width="600" height="750" class="relative w-full max-w-xs mx-auto h-auto blob-1 ring-1 ring-teal-dark/10" loading="lazy">
     </div>
     <div>
       <span class="<?= $pill ?>">Quem vai caminhar com você</span>

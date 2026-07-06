@@ -5,7 +5,7 @@
   <div class="relative max-w-6xl mx-auto px-6 lg:px-8 grid lg:grid-cols-2 gap-8 lg:gap-16 items-start">
     <!-- Ilustração (esquerda, fixa ao rolar) -->
     <div class="order-2 lg:order-1 lg:sticky lg:top-28">
-      <img src="<?= asset('o-que-e-tcc.png') ?>" alt="O que é a Terapia Cognitivo-Comportamental (TCC) — Aline Politi"
+      <img src="<?= asset('o-que-e-tcc.webp') ?>" alt="O que é a Terapia Cognitivo-Comportamental (TCC) — Aline Politi"
            width="709" height="820" class="w-full h-auto max-w-md mx-auto">
     </div>
 

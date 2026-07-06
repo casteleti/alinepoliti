@@ -11,7 +11,7 @@ page_hero('Aline', 'Politi', 'A Psicóloga', 'Uma jornada de estudo, escuta e cu
 <section class="max-w-6xl mx-auto px-6 lg:px-8 pb-12 grid lg:grid-cols-[1fr_1.2fr] gap-12 items-center">
   <div class="relative">
     <div class="absolute -inset-6 bg-teal-mid/15 blob-1" aria-hidden="true"></div>
-    <img src="<?= asset('portrait.jpg') ?>" alt="Aline Politi, psicóloga clínica" width="910" height="1000" class="relative w-full h-auto blob-2 ring-1 ring-teal-dark/10" loading="lazy">
+    <img src="<?= asset('portrait.webp') ?>" alt="Aline Politi, psicóloga clínica" width="910" height="1000" class="relative w-full h-auto blob-2 ring-1 ring-teal-dark/10" loading="lazy">
   </div>
   <div>
     <p class="text-lg text-ink/75 leading-relaxed">

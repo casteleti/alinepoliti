@@ -18,7 +18,7 @@ $abordagens = [
 page_hero('Terapias', 'contextuais', 'Abordagem', 'A chamada 3ª onda da TCC. A ciência do cuidado evoluiu — e a minha prática acompanha essa evolução.');
 ?>
 <section class="max-w-5xl mx-auto px-6 lg:px-8 mb-8">
-  <img src="<?= asset('tc-banner.jpg') ?>" alt="Formação em terapias contextuais e DBT — Aline Politi" width="1600" height="779" loading="lazy" class="w-full rounded-[2.5rem] ring-1 ring-teal-dark/10">
+  <img src="<?= asset('tc-banner.webp') ?>" alt="Formação em terapias contextuais e DBT — Aline Politi" width="1600" height="779" loading="lazy" class="w-full rounded-[2.5rem] ring-1 ring-teal-dark/10">
 </section>
 <section class="max-w-5xl mx-auto px-6 lg:px-8">
   <p class="text-lg text-ink/75 leading-relaxed max-w-3xl">

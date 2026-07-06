@@ -15,36 +15,65 @@ $ogImage     = $meta['ogImage']     ?? asset('og.jpg');
 if ($ogImage !== '' && $ogImage[0] === '/') { $ogImage = abs_url($ogImage); } // OG/Twitter exigem URL absoluta
 $extraJsonLd = $meta['jsonld']      ?? '';
 
+$_orgId     = SITE_ORIGIN . '/#organizacao';
+$_personId  = SITE_ORIGIN . '/#aline-politi';
+$_knowsAbout = [
+    'Terapia Cognitivo-Comportamental', 'Ansiedade', 'Depressão', 'Orientação de Pais',
+    'Supervisão Clínica', 'Terapia de Aceitação e Compromisso (ACT)',
+    'Terapia Comportamental Dialética (DBT)', 'Terapia do Esquema',
+    'Terapia Focada na Compaixão', 'Autocompaixão', 'Regulação Emocional', 'Mindfulness',
+];
+$_endereco = [
+    '@type' => 'PostalAddress',
+    'streetAddress' => 'Avenida 15 de Novembro, 418 - Centro',
+    'addressLocality' => 'Jaboticabal',
+    'addressRegion' => 'SP',
+    'postalCode' => '14870-600',
+    'addressCountry' => 'BR',
+];
+// @graph com identidade explícita: Organization/Psychologist + Person (E-E-A-T / GEO)
 $siteJsonLd = json_encode([
-    '@context'      => 'https://schema.org',
-    '@type'         => 'Psychologist',
-    'name'          => SITE_NAME,
-    'jobTitle'      => 'Psicóloga Clínica',
-    'description'   => 'Psicóloga clínica especializada em Terapia Cognitivo-Comportamental (TCC), com atendimento presencial e online.',
-    'identifier'    => SITE_CRP,
-    'knowsLanguage' => 'pt-BR',
-    'knowsAbout'    => [
-        'Terapia Cognitivo-Comportamental', 'Ansiedade', 'Depressão', 'Orientação de Pais',
-        'Supervisão Clínica', 'Terapia de Aceitação e Compromisso (ACT)',
-        'Terapia Comportamental Dialética (DBT)', 'Terapia do Esquema',
-        'Terapia Focada na Compaixão', 'Autocompaixão', 'Regulação Emocional', 'Mindfulness',
-    ],
-    'telephone'     => SITE_PHONE_E164,
-    'email'         => SITE_EMAIL,
-    'address'       => [
-        '@type' => 'PostalAddress',
-        'streetAddress' => 'Avenida 15 de Novembro, 418 - Centro',
-        'addressLocality' => 'Jaboticabal',
-        'addressRegion' => 'SP',
-        'postalCode' => '14870-600',
-        'addressCountry' => 'BR',
-    ],
-    'sameAs'        => [SITE_INSTAGRAM_URL],
-    'areaServed'    => ['@type' => 'Country', 'name' => 'Brasil'],
-    'availableService' => [
-        ['@type' => 'MedicalTherapy', 'name' => 'Atendimento Clínico em TCC'],
-        ['@type' => 'MedicalTherapy', 'name' => 'Orientação de Pais'],
-        ['@type' => 'Service', 'name' => 'Supervisão para Psicólogos'],
+    '@context' => 'https://schema.org',
+    '@graph'   => [
+        [
+            '@type'       => ['Psychologist', 'LocalBusiness', 'Organization'],
+            '@id'         => $_orgId,
+            'name'        => 'Aline Politi · Psicologia',
+            'url'         => SITE_ORIGIN,
+            'image'       => abs_url('/assets/og.jpg'),
+            'logo'        => abs_url('/assets/logo.png'),
+            'description' => 'Psicóloga clínica especializada em Terapia Cognitivo-Comportamental (TCC), com atendimento presencial em Jaboticabal e online.',
+            'telephone'   => SITE_PHONE_E164,
+            'email'       => SITE_EMAIL,
+            'address'     => $_endereco,
+            'areaServed'  => ['@type' => 'Country', 'name' => 'Brasil'],
+            'knowsAbout'  => $_knowsAbout,
+            'sameAs'      => [SITE_INSTAGRAM_URL],
+            'founder'     => ['@id' => $_personId],
+            'employee'    => ['@id' => $_personId],
+            'availableService' => [
+                ['@type' => 'MedicalTherapy', 'name' => 'Atendimento Clínico em TCC'],
+                ['@type' => 'MedicalTherapy', 'name' => 'Orientação de Pais'],
+                ['@type' => 'Service', 'name' => 'Supervisão para Psicólogos'],
+            ],
+        ],
+        [
+            '@type'         => 'Person',
+            '@id'           => $_personId,
+            'name'          => SITE_NAME,
+            'jobTitle'      => 'Psicóloga Clínica',
+            'identifier'    => SITE_CRP,
+            'url'           => abs_url('/a-psicologa'),
+            'image'         => abs_url('/assets/portrait.jpg'),
+            'worksFor'      => ['@id' => $_orgId],
+            'knowsLanguage' => 'pt-BR',
+            'knowsAbout'    => $_knowsAbout,
+            'sameAs'        => [SITE_INSTAGRAM_URL],
+            'alumniOf'      => [
+                ['@type' => 'CollegeOrUniversity', 'name' => 'Universidade de São Paulo (USP)'],
+                ['@type' => 'CollegeOrUniversity', 'name' => 'UNAERP — Universidade de Ribeirão Preto'],
+            ],
+        ],
     ],
 ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
 ?>

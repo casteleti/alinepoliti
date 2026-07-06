@@ -179,6 +179,14 @@ function blog_posts(): array
         }
     }
     $lista = array_values($porSlug);
+    // Backfill de capa a partir do código (cards/relacionados aparecem sem depender do banco)
+    $seo = blog_seo_map();
+    foreach ($lista as &$item) {
+        if (empty($item['capa']) && !empty($seo[$item['slug'] ?? '']['capa'])) {
+            $item['capa'] = $seo[$item['slug']]['capa'];
+        }
+    }
+    unset($item);
     usort($lista, fn($x, $y) => strcmp((string)($y['publicado_em'] ?? ''), (string)($x['publicado_em'] ?? '')));
     return $lista;
 }
@@ -655,7 +663,8 @@ function blog_extrair_referencias(string $html): array
  * preenchendo o que estiver faltando — para que FAQ/TL;DR/Fontes/metas apareçam
  * mesmo que o banco de produção não tenha sido semeado. Idempotente.
  */
-function enriquecer_artigo(array $post): array
+/** Mapa slug => metadados SEO/GEO curados (app/seed_blog_seo.php), em cache. */
+function blog_seo_map(): array
 {
     static $seo = null;
     if ($seo === null) {
@@ -663,8 +672,16 @@ function enriquecer_artigo(array $post): array
         $seo = is_file($f) ? (require $f) : [];
         if (!is_array($seo)) { $seo = []; }
     }
-    $s = $seo[$post['slug'] ?? ''] ?? null;
+    return $seo;
+}
+
+function enriquecer_artigo(array $post): array
+{
+    $s = blog_seo_map()[$post['slug'] ?? ''] ?? null;
     if (!$s) { return $post; }
+
+    // Capa: preenche do código se o artigo não tiver (prod sem seed mostra a capa)
+    if (empty($post['capa']) && !empty($s['capa'])) { $post['capa'] = $s['capa']; }
 
     $conteudo = (string)($post['conteudo'] ?? '');
 

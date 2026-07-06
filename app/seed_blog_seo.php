@@ -9,6 +9,7 @@ declare(strict_types=1);
 
 return [
     'o-que-e-terapia-cognitivo-comportamental' => [
+        'capa'           => 'psicologa-aline-politi-0001.webp',
         'keyword_foco'   => 'terapia cognitivo-comportamental',
         'meta_titulo'    => 'O que é a Terapia Cognitivo-Comportamental (TCC)?',
         'meta_descricao' => 'Entenda o que é a Terapia Cognitivo-Comportamental (TCC): como Aaron Beck a criou e como pensamentos, emoções e comportamentos se conectam.',
@@ -21,6 +22,7 @@ return [
         ],
     ],
     'ansiedade-como-a-tcc-ajuda' => [
+        'capa'           => 'psicologa-aline-politi-0003.webp',
         'keyword_foco'   => 'ansiedade',
         'meta_titulo'    => 'Ansiedade: como a TCC ajuda a quebrar o ciclo do medo',
         'meta_descricao' => 'A ansiedade se mantém por pensamentos catastróficos e evitação. Veja como a Terapia Cognitivo-Comportamental interrompe esse ciclo do medo.',
@@ -33,6 +35,7 @@ return [
         ],
     ],
     'depressao-triade-cognitiva-beck' => [
+        'capa'           => 'psicologa-aline-politi-0017.webp',
         'keyword_foco'   => 'depressão',
         'meta_titulo'    => 'Depressão e a tríade cognitiva de Aaron Beck',
         'meta_descricao' => 'A depressão distorce como vemos a nós, o mundo e o futuro. Conheça a tríade cognitiva de Beck e a ativação comportamental no tratamento.',
@@ -45,6 +48,7 @@ return [
         ],
     ],
     'reestruturacao-cognitiva-pensamentos-automaticos' => [
+        'capa'           => 'psicologa-aline-politi-0002.webp',
         'keyword_foco'   => 'pensamentos automáticos',
         'meta_titulo'    => 'Reestruturação cognitiva e pensamentos automáticos',
         'meta_descricao' => 'Pensamentos automáticos surgem sem convite e moldam emoções. Aprenda o que são e como o registro de pensamentos ajuda a transformá-los.',
@@ -57,6 +61,7 @@ return [
         ],
     ],
     'terapia-online-funciona-ciencia' => [
+        'capa'           => 'psicologa-aline-politi-0009.webp',
         'keyword_foco'   => 'terapia online',
         'meta_titulo'    => 'Terapia online funciona? O que diz a ciência',
         'meta_descricao' => 'A psicoterapia por vídeo tem respaldo científico e regulamentação do CFP. Veja as evidências de que a terapia online funciona e quando é indicada.',
@@ -69,6 +74,7 @@ return [
         ],
     ],
     'orientacao-de-pais-base-cientifica' => [
+        'capa'           => 'psicologa-aline-politi-0013.webp',
         'keyword_foco'   => 'orientação de pais',
         'meta_titulo'    => 'Orientação de pais: o que a ciência recomenda',
         'meta_descricao' => 'Birras, limites e comunicação: a orientação de pais baseada em evidências transforma a rotina familiar com técnicas validadas pela pesquisa.',
@@ -81,6 +87,7 @@ return [
         ],
     ],
     'ataques-de-panico-entender-tratar' => [
+        'capa'           => 'psicologa-aline-politi-0005.webp',
         'keyword_foco'   => 'ataques de pânico',
         'meta_titulo'    => 'Ataques de pânico: entender para tratar',
         'meta_descricao' => 'Coração disparado, falta de ar e medo de que algo terrível aconteça. Entenda o ciclo dos ataques de pânico e como a TCC ajuda a interrompê-lo.',
@@ -93,6 +100,7 @@ return [
         ],
     ],
     'autoestima-reconstruir-relacao-consigo' => [
+        'capa'           => 'psicologa-aline-politi-0006.webp',
         'keyword_foco'   => 'autoestima',
         'meta_titulo'    => 'Autoestima: reconstruir a relação consigo mesmo',
         'meta_descricao' => 'Autoestima não é se achar perfeito — é parar de se atacar. Veja como a TCC e a autocompaixão ajudam a transformar a autocrítica em cuidado.',
@@ -105,6 +113,7 @@ return [
         ],
     ],
     'burnout-quando-o-trabalho-adoece' => [
+        'capa'           => 'psicologa-aline-politi-0007.webp',
         'keyword_foco'   => 'burnout',
         'meta_titulo'    => 'Burnout: quando o trabalho adoece',
         'meta_descricao' => 'Exaustão que o descanso não resolve, distanciamento e queda de desempenho. Entenda o burnout, como diferenciá-lo do estresse e como a terapia ajuda.',
@@ -117,6 +126,7 @@ return [
         ],
     ],
     'autocompaixao-pare-de-ser-seu-pior-critico' => [
+        'capa'           => 'psicologa-aline-politi-0008.webp',
         'keyword_foco'   => 'autocompaixão',
         'meta_titulo'    => 'Autocompaixão: pare de ser seu pior crítico',
         'meta_descricao' => 'Tratar-se com gentileza não é fraqueza nem autopiedade — é uma habilidade científica. Conheça os três pilares da autocompaixão de Kristin Neff.',
@@ -129,6 +139,7 @@ return [
         ],
     ],
     'regulacao-emocional-habilidades-dbt' => [
+        'capa'           => 'psicologa-aline-politi-0010.webp',
         'keyword_foco'   => 'regulação emocional',
         'meta_titulo'    => 'Regulação emocional: as habilidades da DBT',
         'meta_descricao' => 'Quando as emoções parecem incontroláveis, é possível aprender habilidades concretas. Conheça a DBT de Marsha Linehan e seus quatro módulos.',
@@ -141,6 +152,7 @@ return [
         ],
     ],
     'act-aceitar-agir-pelos-valores' => [
+        'capa'           => 'psicologa-aline-politi-0014.webp',
         'keyword_foco'   => 'aceitação',
         'meta_titulo'    => 'Aceitação e Compromisso (ACT): agir pelos valores',
         'meta_descricao' => 'E se o objetivo não fosse eliminar o desconforto, mas viver com sentido apesar dele? Conheça a ACT — Terapia de Aceitação e Compromisso.',
@@ -153,6 +165,7 @@ return [
         ],
     ],
     'terapia-do-esquema-padroes-que-repetimos' => [
+        'capa'           => 'psicologa-aline-politi-0016.webp',
         'keyword_foco'   => 'terapia do esquema',
         'meta_titulo'    => 'Terapia do Esquema: por que repetimos padrões',
         'meta_descricao' => 'Relações que terminam parecidas e sensações que voltam sempre. A Terapia do Esquema ajuda a entender padrões da infância — e a reescrevê-los.',
@@ -165,6 +178,7 @@ return [
         ],
     ],
     'mindfulness-na-terapia' => [
+        'capa'           => 'psicologa-aline-politi-0015.webp',
         'keyword_foco'   => 'mindfulness',
         'meta_titulo'    => 'Mindfulness na terapia: o que é (e o que não é)',
         'meta_descricao' => 'Mindfulness virou moda — e muita confusão. Entenda o que a atenção plena realmente é, o que a ciência mostra e como ela entra na TCC.',
@@ -177,6 +191,7 @@ return [
         ],
     ],
     'meu-filho-adolescente-precisa-de-terapia' => [
+        'capa'           => 'psicologa-aline-politi-0012.webp',
         'keyword_foco'   => 'adolescente',
         'meta_titulo'    => 'Meu filho adolescente precisa de terapia?',
         'meta_descricao' => 'Nem toda crise da adolescência exige terapia — mas alguns sinais merecem atenção. Um guia para pais, com base na psicologia, sobre quando buscar ajuda.',
@@ -189,6 +204,7 @@ return [
         ],
     ],
     'terapia-de-casal-o-que-a-ciencia-diz' => [
+        'capa'           => 'psicologa-aline-politi-0011.webp',
         'keyword_foco'   => 'terapia de casal',
         'meta_titulo'    => 'Terapia de casal: o que a ciência diz',
         'meta_descricao' => 'Brigar não é o problema — o problema é como brigamos. Veja o que a pesquisa em relacionamentos revela sobre o que aproxima e afasta os casais.',

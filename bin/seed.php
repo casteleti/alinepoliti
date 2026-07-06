@@ -23,9 +23,10 @@ if (!$pdo) {
 $artigos = require __DIR__ . '/../app/seed_artigos.php';
 $seoAll  = require __DIR__ . '/../app/seed_blog_seo.php';
 
-$sql = 'INSERT INTO posts (slug, titulo, resumo, conteudo, meta_titulo, meta_descricao, keyword_foco, tags, tldr, faq, fontes, publicado_em, ativo)
-        VALUES (:slug, :titulo, :resumo, :conteudo, :meta_titulo, :meta_descricao, :keyword_foco, :tags, :tldr, :faq, :fontes, :pub, 1)
+$sql = 'INSERT INTO posts (slug, titulo, resumo, conteudo, capa, meta_titulo, meta_descricao, keyword_foco, tags, tldr, faq, fontes, publicado_em, ativo)
+        VALUES (:slug, :titulo, :resumo, :conteudo, :capa, :meta_titulo, :meta_descricao, :keyword_foco, :tags, :tldr, :faq, :fontes, :pub, 1)
         ON DUPLICATE KEY UPDATE titulo=VALUES(titulo), resumo=VALUES(resumo), conteudo=VALUES(conteudo),
+          capa=COALESCE(VALUES(capa), capa),
           meta_titulo=VALUES(meta_titulo), meta_descricao=VALUES(meta_descricao), keyword_foco=VALUES(keyword_foco),
           tags=VALUES(tags), tldr=VALUES(tldr), faq=VALUES(faq), fontes=VALUES(fontes),
           publicado_em=VALUES(publicado_em), ativo=1';
@@ -48,6 +49,7 @@ foreach ($artigos as $a) {
         ':titulo'         => $a['titulo'],
         ':resumo'         => $a['resumo'],
         ':conteudo'       => $conteudo,
+        ':capa'           => $seo['capa'] ?? null,
         ':meta_titulo'    => $seo['meta_titulo'] ?? null,
         ':meta_descricao' => $seo['meta_descricao'] ?? null,
         ':keyword_foco'   => $seo['keyword_foco'] ?? null,

@@ -19,3 +19,6 @@ Thumbs.db
 
 # Imagens originais (pesadas) — mantidas no disco, fora do repo
 /public/assets/_originais/
+
+# Node (build de CSS) — node_modules não é versionado; o app.css compilado sim
+node_modules/

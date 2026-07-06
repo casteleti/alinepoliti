@@ -1,0 +1,13 @@
+{
+  "name": "alinepoliti",
+  "version": "1.0.0",
+  "private": true,
+  "description": "CSS do site Aline Politi — Tailwind compilado (sem CDN em runtime).",
+  "scripts": {
+    "build:css": "tailwindcss -i ./src/input.css -o ./public/assets/app.css --minify",
+    "watch:css": "tailwindcss -i ./src/input.css -o ./public/assets/app.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.17"
+  }
+}

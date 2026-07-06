@@ -137,56 +137,8 @@ $siteJsonLd = json_encode([
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,500&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Manrope:wght@400;500;600;700&display=swap">
 
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: { extend: {
-        colors: {
-          'teal-dark':'#117B7F','teal-mid':'#1FB6A8','magenta':'#A52A7E','amber':'#F2A91E','cream':'#FCF9F5','ink':'#1F3334',
-          background:'#FCF9F5', foreground:'#1F3334', primary:'#117B7F', muted:'#F1EBE1', accent:'#F2A91E'
-        },
-        fontFamily: {
-          display: ['"Cormorant Garamond"','ui-serif','Georgia','serif'],
-          heading: ['"Fraunces"','ui-serif','Georgia','serif'],
-          sans:    ['"Manrope"','ui-sans-serif','system-ui','sans-serif']
-        }
-      } }
-    }
-  </script>
-  <style>
-    body{font-family:"Manrope",ui-sans-serif,system-ui,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
-    h1,h2,h3,h4{font-family:"Fraunces",ui-serif,Georgia,serif;letter-spacing:-0.01em;}
-    .font-display{font-family:"Cormorant Garamond",ui-serif,Georgia,serif;}
-    .font-heading{font-family:"Fraunces",ui-serif,Georgia,serif;}
-    ::selection{background:#A52A7E;color:#FCF9F5;}
-    .blob-1{border-radius:40% 60% 70% 30% / 40% 50% 60% 40%;}
-    .blob-2{border-radius:60% 40% 30% 70% / 50% 30% 70% 50%;}
-    .blob-3{border-radius:30% 70% 50% 50% / 60% 40% 60% 40%;}
-    /* Anti-CLS enquanto o Tailwind carrega */
-    header > div{min-height:80px;}
-    /* Microinterações / efeitos */
-    a,button{transition:color .2s ease, background-color .2s ease, transform .2s ease, box-shadow .2s ease;}
-    /* Cabeçalho: vidro fosco ao rolar (desktop) + logo 20% maior no topo */
-    .site-header{transition:background .3s ease, backdrop-filter .3s ease, box-shadow .3s ease, border-color .3s ease;
-      background:rgba(252,249,245,.88); -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px);
-      border-bottom:1px solid rgba(17,123,127,.05);}
-    .site-logo{height:2.25rem; transition:height .3s ease;}
-    @media (min-width:1024px){
-      .site-header{background:transparent; -webkit-backdrop-filter:none; backdrop-filter:none; border-bottom-color:transparent; box-shadow:none;}
-      .site-header.scrolled{background:rgba(252,249,245,.72); -webkit-backdrop-filter:blur(14px) saturate(150%); backdrop-filter:blur(14px) saturate(150%); box-shadow:0 10px 34px rgba(17,123,127,.12); border-bottom-color:rgba(17,123,127,.06);}
-      .site-header:not(.scrolled) .site-logo{height:2.7rem;} /* +20% no início */
-    }
-    .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1);}
-    .reveal.is-visible{opacity:1;transform:none;}
-    details>summary{transition:color .2s ease;} details[open]>summary{color:#A52A7E;}
-    .skip-link{position:absolute;left:-9999px;top:0;z-index:100;background:#117B7F;color:#FCF9F5;padding:.65rem 1.1rem;border-radius:0 0 .6rem 0;font-weight:600;}
-    .skip-link:focus{left:0;}
-    @media (prefers-reduced-motion: reduce){
-      .reveal{opacity:1 !important;transform:none !important;transition:none !important;}
-      *{scroll-behavior:auto !important;}
-    }
-    html{scroll-behavior:smooth;}
-  </style>
+  <?php $cssVer = @filemtime(dirname(__DIR__) . '/public/assets/app.css') ?: '1'; ?>
+  <link rel="stylesheet" href="<?= asset('app.css') ?>?v=<?= e((string)$cssVer) ?>">
 
   <script type="application/ld+json"><?= $siteJsonLd ?></script>
   <?php if ($extraJsonLd): ?><script type="application/ld+json"><?= $extraJsonLd ?></script><?php endif; ?>

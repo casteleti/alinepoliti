@@ -550,8 +550,8 @@ function admin_chrome(string $title, string $body, bool $withBar = true): void
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex, nofollow">
   <title><?= e($title) ?> · Admin — Aline Politi</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>tailwind.config={theme:{extend:{colors:{'teal-dark':'#117B7F','teal-mid':'#1FB6A8','magenta':'#A52A7E','amber':'#F2A91E','cream':'#FCF9F5','ink':'#1F3334'},fontFamily:{heading:['Georgia','serif']}}}}</script>
+  <?php $cssVer = @filemtime(dirname(__DIR__) . '/public/assets/app.css') ?: '1'; ?>
+  <link rel="stylesheet" href="<?= asset('app.css') ?>?v=<?= e((string)$cssVer) ?>">
   <style>body{background:#FCF9F5;color:#1F3334;font-family:ui-sans-serif,system-ui,sans-serif}.font-heading{font-family:Georgia,serif}code{background:#F1EBE1;padding:1px 5px;border-radius:4px;font-size:.85em}</style>
 </head>
 <body>

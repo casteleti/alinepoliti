@@ -210,6 +210,31 @@ function routes_table(): array
             'description' => 'Supervisão clínica para psicólogos que desejam aprofundar a prática em Terapia Cognitivo-Comportamental: discussão de casos, técnica e ética.',
             'canonical' => '/abordagem-tcc/supervisao',
         ],
+        // Páginas satélite de Supervisão (fora do menu; linkadas na página principal + sitemap)
+        '/supervisao-clinica-online' => [
+            'view' => 'supervisao/online.php',
+            'title' => 'Supervisão Clínica Online para Psicólogos | Aline Politi',
+            'description' => 'Supervisão online em TCC para psicólogos de todo o Brasil: discussão de casos, ética digital (Resolução CFP nº 9/2024) e desenvolvimento profissional, individual ou em grupo.',
+            'canonical' => '/supervisao-clinica-online',
+        ],
+        '/supervisao-em-tcc' => [
+            'view' => 'supervisao/tcc-formulacao.php',
+            'title' => 'Supervisão em TCC: formulação de caso | Aline Politi',
+            'description' => 'Supervisão em Terapia Cognitivo-Comportamental: conceitualização cognitiva, raciocínio clínico, descoberta guiada e protocolos baseados em evidências, com Aline Politi.',
+            'canonical' => '/supervisao-em-tcc',
+        ],
+        '/supervisao-para-psicologos-iniciantes' => [
+            'view' => 'supervisao/iniciantes.php',
+            'title' => 'Supervisão para Psicólogos Iniciantes | Aline Politi',
+            'description' => 'Supervisão clínica para psicólogos recém-formados: estrutura, segurança técnica e desenvolvimento de competências para começar o consultório com responsabilidade ética.',
+            'canonical' => '/supervisao-para-psicologos-iniciantes',
+        ],
+        '/supervisao-de-casos-clinicos' => [
+            'view' => 'supervisao/casos-clinicos.php',
+            'title' => 'Supervisão de Casos Clínicos em TCC | Aline Politi',
+            'description' => 'Discussão de casos clínicos em supervisão: ansiedade, depressão, impasses terapêuticos e diálogo criterioso com DBT, ACT, Terapia do Esquema e CFT.',
+            'canonical' => '/supervisao-de-casos-clinicos',
+        ],
         // Landing page autônoma (tráfego pago) — fora do menu e do sitemap
         '/psicologa-para-brasileiros-no-exterior' => [
             'view' => 'lp-brasileiros-no-exterior.php',
@@ -380,6 +405,10 @@ function render_sitemap(): string
         ['/atendimento/online', 'yearly', '0.8'],
         ['/abordagem-tcc/orientacao-de-pais', 'yearly', '0.8'],
         ['/abordagem-tcc/supervisao', 'yearly', '0.7'],
+        ['/supervisao-clinica-online', 'yearly', '0.6'],
+        ['/supervisao-em-tcc', 'yearly', '0.6'],
+        ['/supervisao-para-psicologos-iniciantes', 'yearly', '0.6'],
+        ['/supervisao-de-casos-clinicos', 'yearly', '0.6'],
         ['/atendimento', 'monthly', '0.8'],
         ['/blog', 'weekly', '0.7'],
         ['/perguntas-frequentes', 'monthly', '0.7'],

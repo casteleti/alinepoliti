@@ -24,15 +24,15 @@ const SITE_CRP              = 'CRP 06/113904';
 const SITE_WHATSAPP_NUMBER  = '5516996044043';           // (16) 99604-4043
 const SITE_WHATSAPP_MSG     = 'Olá Aline, gostaria de agendar uma consulta.';
 const SITE_EMAIL            = 'atendimento@alinepoliti.com.br';
-const SITE_PHONE_E164       = '+551632024733';            // (16) 3202-4733
-const SITE_PHONE_LABEL      = '(16) 3202-4733';
+const SITE_PHONE_E164       = '+5516996044043';           // (16) 99604-4043 — WhatsApp, número canônico do NAP (= GMB)
+const SITE_PHONE_LABEL      = '(16) 99604-4043';
 const SITE_INSTAGRAM_URL    = 'https://instagram.com/alinepoliti';
 const SITE_INSTAGRAM_HANDLE = '@alinepoliti';
 const SITE_ADDRESS          = 'Avenida 15 de Novembro, 418 — Centro, Jaboticabal/SP · CEP 14870-600';
 const SITE_THEME_COLOR      = '#117B7F';
 
 // URL canônica de produção (usada no sitemap, robots e nas tags canonical/OG absolutas).
-// Host canônico = apex sem www (o www ainda responde 503 no servidor — ver .htaccess).
+// Host canônico = apex sem www (o www já redireciona 301 pro apex com cert válido).
 const SITE_ORIGIN = 'https://alinepoliti.com.br';
 
 // Google Analytics 4 (gtag). Deixe vazio para desativar (ex.: em testes locais).

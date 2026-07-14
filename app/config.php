@@ -26,8 +26,8 @@ const SITE_WHATSAPP_MSG     = 'Olá Aline, gostaria de agendar uma consulta.';
 const SITE_EMAIL            = 'atendimento@alinepoliti.com.br';
 const SITE_PHONE_E164       = '+5516996044043';           // (16) 99604-4043 — WhatsApp, número canônico do NAP (= GMB)
 const SITE_PHONE_LABEL      = '(16) 99604-4043';
-const SITE_INSTAGRAM_URL    = 'https://instagram.com/alinepoliti';
-const SITE_INSTAGRAM_HANDLE = '@alinepoliti';
+const SITE_INSTAGRAM_URL    = 'https://www.instagram.com/aline_politi/';
+const SITE_INSTAGRAM_HANDLE = '@aline_politi';
 const SITE_ADDRESS          = 'Avenida 15 de Novembro, 418 — Centro, Jaboticabal/SP · CEP 14870-600';
 const SITE_THEME_COLOR      = '#117B7F';
 

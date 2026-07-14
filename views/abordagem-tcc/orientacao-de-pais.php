@@ -22,12 +22,13 @@
         <p>Pais e responsáveis que desejam ferramentas práticas para lidar com o comportamento dos filhos, fortalecer vínculos e construir uma comunicação mais empática.</p>
         <h2>O que trabalhamos</h2>
         <ul>
-          <li>Manejo de birras, crises e desafios de comportamento</li>
+          <li>Manejo de <a href="<?= url('/orientacao-de-pais-birras-e-limites') ?>" class="text-magenta font-semibold underline decoration-magenta/30 underline-offset-2 hover:decoration-magenta">birras, crises e desafios de comportamento</a></li>
           <li>Comunicação assertiva e validação emocional</li>
           <li>Estabelecimento de rotinas e limites saudáveis</li>
           <li>Desenvolvimento de habilidades parentais específicas para a relação com os filhos</li>
-          <li>Apoio, suporte e direcionamento em diagnósticos como TDAH, TEA e ansiedade infantil</li>
+          <li>Apoio, suporte e direcionamento em diagnósticos como <a href="<?= url('/orientacao-de-pais-tdah') ?>" class="text-magenta font-semibold underline decoration-magenta/30 underline-offset-2 hover:decoration-magenta">TDAH</a>, TEA e <a href="<?= url('/orientacao-de-pais-ansiedade-infantil') ?>" class="text-magenta font-semibold underline decoration-magenta/30 underline-offset-2 hover:decoration-magenta">ansiedade infantil</a></li>
         </ul>
+        <p>Os encontros acontecem <a href="<?= url('/orientacao-de-pais-online') ?>" class="text-magenta font-semibold underline decoration-magenta/30 underline-offset-2 hover:decoration-magenta">online</a> ou <strong>presencialmente em Jaboticabal-SP</strong>, no formato que fizer mais sentido para a rotina da sua família.</p>
       </div>
     </div>
   </div>

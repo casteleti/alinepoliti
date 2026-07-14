@@ -1,0 +1,55 @@
+<?php
+/** LP regional — Brasileiros na IRLANDA (tráfego pago). Conteúdo: doc de estratégia Ads. */
+$pais = [
+    'nome' => 'Irlanda',
+    'onde' => 'na Irlanda',
+    'pill' => 'na Irlanda',
+    'slug' => 'psicologa-para-brasileiros-moram-na-irlanda',
+    'wa_msg' => 'Olá, Aline! Moro na Irlanda e gostaria de saber mais sobre o atendimento psicológico online.',
+    'fuso_nota' => 'da Irlanda',
+    'flag_svg' => '<rect width="34" height="100" fill="#169B62"/><rect x="34" width="32" height="100" fill="#fff"/><rect x="66" width="34" height="100" fill="#FF883E"/>',
+    'regional' => [
+        'h2' => 'Entre estudo, trabalho e adaptação, sua saúde emocional não precisa ficar para depois',
+        'p'  => 'Viver na Irlanda pode exigir energia constante para aprender, trabalhar, resolver documentos e construir relações. Quando a rotina vira apenas sobrevivência, a sessão online em português oferece um espaço reservado para compreender ansiedade, solidão, conflitos e escolhas — com um plano de cuidado que caiba na vida real.',
+        'dores' => [
+            'Exaustão por trabalhar e estudar, com pouco tempo de recuperação e autocuidado',
+            'Ansiedade ligada a permissão de residência, renovação, emprego e incerteza sobre permanência',
+            'Dificuldade de criar intimidade em outro idioma e sensação de relações sociais superficiais',
+            'Pressão de moradia compartilhada, mudanças frequentes e falta de um espaço realmente privado',
+            'Dias escuros, chuva e rotina interna, que para algumas pessoas ampliam o isolamento',
+        ],
+        'acoes' => [
+            'Organizar rotina, sono, limites e expectativas em jornadas de trabalho e estudo',
+            'Lidar com a incerteza migratória sem transformar todos os dias em antecipação do pior',
+            'Construir conexão, autonomia e decisões mais conscientes sobre permanecer ou voltar',
+        ],
+    ],
+    'form' => [
+        'origem' => 'lp-irlanda',
+        'assunto' => 'Brasileiros na Irlanda',
+        'placeholder_local' => 'Ex.: Dublin',
+    ],
+    'cidades' => [
+        ['em' => 'em Dublin', 'de' => 'de Dublin'],
+        ['em' => 'em Cork', 'de' => 'de Cork'],
+        ['em' => 'em Galway', 'de' => 'de Galway'],
+        ['em' => 'em Limerick', 'de' => 'de Limerick'],
+        ['em' => 'em Waterford', 'de' => 'de Waterford'],
+        ['em' => 'em Gort', 'de' => 'de Gort'],
+        ['em' => 'em Naas', 'de' => 'de Naas'],
+        ['em' => 'em Drogheda', 'de' => 'de Drogheda'],
+        ['em' => 'em Dundalk', 'de' => 'de Dundalk'],
+        ['em' => 'em Bray', 'de' => 'de Bray'],
+        ['em' => 'em Navan', 'de' => 'de Navan'],
+        ['em' => 'em Ennis', 'de' => 'de Ennis'],
+        ['em' => 'em Athlone', 'de' => 'de Athlone'],
+        ['em' => 'em Carlow', 'de' => 'de Carlow'],
+        ['em' => 'em Kilkenny', 'de' => 'de Kilkenny'],
+        ['em' => 'em Tralee', 'de' => 'de Tralee'],
+        ['em' => 'em Sligo', 'de' => 'de Sligo'],
+        ['em' => 'em Maynooth', 'de' => 'de Maynooth'],
+        ['em' => 'em Swords', 'de' => 'de Swords'],
+        ['em' => 'em Letterkenny', 'de' => 'de Letterkenny'],
+    ],
+];
+require __DIR__ . '/_template.php';

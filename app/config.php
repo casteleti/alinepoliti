@@ -29,6 +29,10 @@ const SITE_PHONE_LABEL      = '(16) 99604-4043';
 const SITE_INSTAGRAM_URL    = 'https://www.instagram.com/aline_politi/';
 const SITE_INSTAGRAM_HANDLE = '@aline_politi';
 const SITE_ADDRESS          = 'Avenida 15 de Novembro, 418 — Centro, Jaboticabal/SP · CEP 14870-600';
+// Google Business Profile (selo de avaliações — atualizar nota/contagem quando crescer)
+const SITE_GOOGLE_PLACE_ID  = 'ChIJyzTG5phsuZQRm_J4PZ7AMTM';
+const SITE_GOOGLE_RATING    = '5,0';
+const SITE_GOOGLE_REVIEWS   = 5;
 const SITE_THEME_COLOR      = '#117B7F';
 
 // URL canônica de produção (usada no sitemap, robots e nas tags canonical/OG absolutas).

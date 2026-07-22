@@ -323,6 +323,25 @@ function render_breadcrumbs(): void
  * Bloco de localização da clínica (texto "fácil de chegar" + mapa Google).
  * O iframe é lazy (não pesa no carregamento inicial / 3G).
  */
+/** Selo de reputação no Google: ★ nota + link pro painel oficial de avaliações (sem reproduzir depoimentos — CFP). */
+function selo_google_avaliacoes(string $classes = ''): void
+{
+    ?>
+    <a href="https://search.google.com/local/reviews?placeid=<?= e(SITE_GOOGLE_PLACE_ID) ?>" target="_blank" rel="noopener"
+       class="inline-flex items-center gap-3 group w-fit <?= e($classes) ?>" title="Avaliações de Aline Politi no Google">
+      <span class="flex gap-0.5 text-amber" aria-hidden="true">
+        <?php for ($i = 0; $i < 5; $i++): ?>
+          <svg class="size-4" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.7 1.6 7-6.2-3.7-6.2 3.7 1.6-7L2 9.5l7.1-.6z"/></svg>
+        <?php endfor; ?>
+      </span>
+      <span class="text-sm text-ink/70 leading-snug">
+        <strong class="text-teal-dark"><?= e(SITE_GOOGLE_RATING) ?> no Google</strong> ·
+        <span class="underline decoration-teal-dark/20 underline-offset-2 group-hover:text-magenta group-hover:decoration-magenta transition-colors">Leia as avaliações sobre Aline Politi</span>
+      </span>
+    </a>
+    <?php
+}
+
 function mapa_clinica(string $titulo = 'Fácil de chegar'): void
 {
     $q     = 'Avenida 15 de Novembro, 418 - Centro, Jaboticabal - SP, 14870-600';
@@ -343,6 +362,7 @@ function mapa_clinica(string $titulo = 'Fácil de chegar'): void
             <li class="flex items-start gap-3"><?= icon('message-circle', 'size-5 text-amber shrink-0 mt-0.5') ?> Estacionamento e referência conhecida na região</li>
             <li class="flex items-start gap-3"><?= icon('monitor', 'size-5 text-amber shrink-0 mt-0.5') ?> Prefere de casa? Também atendo <strong>online</strong>.</li>
           </ul>
+          <?php selo_google_avaliacoes('mt-6'); ?>
           <div class="mt-7 flex flex-wrap gap-3">
             <a href="<?= e($dir) ?>" target="_blank" rel="noopener"
                class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-teal-dark text-cream font-semibold hover:bg-teal-mid transition-colors">

@@ -52,10 +52,13 @@
         </a>
       </div>
     </div>
-    <!-- Ilustração (direita no desktop) -->
+    <!-- Ilustração (direita no desktop) + selo de avaliações -->
     <div class="order-2">
       <img src="<?= asset('supervisao.webp') ?>" alt="Supervisão clínica em TCC com Aline Politi"
            width="900" height="900" class="w-full h-auto max-w-md mx-auto">
+      <div class="mt-2 max-w-md mx-auto bg-white rounded-2xl border border-teal-dark/10 p-5 flex justify-center">
+        <?php selo_google_avaliacoes(); ?>
+      </div>
     </div>
   </div>
 </section>

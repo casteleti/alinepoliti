@@ -33,8 +33,8 @@ page_hero('Birras, limites', 'e rotina', 'Serviço', 'Manejo de comportamento in
 
     <p class="font-display italic text-teal-mid text-center text-2xl md:text-3xl leading-snug !my-10">Disciplina eficaz não é hostilidade: limite e vínculo caminham juntos.</p>
 
-    <!-- IMG-SLOT 1 -->
-    <div class="rounded-2xl border-2 border-dashed border-teal-mid/40 bg-teal-mid/5 aspect-[16/9] flex items-center justify-center text-teal-mid text-sm font-semibold text-center px-6 !my-8">Imagem 1 — sugestão: criança em birra no supermercado / adulto respirando fundo (cena real, sem dramatização)</div>
+    <!-- IMG-SLOT 1 · aguardando imagem (ver controle-imagens.md) -->
+    <!-- <div class="rounded-2xl border-2 border-dashed border-teal-mid/40 bg-teal-mid/5 aspect-[16/9] flex items-center justify-center text-teal-mid text-sm font-semibold text-center px-6 !my-8">Imagem 1 — sugestão: criança em birra no supermercado / adulto respirando fundo (cena real, sem dramatização)</div> -->
 
     <p>As interpretações dos adultos também entram na equação — é o modelo cognitivo de Aaron T. Beck aplicado à parentalidade. Pensamentos como <em>"se eu ceder uma vez, perco toda a autoridade"</em>, <em>"ele faz isso para me desafiar"</em> ou <em>"uma boa mãe nunca perde a paciência"</em> aumentam raiva, medo e culpa — e favorecem reações extremas: ameaças, discussões longas, permissividade após a explosão. Na linha de Albert Ellis, a orientação troca exigências impossíveis por preferências firmes e realistas: <em>"quero que ele coopere e vou ensiná-lo — crianças aprendem gradualmente"</em>; <em>"esse comportamento precisa mudar, e posso responder sem humilhar"</em>; <em>"cometi um erro e posso reparar"</em>.</p>
 
@@ -52,8 +52,8 @@ page_hero('Birras, limites', 'e rotina', 'Serviço', 'Manejo de comportamento in
 
     <p>Essa convicção não é retórica: é o fio da trajetória de Aline. <strong>Desde a graduação na UNAERP</strong> — quando pesquisou estilos parentais e comportamento de adolescentes — passando pelo <strong>mestrado na USP</strong> sobre práticas educativas parentais, até a certificação em Orientação de Pais e a Proficiência em TCC pelo CTC VEDA, são quase duas décadas dedicadas às relações entre pais e filhos. A pesquisa virou prática: limites que educam são os que preservam o vínculo enquanto ensinam o comportamento.</p>
 
-    <!-- IMG-SLOT 2 -->
-    <div class="rounded-2xl border-2 border-dashed border-teal-mid/40 bg-teal-mid/5 aspect-[16/9] flex items-center justify-center text-teal-mid text-sm font-semibold text-center px-6 !my-8">Imagem 2 — sugestão: pai/mãe e criança cozinhando ou brincando juntos (interação positiva, conexão)</div>
+    <!-- IMG-SLOT 2 · aguardando imagem (ver controle-imagens.md) -->
+    <!-- <div class="rounded-2xl border-2 border-dashed border-teal-mid/40 bg-teal-mid/5 aspect-[16/9] flex items-center justify-center text-teal-mid text-sm font-semibold text-center px-6 !my-8">Imagem 2 — sugestão: pai/mãe e criança cozinhando ou brincando juntos (interação positiva, conexão)</div> -->
 
     <p>Cada plano é adaptado à etapa do desenvolvimento e às características da família — estratégias adequadas para uma criança pequena podem ser infantilizantes para um adolescente, e condições como TDAH, TEA ou ansiedade pedem ajustes específicos. Divergências entre cuidadores são coordenadas em torno de poucas prioridades e regras centrais previsíveis. E quando há violência, risco ou emergência, a orientação isolada não basta: serviços de urgência e proteção devem ser acionados.</p>
 

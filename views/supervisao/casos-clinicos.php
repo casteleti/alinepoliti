@@ -33,8 +33,8 @@ page_hero('Supervisão de', 'casos clínicos', 'Para profissionais', 'Discussão
 
     <p class="font-display italic text-teal-mid text-center text-2xl md:text-3xl leading-snug !my-10">Quando o caso trava, a supervisão transforma o impasse em hipótese.</p>
 
-    <!-- IMG-SLOT 1 -->
-    <div class="rounded-2xl border-2 border-dashed border-teal-mid/40 bg-teal-mid/5 aspect-[16/9] flex items-center justify-center text-teal-mid text-sm font-semibold text-center px-6 !my-8">Imagem 1 — sugestão: duas psicólogas discutindo um caso sobre anotações (vista de cima da mesa)</div>
+    <!-- IMG-SLOT 1 · aguardando imagem (ver controle-imagens.md) -->
+    <!-- <div class="rounded-2xl border-2 border-dashed border-teal-mid/40 bg-teal-mid/5 aspect-[16/9] flex items-center justify-center text-teal-mid text-sm font-semibold text-center px-6 !my-8">Imagem 1 — sugestão: duas psicólogas discutindo um caso sobre anotações (vista de cima da mesa)</div> -->
 
     <p>Um tipo frequente de impasse: a intervenção cognitiva parece correta no papel e produz pouca mudança na prática. <strong>Robert L. Leahy</strong> ajuda a entender por quê — muitas vezes o paciente não desconhece a interpretação alternativa; ele considera determinado sentimento intolerável, vergonhoso, perigoso ou interminável. Na supervisão, esse olhar abre caminhos: como validar a experiência emocional sem reforçar padrões disfuncionais, como investigar crenças sobre o próprio sentir e como reconhecer estratégias de controle que mantêm o sofrimento.</p>
 
@@ -52,8 +52,8 @@ page_hero('Supervisão de', 'casos clínicos', 'Para profissionais', 'Discussão
 
     <p>Importante: dialogar com esses modelos não significa aplicá-los de forma parcial em qualquer caso, nem substitui formação específica em cada abordagem. Parte do trabalho da supervisão é justamente decidir quando uma lente contextual acrescenta compreensão — e quando o modelo cognitivo mais focal já é suficiente. Misturar técnicas de maneira indiscriminada é o oposto de integração responsável.</p>
 
-    <!-- IMG-SLOT 2 -->
-    <div class="rounded-2xl border-2 border-dashed border-teal-mid/40 bg-teal-mid/5 aspect-[16/9] flex items-center justify-center text-teal-mid text-sm font-semibold text-center px-6 !my-8">Imagem 2 — sugestão: mapa mental de um caso (esquemas, modos, cadeias) em papel kraft</div>
+    <!-- IMG-SLOT 2 · aguardando imagem (ver controle-imagens.md) -->
+    <!-- <div class="rounded-2xl border-2 border-dashed border-teal-mid/40 bg-teal-mid/5 aspect-[16/9] flex items-center justify-center text-teal-mid text-sm font-semibold text-center px-6 !my-8">Imagem 2 — sugestão: mapa mental de um caso (esquemas, modos, cadeias) em papel kraft</div> -->
 
     <p>A apresentação dos casos segue o rigor ético de sempre: compartilha-se apenas a informação necessária, preferencialmente sem dados que identifiquem o paciente, conforme o Código de Ética Profissional do Psicólogo. Em situações de risco, a supervisão contribui para avaliar necessidade de avaliação adicional, trabalho interdisciplinar ou encaminhamento — sem substituir serviços de urgência nem a responsabilidade do profissional que atende.</p>
 

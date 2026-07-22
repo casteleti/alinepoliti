@@ -33,8 +33,8 @@ page_hero('Orientação de pais', 'online', 'Serviço', 'Orientação parental b
 
     <p class="font-display italic text-teal-mid text-center text-2xl md:text-3xl leading-snug !my-10">Aline acredita que a base de um indivíduo emocionalmente forte são os vínculos e laços que a família constrói e oferece.</p>
 
-    <!-- IMG-SLOT 1 -->
-    <div class="rounded-2xl border-2 border-dashed border-teal-mid/40 bg-teal-mid/5 aspect-[16/9] flex items-center justify-center text-teal-mid text-sm font-semibold text-center px-6 !my-8">Imagem 1 — sugestão: mãe e pai em videochamada com a psicóloga, ambiente doméstico acolhedor</div>
+    <!-- IMG-SLOT 1 · aguardando imagem (ver controle-imagens.md) -->
+    <!-- <div class="rounded-2xl border-2 border-dashed border-teal-mid/40 bg-teal-mid/5 aspect-[16/9] flex items-center justify-center text-teal-mid text-sm font-semibold text-center px-6 !my-8">Imagem 1 — sugestão: mãe e pai em videochamada com a psicóloga, ambiente doméstico acolhedor</div> -->
 
     <p>Na abordagem da TCC, a relação entre pensamentos, emoções, comportamentos e contexto é examinada de forma colaborativa. Isso permite compreender como cansaço, culpa, medo, expectativas elevadas ou interpretações precipitadas influenciam a maneira como os adultos respondem a birras, resistência, dificuldades escolares ou conflitos entre irmãos. A orientação transforma queixas vagas — "ele não obedece", "ela explode por tudo", "não sei mais o que fazer" — em problemas observáveis, prioridades claras e objetivos acompanháveis, sem promessas de resultado imediato e sem reduzir a criança a um diagnóstico.</p>
 
@@ -52,8 +52,8 @@ page_hero('Orientação de pais', 'online', 'Serviço', 'Orientação parental b
 
     <p>Também há limites claros: a orientação online não substitui avaliação direta da criança quando ela é necessária, não é atendimento de urgência e não promete transformar o comportamento dos filhos em um número fixo de encontros. Quando o formato presencial, a avaliação diagnóstica ou o encaminhamento forem o caminho mais adequado, é isso que será dito — com transparência.</p>
 
-    <!-- IMG-SLOT 2 -->
-    <div class="rounded-2xl border-2 border-dashed border-teal-mid/40 bg-teal-mid/5 aspect-[16/9] flex items-center justify-center text-teal-mid text-sm font-semibold text-center px-6 !my-8">Imagem 2 — sugestão: rotina familiar organizada (quadro de rotina na geladeira / mesa do café)</div>
+    <!-- IMG-SLOT 2 · aguardando imagem (ver controle-imagens.md) -->
+    <!-- <div class="rounded-2xl border-2 border-dashed border-teal-mid/40 bg-teal-mid/5 aspect-[16/9] flex items-center justify-center text-teal-mid text-sm font-semibold text-center px-6 !my-8">Imagem 2 — sugestão: rotina familiar organizada (quadro de rotina na geladeira / mesa do café)</div> -->
 
     <p>O progresso não é medido por obediência perfeita nem por ausência de conflitos. Ele aparece em maior previsibilidade, redução de escaladas, recuperação mais rápida após dificuldades, aumento de comportamentos positivos e mais confiança dos adultos para tomar decisões. É repertório, autonomia e qualidade de relação — construídos no ritmo possível de cada família.</p>
 

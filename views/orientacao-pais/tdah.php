@@ -33,8 +33,8 @@ page_hero('Orientação de pais', 'para TDAH', 'Serviço', 'Estratégias baseada
 
     <p class="font-display italic text-teal-mid text-center text-2xl md:text-3xl leading-snug !my-10">Não é preguiça: é uma habilidade que ainda precisa de apoio para amadurecer.</p>
 
-    <!-- IMG-SLOT 1 -->
-    <div class="rounded-2xl border-2 border-dashed border-teal-mid/40 bg-teal-mid/5 aspect-[16/9] flex items-center justify-center text-teal-mid text-sm font-semibold text-center px-6 !my-8">Imagem 1 — sugestão: quadro de rotina visual infantil (manhã/tarde/noite) com ímãs ou cartões</div>
+    <!-- IMG-SLOT 1 · aguardando imagem (ver controle-imagens.md) -->
+    <!-- <div class="rounded-2xl border-2 border-dashed border-teal-mid/40 bg-teal-mid/5 aspect-[16/9] flex items-center justify-center text-teal-mid text-sm font-semibold text-center px-6 !my-8">Imagem 1 — sugestão: quadro de rotina visual infantil (manhã/tarde/noite) com ímãs ou cartões</div> -->
 
     <p>Uma das distinções mais valiosas que a orientação ensina é separar <strong>incapacidade momentânea</strong>, <strong>habilidade ainda não adquirida</strong> e <strong>recusa deliberada</strong> — porque cada uma pede uma resposta diferente. Quando dificuldades executivas são lidas como preguiça ou desinteresse, a criança acumula críticas por algo que não domina, e a relação se desgasta sem que nada novo seja ensinado. Ajustar as expectativas à idade de desenvolvimento é parte do trabalho, não concessão.</p>
 
@@ -52,8 +52,8 @@ page_hero('Orientação de pais', 'para TDAH', 'Serviço', 'Estratégias baseada
 
     <p>A orientação de pais para TDAH também cuida da ponte com a <strong>escola</strong>: conversar com professores de forma objetiva, evitar rótulos, buscar consistência entre os ambientes — respeitando sigilo e consentimento. Rotinas visuais, comandos breves, intervalos e reforço frequente podem ser combinados entre casa e sala de aula, sempre de forma individualizada e revista conforme os resultados observados.</p>
 
-    <!-- IMG-SLOT 2 -->
-    <div class="rounded-2xl border-2 border-dashed border-teal-mid/40 bg-teal-mid/5 aspect-[16/9] flex items-center justify-center text-teal-mid text-sm font-semibold text-center px-6 !my-8">Imagem 2 — sugestão: criança estudando com timer visual e materiais organizados na mesa</div>
+    <!-- IMG-SLOT 2 · aguardando imagem (ver controle-imagens.md) -->
+    <!-- <div class="rounded-2xl border-2 border-dashed border-teal-mid/40 bg-teal-mid/5 aspect-[16/9] flex items-center justify-center text-teal-mid text-sm font-semibold text-center px-6 !my-8">Imagem 2 — sugestão: criança estudando com timer visual e materiais organizados na mesa</div> -->
 
     <p>Importante: a orientação de pais para TDAH <strong>não substitui avaliação diagnóstica nem acompanhamento multiprofissional</strong> quando necessários, e não se resume à disciplina. Ela integra o cuidado — junto com médicos, escola e, quando indicado, atendimento próprio para a criança —, fortalecendo o elo que passa mais tempo com ela: a família.</p>
 

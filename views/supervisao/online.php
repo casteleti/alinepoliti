@@ -33,8 +33,8 @@ page_hero('Supervisão clínica', 'online', 'Para profissionais', 'Supervisão e
 
     <p class="font-display italic text-teal-mid text-center text-2xl md:text-3xl leading-snug !my-10">A distância deixou de ser barreira para estudar os próprios casos com profundidade.</p>
 
-    <!-- IMG-SLOT 1 -->
-    <div class="rounded-2xl border-2 border-dashed border-teal-mid/40 bg-teal-mid/5 aspect-[16/9] flex items-center justify-center text-teal-mid text-sm font-semibold text-center px-6 !my-8">Imagem 1 — sugestão: psicóloga em videochamada de supervisão, ambiente de consultório</div>
+    <!-- IMG-SLOT 1 · aguardando imagem (ver controle-imagens.md) -->
+    <!-- <div class="rounded-2xl border-2 border-dashed border-teal-mid/40 bg-teal-mid/5 aspect-[16/9] flex items-center justify-center text-teal-mid text-sm font-semibold text-center px-6 !my-8">Imagem 1 — sugestão: psicóloga em videochamada de supervisão, ambiente de consultório</div> -->
 
     <p>Cada encontro de supervisão online é um encontro clínico, não uma conversa genérica sobre dificuldades profissionais. A estrutura costuma seguir três movimentos: definição de prioridades no início, análise do material clínico no centro e, ao final, um plano de estudo ou de aplicação prática que será revisitado no encontro seguinte. Essa organização — alinhada ao que o Beck Institute descreve para a supervisão em TCC — protege o foco e permite acompanhar o desenvolvimento do supervisionando ao longo do tempo, sem transformar o processo em atividade rígida.</p>
 
@@ -52,8 +52,8 @@ page_hero('Supervisão clínica', 'online', 'Para profissionais', 'Supervisão e
 
     <p>Também vale nomear o que a supervisão online <strong>não é</strong>: não é psicoterapia pessoal, não é curso teórico, não é consultoria empresarial. O foco é o trabalho clínico — avaliação, formulação, objetivos terapêuticos, estrutura de sessão, escolha de estratégias e reflexão sobre impasses. O supervisor não assume o atendimento nem substitui a autonomia e a responsabilidade profissional do supervisionando; o que ele oferece é um processo contínuo de estudo, prática, feedback e responsabilidade.</p>
 
-    <!-- IMG-SLOT 2 -->
-    <div class="rounded-2xl border-2 border-dashed border-teal-mid/40 bg-teal-mid/5 aspect-[16/9] flex items-center justify-center text-teal-mid text-sm font-semibold text-center px-6 !my-8">Imagem 2 — sugestão: anotações/formulação de caso ao lado do notebook (detalhe de mesa)</div>
+    <!-- IMG-SLOT 2 · aguardando imagem (ver controle-imagens.md) -->
+    <!-- <div class="rounded-2xl border-2 border-dashed border-teal-mid/40 bg-teal-mid/5 aspect-[16/9] flex items-center justify-center text-teal-mid text-sm font-semibold text-center px-6 !my-8">Imagem 2 — sugestão: anotações/formulação de caso ao lado do notebook (detalhe de mesa)</div> -->
 
     <p>No formato em <strong>pequenos grupos online</strong>, a escuta de diferentes hipóteses e estilos clínicos amplia o repertório de todos — desde que exista compromisso rigoroso com a confidencialidade entre os participantes. Já a modalidade individual concentra a atenção nas necessidades de um único profissional. Ambas exigem os mesmos combinados: periodicidade, duração, forma de apresentação dos casos e limites de contato entre os encontros.</p>
 

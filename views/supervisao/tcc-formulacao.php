@@ -33,8 +33,7 @@ page_hero('Supervisão em TCC:', 'formulação de caso', 'Para profissionais', '
 
     <p class="font-display italic text-teal-mid text-center text-2xl md:text-3xl leading-snug !my-10">Formulação de caso não é rótulo definitivo — é um mapa provisório que orienta o tratamento.</p>
 
-    <!-- IMG-SLOT 1 -->
-    <div class="rounded-2xl border-2 border-dashed border-teal-mid/40 bg-teal-mid/5 aspect-[16/9] flex items-center justify-center text-teal-mid text-sm font-semibold text-center px-6 !my-8">Imagem 1 — sugestão: diagrama de conceitualização cognitiva desenhado à mão / quadro branco</div>
+    <img src="<?= asset('supervisao-tcc-1.webp') ?>" alt="Supervisão clínica em TCC: psicóloga registrando a formulação de caso durante o atendimento" width="1600" height="900" loading="lazy" class="rounded-2xl ring-1 ring-teal-dark/10 w-full h-auto !my-8">
 
     <p><strong>Judith S. Beck</strong> sistematizou o ensino contemporâneo da TCC e mostrou que supervisionar exige competências além da boa prática terapêutica. Seguindo os princípios descritos pelo Beck Institute, cada encontro pode incluir avaliação de necessidades, definição colaborativa de objetivos, análise do material clínico e feedback sobre o desempenho — terminando com um plano de estudo ou aplicação. A estrutura protege o foco sem engessar a conversa, e permite acompanhar a evolução do supervisionando ao longo do tempo.</p>
 
@@ -52,8 +51,7 @@ page_hero('Supervisão em TCC:', 'formulação de caso', 'Para profissionais', '
 
     <p>É comum que uma técnica aparentemente adequada não funcione — e a supervisão examina os motivos possíveis: timing, aliança terapêutica, compreensão do paciente, motivação ou execução. Também é o espaço para reconhecer quando um caso exige avaliação adicional, encaminhamento, trabalho interdisciplinar ou adaptação de estratégias. O objetivo é aproximar a prática cotidiana da literatura científica, preservando a singularidade de cada pessoa atendida.</p>
 
-    <!-- IMG-SLOT 2 -->
-    <div class="rounded-2xl border-2 border-dashed border-teal-mid/40 bg-teal-mid/5 aspect-[16/9] flex items-center justify-center text-teal-mid text-sm font-semibold text-center px-6 !my-8">Imagem 2 — sugestão: livros de referência em TCC sobre a mesa (Beck, Persons) com caderno de anotações</div>
+    <img src="<?= asset('supervisao-tcc-2.webp') ?>" alt="Supervisão clínica online em TCC: psicóloga em videochamada com a supervisora, com caderno de anotações" width="1600" height="949" loading="lazy" class="rounded-2xl ring-1 ring-teal-dark/10 w-full h-auto !my-8">
 
     <p>O <strong>raciocínio clínico</strong> desenvolvido nesse processo abrange desde a primeira entrevista até a avaliação de resultados: contrato terapêutico, definição da demanda, diagnóstico diferencial, plano de tratamento, psicoeducação, registro de pensamentos, experimentos comportamentais, exposição, prevenção de recaída e encerramento. Aline pode orientar leituras e protocolos, mas a escolha final considera sempre evidências, contexto, preferências, recursos e limites do paciente.</p>
 

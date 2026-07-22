@@ -33,8 +33,8 @@ page_hero('Supervisão para psicólogos', 'iniciantes', 'Para profissionais', 'D
 
     <p class="font-display italic text-teal-mid text-center text-2xl md:text-3xl leading-snug !my-10">Ninguém aprende clínica sozinho: repertório se constrói com estudo, prática e feedback.</p>
 
-    <!-- IMG-SLOT 1 -->
-    <div class="rounded-2xl border-2 border-dashed border-teal-mid/40 bg-teal-mid/5 aspect-[16/9] flex items-center justify-center text-teal-mid text-sm font-semibold text-center px-6 !my-8">Imagem 1 — sugestão: psicóloga jovem em escrivaninha, primeiro consultório, luz natural</div>
+    <!-- IMG-SLOT 1 · aguardando imagem (ver controle-imagens.md) -->
+    <!-- <div class="rounded-2xl border-2 border-dashed border-teal-mid/40 bg-teal-mid/5 aspect-[16/9] flex items-center justify-center text-teal-mid text-sm font-semibold text-center px-6 !my-8">Imagem 1 — sugestão: psicóloga jovem em escrivaninha, primeiro consultório, luz natural</div> -->
 
     <p>A abordagem de <strong>Carol A. Falender e Edward P. Shafranske</strong>, baseada em competências, orienta um princípio importante: cada estágio de desenvolvimento pede um tipo de supervisão. O profissional iniciante costuma precisar de maior estrutura e revisão dos fundamentos; alguém mais experiente demanda refinamento de formulações e análise de impasses. Em vez de avaliar por impressões gerais, essa perspectiva explicita conhecimentos, habilidades, atitudes, limites e responsabilidades — e reconhece que competência também é saber o que ainda não se sabe, buscar literatura, pedir apoio e encaminhar quando necessário.</p>
 
@@ -52,8 +52,8 @@ page_hero('Supervisão para psicólogos', 'iniciantes', 'Para profissionais', 'D
 
     <p>E o consultório? Para quem sonha com a clínica própria, a supervisão fortalece o que está sob seu controle: organização clínica, comunicação de limites, segurança para conduzir sessões e clareza sobre o próprio campo de atuação. Esses ganhos podem contribuir indiretamente para a carreira — mas uma supervisão séria não promete faturamento, agenda cheia nem captação de pacientes. A qualidade do trabalho permanece ligada a formação, ética, estudo, experiência e contexto profissional.</p>
 
-    <!-- IMG-SLOT 2 -->
-    <div class="rounded-2xl border-2 border-dashed border-teal-mid/40 bg-teal-mid/5 aspect-[16/9] flex items-center justify-center text-teal-mid text-sm font-semibold text-center px-6 !my-8">Imagem 2 — sugestão: caderno com plano de estudos / trilha de desenvolvimento profissional</div>
+    <!-- IMG-SLOT 2 · aguardando imagem (ver controle-imagens.md) -->
+    <!-- <div class="rounded-2xl border-2 border-dashed border-teal-mid/40 bg-teal-mid/5 aspect-[16/9] flex items-center justify-center text-teal-mid text-sm font-semibold text-center px-6 !my-8">Imagem 2 — sugestão: caderno com plano de estudos / trilha de desenvolvimento profissional</div> -->
 
     <p>Os encontros acontecem online — o que permite participar de qualquer cidade do Brasil — ou presencialmente em Jaboticabal-SP, no formato individual ou em pequenos grupos. Periodicidade, duração e forma de apresentação dos casos são combinadas de acordo com a sua rotina e os seus objetivos de formação.</p>
 

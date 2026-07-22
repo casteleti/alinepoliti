@@ -33,8 +33,8 @@ page_hero('Ansiedade infantil:', 'orientação de pais', 'Serviço', 'Como apoia
 
     <p class="font-display italic text-teal-mid text-center text-2xl md:text-3xl leading-snug !my-10">Apoiar não é remover o medo do caminho — é emprestar coragem em passos possíveis.</p>
 
-    <!-- IMG-SLOT 1 -->
-    <div class="rounded-2xl border-2 border-dashed border-teal-mid/40 bg-teal-mid/5 aspect-[16/9] flex items-center justify-center text-teal-mid text-sm font-semibold text-center px-6 !my-8">Imagem 1 — sugestão: mãe agachada na altura da criança, escuta acolhedora antes da escola</div>
+    <!-- IMG-SLOT 1 · aguardando imagem (ver controle-imagens.md) -->
+    <!-- <div class="rounded-2xl border-2 border-dashed border-teal-mid/40 bg-teal-mid/5 aspect-[16/9] flex items-center justify-center text-teal-mid text-sm font-semibold text-center px-6 !my-8">Imagem 1 — sugestão: mãe agachada na altura da criança, escuta acolhedora antes da escola</div> -->
 
     <p>O papel dos pais não é atuar como terapeuta improvisado — como mostra a pesquisa de <strong>Wendy K. Silverman</strong> sobre envolvimento familiar no tratamento, a função da família é criar condições para que as habilidades sejam praticadas no cotidiano. Na orientação, Aline trabalha situações concretas: como responder a perguntas repetitivas e pedidos de garantia, ao medo de separação, à resistência escolar e às preocupações excessivas — sem ridicularizar e sem alimentar ciclos de dependência.</p>
 
@@ -52,8 +52,8 @@ page_hero('Ansiedade infantil:', 'orientação de pais', 'Serviço', 'Como apoia
 
     <p>Por isso as próprias crenças dos adultos sobre perigo, vulnerabilidade e sofrimento também podem ser examinadas — sem simplismos e sem culpabilização. Pais ansiosos não causam automaticamente ansiedade nos filhos; o que se avalia, quando relevante, são padrões de modelagem, proteção excessiva e evitação familiar, sempre com hipóteses testáveis e mudanças graduais.</p>
 
-    <!-- IMG-SLOT 2 -->
-    <div class="rounded-2xl border-2 border-dashed border-teal-mid/40 bg-teal-mid/5 aspect-[16/9] flex items-center justify-center text-teal-mid text-sm font-semibold text-center px-6 !my-8">Imagem 2 — sugestão: criança subindo degraus / escada lúdica (metáfora de passos graduais)</div>
+    <!-- IMG-SLOT 2 · aguardando imagem (ver controle-imagens.md) -->
+    <!-- <div class="rounded-2xl border-2 border-dashed border-teal-mid/40 bg-teal-mid/5 aspect-[16/9] flex items-center justify-center text-teal-mid text-sm font-semibold text-center px-6 !my-8">Imagem 2 — sugestão: criança subindo degraus / escada lúdica (metáfora de passos graduais)</div> -->
 
     <p>Em alguns casos, a orientação parental acompanha a psicoterapia da criança; em outros, o trabalho centrado nos pais é o caminho indicado — pesquisas como as de <strong>Eli Lebowitz</strong> mostram a eficácia de tratamentos baseados nos pais para ansiedade infantil. A avaliação inicial define a combinação adequada, incluindo encaminhamento específico quando necessário. O atendimento acontece presencialmente em Jaboticabal-SP ou online, conforme a necessidade da família.</p>
 

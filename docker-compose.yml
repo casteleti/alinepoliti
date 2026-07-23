@@ -6,9 +6,9 @@ services:
     restart: unless-stopped
     environment:
       - APP_ENV=production
-      - DB_HOST=db
-      - DB_NAME=alinepoliti
-      - DB_USER=alinepoliti
+      - DB_HOST=${DB_HOST:-db}
+      - DB_NAME=${DB_NAME:-alinepoliti}
+      - DB_USER=${DB_USER:-alinepoliti}
       - DB_PASS=${DB_PASS}
     ports:
       - "80"

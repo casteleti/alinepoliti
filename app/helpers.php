@@ -395,7 +395,7 @@ function smtp_enviar(string $to, string $assunto, string $texto, string $replyTo
     $errno = 0; $errstr = '';
 
     $endpoint = (SMTP_SECURE === 'ssl' ? 'ssl://' : '') . SMTP_HOST . ':' . SMTP_PORT;
-    $ctx = stream_context_create(['ssl' => ['verify_peer' => true, 'verify_peer_name' => true, 'SNI_enabled' => true]]);
+    $ctx = stream_context_create(['ssl' => ['verify_peer' => false, 'verify_peer_name' => false, 'SNI_enabled' => true]]);
     $fp = @stream_socket_client($endpoint, $errno, $errstr, 15, STREAM_CLIENT_CONNECT, $ctx);
     if (!$fp) {
         error_log("[alinepoliti] smtp connect falhou: {$errstr} ({$errno})");
